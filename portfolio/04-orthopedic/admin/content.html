@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>콘텐츠 관리 | 쿠마정형외과 관리자</title>
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="admin-shell">
+  <aside class="admin-sidebar">
+    <span class="brand">쿠마 어드민</span>
+    <ul class="admin-nav">
+      <li><a href="dashboard.html">대시보드</a></li>
+      <li><a href="content.html" class="active">콘텐츠 관리</a></li>
+      <li><a href="#">회원 관리</a></li>
+      <li><a href="../">사이트로 이동</a></li>
+      <li><a href="index.html">로그아웃</a></li>
+    </ul>
+  </aside>
+
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <h1>콘텐츠 관리</h1>
+      <span class="admin-user">관리자님, 안녕하세요</span>
+    </div>
+
+    <div class="toolbar">
+      <span class="admin-user">전체 6건</span>
+      <button type="button" class="btn-small">+ 새 콘텐츠 추가</button>
+    </div>
+
+    <section class="table-card">
+      <table>
+        <thead>
+          <tr><th>제목</th><th>분류</th><th>상태</th><th>수정일</th><th></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>눈성형 시술 안내</td><td>진료분야</td>
+            <td><span class="status-pill published">게시중</span></td>
+            <td>2026-06-20</td>
+            <td><button type="button" class="btn-ghost-small">수정</button></td>
+          </tr>
+          <tr>
+            <td>코성형 비용 안내 FAQ</td><td>FAQ</td>
+            <td><span class="status-pill published">게시중</span></td>
+            <td>2026-06-18</td>
+            <td><button type="button" class="btn-ghost-small">수정</button></td>
+          </tr>
+          <tr>
+            <td>2026년 여름 이벤트 안내</td><td>공지</td>
+            <td><span class="status-pill draft">초안</span></td>
+            <td>2026-06-15</td>
+            <td><button type="button" class="btn-ghost-small">수정</button></td>
+          </tr>
+          <tr>
+            <td>안면윤곽 케이스 #12</td><td>케이스</td>
+            <td><span class="status-pill published">게시중</span></td>
+            <td>2026-06-10</td>
+            <td><button type="button" class="btn-ghost-small">수정</button></td>
+          </tr>
+          <tr>
+            <td>리프팅 시술 안내 개편</td><td>진료분야</td>
+            <td><span class="status-pill draft">초안</span></td>
+            <td>2026-06-08</td>
+            <td><button type="button" class="btn-ghost-small">수정</button></td>
+          </tr>
+          <tr>
+            <td>의료진 프로필 업데이트</td><td>의료진</td>
+            <td><span class="status-pill published">게시중</span></td>
+            <td>2026-06-02</td>
+            <td><button type="button" class="btn-ghost-small">수정</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="chart-card" style="margin-top:16px;">
+      <h2>새 콘텐츠 작성</h2>
+      <form>
+        <div class="form-row">
+          <label for="c-title">제목</label>
+          <input type="text" id="c-title" placeholder="예: 눈매교정 시술 안내">
+        </div>
+        <div class="form-row">
+          <label for="c-cat">분류</label>
+          <input type="text" id="c-cat" placeholder="진료분야 / FAQ / 케이스 / 공지">
+        </div>
+        <div class="form-row">
+          <label for="c-body">본문</label>
+          <textarea id="c-body" rows="5" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:6px; font-family:inherit;"></textarea>
+        </div>
+        <button type="button" class="btn-small">초안 저장</button>
+      </form>
+    </section>
+  </main>
+</div>
+
+</body>
+</html>
