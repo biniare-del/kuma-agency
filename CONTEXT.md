@@ -56,7 +56,8 @@
 - 디자인 방식 결정: **진료과별로 완전히 새로운 디자인 템플릿 제작** (1번/2번 템플릿 재사용 안 함) — 사용자 답변 "종별다 새 디자인 타울 제작".
 - 대상 진료과 선택은 사용자가 "선호 없음"으로 위임 → 에이전트가 순서/조합 결정.
 - **포트폴리오 3번 (치과) 완료**: `portfolio/03-dental-clinic/` — 가짜 클리닉명 "쿠마치과"(원장 "이쿠마"), 새 디자인 템플릿(민트/틸 색상, 둥근 카드형 UI, split-hero + floating stat card 레이아웃, #1 sage/#2 dark-gold와 시각적으로 완전히 차별화). `Dentist` schema, 1·2번과 동일한 기능 풀세트(`cases/`, `en/`, 언어스위처, 카카오플로팅, `robots.txt`/`sitemap.xml`/`llms.txt`, `admin/` 로그인+대시보드+콘텐츠관리 목업, 색상만 틸톤으로 리브랜딩). main에 merge 완료, 라이브 URL: `https://biniare-del.github.io/kuma-agency/portfolio/03-dental-clinic/`
-- 다음 후보 진료과: 한의원, 한방병원, 정형외과, 신경외과 (순서/조합 미정, 계속 새 디자인 템플릿 원칙 적용).
+- **포트폴리오 4번 (정형외과) 완료**: `portfolio/04-orthopedic/` — 가짜 클리닉명 "쿠마정형외과"(원장 "박쿠마"), 새 디자인 템플릿(네이비+스틸블루, 헤어라인 그리드 레이아웃, 스포츠메디컬 느낌, 다크 헤더/히어로 + 화이트 본문 대비). `MedicalClinic`(Orthopedic) schema, 1~3번과 동일한 기능 풀세트(`cases/`, `en/`, 언어스위처, 카카오플로팅, `robots.txt`/`sitemap.xml`/`llms.txt`, `admin/` 로그인+대시보드+콘텐츠관리 목업, 색상 블루톤으로 리브랜딩). main에 merge 완료, 라이브 URL: `https://biniare-del.github.io/kuma-agency/portfolio/04-orthopedic/`
+- 다음 후보 진료과: 한의원, 한방병원, 신경외과 (순서/조합 미정, 계속 새 디자인 템플릿 원칙 적용).
 
 ## 핵심 영업/가격 전략 (중요)
 
