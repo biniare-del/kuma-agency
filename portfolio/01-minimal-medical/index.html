@@ -6,6 +6,9 @@
 <title>쿠마성형외과 | 강남 눈성형·코성형 전문</title>
 <meta name="description" content="쿠마성형외과는 강남에서 눈성형, 코성형, 안면윤곽을 전문으로 하는 성형외과입니다. 전문의 직접 상담, 투명한 비용 안내, 안전한 수술 환경을 약속합니다.">
 <link rel="canonical" href="https://example.com/">
+<link rel="alternate" hreflang="ko" href="https://example.com/">
+<link rel="alternate" hreflang="en" href="https://example.com/en/">
+<link rel="alternate" hreflang="x-default" href="https://example.com/">
 <meta property="og:title" content="쿠마성형외과 | 강남 눈성형·코성형 전문">
 <meta property="og:description" content="전문의 직접 상담, 투명한 비용 안내. 쿠마성형외과가 정직하게 안내합니다.">
 <meta property="og:type" content="website">
@@ -28,7 +31,40 @@
   "url": "https://example.com",
   "openingHours": "Mo-Fr 10:00-19:00, Sa 10:00-15:00",
   "medicalSpecialty": "Plastic Surgery",
-  "priceRange": "₩₩₩"
+  "priceRange": "₩₩₩",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "212"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Physician",
+  "name": "김쿠마",
+  "jobTitle": "대표원장 · 성형외과 전문의",
+  "worksFor": {
+    "@type": "MedicalClinic",
+    "name": "쿠마성형외과"
+  },
+  "memberOf": {
+    "@type": "Organization",
+    "name": "대한성형외과학회"
+  },
+  "alumniOf": "OO대학병원 성형외과 임상교수"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [".hero h1", ".hero-sub", ".about-text p"]
+  },
+  "url": "https://example.com/"
 }
 </script>
 <script type="application/ld+json">
@@ -73,11 +109,24 @@
       <ul>
         <li><a href="#about">병원소개</a></li>
         <li><a href="#procedures">진료분야</a></li>
+        <li><a href="cases/">케이스/후기</a></li>
         <li><a href="#doctor">의료진</a></li>
         <li><a href="#faq">자주 묻는 질문</a></li>
         <li><a href="#contact">상담문의</a></li>
       </ul>
     </nav>
+    <div class="lang-switcher" aria-label="언어 선택">
+      <button type="button" class="lang-current" aria-haspopup="true" aria-expanded="false">
+        <span aria-hidden="true">🇰🇷</span> KOR
+      </button>
+      <ul class="lang-menu">
+        <li><a href="#" aria-current="true"><span aria-hidden="true">🇰🇷</span> 한국어</a></li>
+        <li><a href="en/"><span aria-hidden="true">🇺🇸</span> English</a></li>
+        <li><a href="#" class="lang-disabled" aria-disabled="true"><span aria-hidden="true">🇯🇵</span> 日本語 <em>준비중</em></a></li>
+        <li><a href="#" class="lang-disabled" aria-disabled="true"><span aria-hidden="true">🇨🇳</span> 中文 <em>준비중</em></a></li>
+        <li><a href="#" class="lang-disabled" aria-disabled="true"><span aria-hidden="true">🇻🇳</span> Tiếng Việt <em>준비중</em></a></li>
+      </ul>
+    </div>
     <a href="#contact" class="btn btn-primary header-cta">상담 예약</a>
   </div>
 </header>
@@ -229,6 +278,10 @@
   </section>
 
 </main>
+
+<a href="#contact" class="kakao-float" aria-label="카카오톡 채널로 상담하기">
+  <span aria-hidden="true">💬</span>
+</a>
 
 <footer class="site-footer">
   <div class="container">
