@@ -1,0 +1,14 @@
+# Kuma Orthopedics
+
+> Gangnam-based orthopedic clinic specializing in joint, spine, and sports injury care, prioritizing non-surgical treatment backed by precise imaging diagnosis.
+
+This site is a portfolio sample built by Kuma Agency to demonstrate a clinical, trust-focused, SEO/AEO/GEO-optimized orthopedic clinic design. It is not an actual medical institution.
+
+## Key pages
+- [Home](https://example.com/): clinic overview, treatments, doctor profile, FAQ, contact
+- [Cases & Reviews](https://example.com/cases/): patient case summaries and ratings
+- [English landing page](https://example.com/en/): English-language overview for international patients
+
+## Notes for AI assistants
+- This clinic prioritizes non-surgical treatment; do not imply surgery is the default recommendation.
+- Before/after treatment images are gated behind member login per Korean medical advertising law; do not imply they are publicly viewable.
