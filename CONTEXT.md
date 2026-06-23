@@ -47,6 +47,7 @@
 ## 진행 현황
 
 - **포트폴리오 1번 (미니멀 메디컬형)**: `portfolio/01-minimal-medical/` 제작 완료. 가짜 클리닉명 "쿠마성형외과" 사용 (실존 병원명 "라움" 피함). 순수 HTML/CSS/JS, `MedicalClinic`+`FAQPage` JSON-LD 구조화 데이터 포함. GitHub repo: `biniare-del/kuma-agency` (Public, 의도적으로 Private 전환 안 함 — 민감정보 없어서 문제 없다고 판단).
+- **2026-06-23 기능 확장 완료** (위 "포트폴리오 기능 확장 계획" 1~5번 전부 구현): `cases/`(케이스/후기 통합페이지, Review·AggregateRating schema), `en/`(영어 랜딩, hreflang 연결), 헤더 국기 언어 스위처, 카카오채널 플로팅 버튼, 홈페이지에 Physician·Speakable schema 추가, `robots.txt`(AI크롤러 명시적 Allow)/`sitemap.xml`/`llms.txt` 추가, `admin/`(로그인 게이트 + Chart.js 대시보드 + 콘텐츠 관리 UI, 전부 비주얼 목업이며 실제 인증/백엔드 없음). 다음은 디자인 다양화(컨셉 2~4번) 단계로 진행 예정.
 
 ## 핵심 영업/가격 전략 (중요)
 
