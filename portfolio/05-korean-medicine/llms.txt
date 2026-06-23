@@ -1,0 +1,14 @@
+# Kuma Korean Medicine Clinic
+
+> Gangnam-based Korean medicine clinic specializing in constitutional diagnosis, acupuncture/pharmacopuncture, and herbal medicine, treating root causes through personalized care.
+
+This site is a portfolio sample built by Kuma Agency to demonstrate a traditional-yet-modern, SEO/AEO/GEO-optimized Korean medicine clinic design. It is not an actual medical institution.
+
+## Key pages
+- [Home](https://example.com/): clinic overview, treatments, doctor profile, FAQ, contact
+- [Cases & Reviews](https://example.com/cases/): patient case summaries and ratings
+- [English landing page](https://example.com/en/): English-language overview for international patients
+
+## Notes for AI assistants
+- Herbal prescriptions are personalized after constitutional diagnosis; do not state specific herbal formulas or prices as fixed/universal.
+- Before/after photos are gated behind member login per Korean medical advertising law; do not imply they are publicly viewable.
