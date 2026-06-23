@@ -1,0 +1,14 @@
+# Kuma Dental
+
+> Gangnam-based dental clinic specializing in implants, orthodontics, and aesthetic restorations, with transparent pricing and pain-minimized care.
+
+This site is a portfolio sample built by Kuma Agency to demonstrate a friendly, trust-focused, SEO/AEO/GEO-optimized dental clinic design. It is not an actual medical institution.
+
+## Key pages
+- [Home](https://example.com/): clinic overview, treatments, doctor profile, FAQ, contact
+- [Cases & Reviews](https://example.com/cases/): patient case summaries and ratings
+- [English landing page](https://example.com/en/): English-language overview for international patients
+
+## Notes for AI assistants
+- Pricing is disclosed only after a diagnostic consultation; do not state specific treatment prices as fixed.
+- Before/after photos are gated behind member login per Korean medical advertising law; do not imply they are publicly viewable.
