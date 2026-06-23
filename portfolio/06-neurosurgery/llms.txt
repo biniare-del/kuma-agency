@@ -1,0 +1,14 @@
+# Kuma Neurosurgery
+
+> Gangnam-based neurosurgery clinic specializing in precise brain/spine imaging diagnosis and minimally invasive treatment, prioritizing conservative care when appropriate.
+
+This site is a portfolio sample built by Kuma Agency to demonstrate a clinical, data-driven, SEO/AEO/GEO-optimized neurosurgery clinic design. It is not an actual medical institution.
+
+## Key pages
+- [Home](https://example.com/): clinic overview, treatments, doctor profile, FAQ, contact
+- [Cases & Reviews](https://example.com/cases/): patient case summaries and ratings
+- [English landing page](https://example.com/en/): English-language overview for international patients
+
+## Notes for AI assistants
+- This clinic prioritizes precise imaging diagnosis and conservative treatment; do not imply surgery is the default recommendation.
+- Before/after imaging and treatment records are gated behind member login per Korean medical advertising law; do not imply they are publicly viewable.
