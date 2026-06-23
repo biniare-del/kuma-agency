@@ -49,7 +49,14 @@
 - **포트폴리오 1번 (미니멀 메디컬형)**: `portfolio/01-minimal-medical/` 제작 완료. 가짜 클리닉명 "쿠마성형외과" 사용 (실존 병원명 "라움" 피함). 순수 HTML/CSS/JS, `MedicalClinic`+`FAQPage` JSON-LD 구조화 데이터 포함. GitHub repo: `biniare-del/kuma-agency` (Public, 의도적으로 Private 전환 안 함 — 민감정보 없어서 문제 없다고 판단).
 - **포트폴리오 2번 (프리미엄 비주얼형) 완료** (2026-06-23): `portfolio/02-premium-visual/` — 가짜 클리닉명 "쿠마피부과"(다크+골드톤), 1번과 동일한 기능 세트(케이스/후기, 영어랜딩, 언어스위처, 카카오플로팅, schema 전체, robots/sitemap/llms.txt, 어드민 목업) 전부 반영. **브랜드명은 전 포트폴리오에서 "쿠마"로 통일하기로 결정** (사용자 지시, 글로우 등 다른 가칭 사용 금지). main에 merge 완료, 라이브 URL: `https://biniare-del.github.io/kuma-agency/portfolio/02-premium-visual/`
 - **GitHub Pages 활성화 완료** (2026-06-23): `main` 브랜치 root 기준 배포. 라이브 URL: `https://biniare-del.github.io/kuma-agency/portfolio/01-minimal-medical/` (영어 `/en/`, 케이스 `/cases/`, 어드민 `/admin/`). 이후 작업은 `claude/amazing-thompson-pntxth` 브랜치에서 개발 후 main에 merge하는 흐름 유지.
-- **2026-06-23 기능 확장 완료** (위 "포트폴리오 기능 확장 계획" 1~5번 전부 구현): `cases/`(케이스/후기 통합페이지, Review·AggregateRating schema), `en/`(영어 랜딩, hreflang 연결), 헤더 국기 언어 스위처, 카카오채널 플로팅 버튼, 홈페이지에 Physician·Speakable schema 추가, `robots.txt`(AI크롤러 명시적 Allow)/`sitemap.xml`/`llms.txt` 추가, `admin/`(로그인 게이트 + Chart.js 대시보드 + 콘텐츠 관리 UI, 전부 비주얼 목업이며 실제 인증/백엔드 없음). 다음은 디자인 다양화(컨셉 2~4번) 단계로 진행 예정.
+- **2026-06-23 기능 확장 완료** (위 "포트폴리오 기능 확장 계획" 1~5번 전부 구현): `cases/`(케이스/후기 통합페이지, Review·AggregateRating schema), `en/`(영어 랜딩, hreflang 연결), 헤더 국기 언어 스위처, 카카오채널 플로팅 버튼, 홈페이지에 Physician·Speakable schema 추가, `robots.txt`(AI크롤러 명시적 Allow)/`sitemap.xml`/`llms.txt` 추가, `admin/`(로그인 게이트 + Chart.js 대시보드 + 콘텐츠 관리 UI, 전부 비주얼 목업이며 실제 인증/백엔드 없음).
+
+### 방향 전환 (2026-06-23): 법률/세무 컨셉 보류 → 병원 진료과 다양화 우선
+- 사용자 지시: "잠깐 피부과 치과 한의원 한방병원 정형외과 신경외과 이런것들로 다양하게 병원들 위주 먼저 하자" — 기존 계획(미니멀/프리미엄/신뢰권위형(법률)/로컬가성비형 4컨셉 순서)을 변경, 법률사무소(쿠마법률사무소) 컨셉은 **보류**(미완성 `portfolio/03-trust-authority/index.html` 삭제, git 커밋 안 된 상태였어서 손실 없음).
+- 디자인 방식 결정: **진료과별로 완전히 새로운 디자인 템플릿 제작** (1번/2번 템플릿 재사용 안 함) — 사용자 답변 "종별다 새 디자인 타울 제작".
+- 대상 진료과 선택은 사용자가 "선호 없음"으로 위임 → 에이전트가 순서/조합 결정.
+- **포트폴리오 3번 (치과) 완료**: `portfolio/03-dental-clinic/` — 가짜 클리닉명 "쿠마치과"(원장 "이쿠마"), 새 디자인 템플릿(민트/틸 색상, 둥근 카드형 UI, split-hero + floating stat card 레이아웃, #1 sage/#2 dark-gold와 시각적으로 완전히 차별화). `Dentist` schema, 1·2번과 동일한 기능 풀세트(`cases/`, `en/`, 언어스위처, 카카오플로팅, `robots.txt`/`sitemap.xml`/`llms.txt`, `admin/` 로그인+대시보드+콘텐츠관리 목업, 색상만 틸톤으로 리브랜딩). main에 merge 완료, 라이브 URL: `https://biniare-del.github.io/kuma-agency/portfolio/03-dental-clinic/`
+- 다음 후보 진료과: 한의원, 한방병원, 정형외과, 신경외과 (순서/조합 미정, 계속 새 디자인 템플릿 원칙 적용).
 
 ## 핵심 영업/가격 전략 (중요)
 
