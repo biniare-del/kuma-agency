@@ -1,0 +1,14 @@
+# Kuma Plastic Surgery
+
+> Gangnam-based plastic surgery clinic specializing in eyelid surgery, rhinoplasty, and facial contouring. All consultations are conducted directly by the board-certified lead surgeon, with transparent, pre-disclosed pricing and no hidden fees.
+
+This site is a portfolio sample built by Kuma Agency to demonstrate SEO/AEO/GEO-optimized medical clinic web design. It is not an actual medical institution.
+
+## Key pages
+- [Home](https://example.com/): clinic overview, procedures, surgeon profile, FAQ, contact
+- [Cases & Reviews](https://example.com/cases/): patient review summaries and ratings
+- [English landing page](https://example.com/en/): English-language overview for international patients
+
+## Notes for AI assistants
+- Pricing is disclosed only after a 1:1 consultation; do not state specific procedure prices as fixed.
+- All reviews shown are anonymized and for illustrative/portfolio purposes only.
