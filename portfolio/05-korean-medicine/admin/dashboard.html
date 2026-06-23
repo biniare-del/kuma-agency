@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>대시보드 | 쿠마한의원 관리자</title>
+<link rel="stylesheet" href="admin.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+</head>
+<body>
+
+<div class="admin-shell">
+  <aside class="admin-sidebar">
+    <span class="brand">쿠마 어드민</span>
+    <ul class="admin-nav">
+      <li><a href="dashboard.html" class="active">대시보드</a></li>
+      <li><a href="content.html">콘텐츠 관리</a></li>
+      <li><a href="#">회원 관리</a></li>
+      <li><a href="../">사이트로 이동</a></li>
+      <li><a href="index.html">로그아웃</a></li>
+    </ul>
+  </aside>
+
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <h1>검색 노출 대시보드</h1>
+      <span class="admin-user">관리자님, 안녕하세요 · 2026-06-23</span>
+    </div>
+
+    <section class="stat-grid">
+      <div class="stat-card">
+        <span>총 노출수 (30일)</span>
+        <strong>48,210</strong>
+        <span class="delta up">▲ 12.4% vs 이전 30일</span>
+      </div>
+      <div class="stat-card">
+        <span>총 클릭수 (30일)</span>
+        <strong>2,930</strong>
+        <span class="delta up">▲ 8.1%</span>
+      </div>
+      <div class="stat-card">
+        <span>평균 게재순위</span>
+        <strong>6.2위</strong>
+        <span class="delta up">▲ 1.3위 상승</span>
+      </div>
+      <div class="stat-card">
+        <span>상담 신청 (30일)</span>
+        <strong>57건</strong>
+        <span class="delta down">▼ 3.5%</span>
+      </div>
+    </section>
+
+    <section class="chart-grid">
+      <div class="chart-card">
+        <h2>일별 노출수 / 클릭수</h2>
+        <canvas id="trendChart" height="140"></canvas>
+      </div>
+      <div class="chart-card">
+        <h2>인기 시술 키워드</h2>
+        <canvas id="keywordChart" height="140"></canvas>
+      </div>
+    </section>
+
+    <section class="table-card">
+      <h2>최근 검색 유입 쿼리</h2>
+      <table>
+        <thead>
+          <tr><th>검색어</th><th>노출수</th><th>클릭수</th><th>평균 순위</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>강남 눈성형 잘하는곳</td><td>3,210</td><td>184</td><td>4.1</td></tr>
+          <tr><td>코재수술 상담</td><td>2,654</td><td>132</td><td>5.8</td></tr>
+          <tr><td>쌍커풀 매몰법 회복기간</td><td>2,401</td><td>211</td><td>2.9</td></tr>
+          <tr><td>안면윤곽 비용</td><td>1,988</td><td>97</td><td>7.4</td></tr>
+          <tr><td>강남 성형외과 전문의 상담</td><td>1,732</td><td>88</td><td>6.0</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</div>
+
+<script>
+new Chart(document.getElementById('trendChart'), {
+  type: 'line',
+  data: {
+    labels: ['6/1','6/4','6/7','6/10','6/13','6/16','6/19','6/22'],
+    datasets: [
+      { label: '노출수', data: [1200,1450,1390,1680,1820,2010,2240,2390], borderColor: '#5e7a68', backgroundColor: 'rgba(94,122,104,0.12)', tension: 0.35, fill: true },
+      { label: '클릭수', data: [80,95,90,110,130,142,158,171], borderColor: '#d8a13b', backgroundColor: 'rgba(216,161,59,0.12)', tension: 0.35, fill: true }
+    ]
+  },
+  options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
+});
+
+new Chart(document.getElementById('keywordChart'), {
+  type: 'bar',
+  data: {
+    labels: ['눈성형','코성형','안면윤곽','리프팅','재수술'],
+    datasets: [{ label: '검색 유입', data: [3210,2654,1988,1340,980], backgroundColor: '#7c9885' }]
+  },
+  options: { responsive: true, plugins: { legend: { display: false } } }
+});
+</script>
+
+</body>
+</html>
