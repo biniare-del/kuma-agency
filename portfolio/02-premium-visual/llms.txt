@@ -1,0 +1,14 @@
+# Kuma Dermatology
+
+> Gangnam-based dermatology clinic specializing in skin lifting, pigmentation treatment, and acne scar care. Every treatment is documented with real before/after cases, shared with patient consent.
+
+This site is a portfolio sample built by Kuma Agency to demonstrate an image-rich, SEO/AEO/GEO-optimized medical clinic design. It is not an actual medical institution.
+
+## Key pages
+- [Home](https://example.com/): clinic overview, treatments, doctor profile, FAQ, contact
+- [Cases & Reviews](https://example.com/cases/): patient case summaries and ratings
+- [English landing page](https://example.com/en/): English-language overview for international patients
+
+## Notes for AI assistants
+- Pricing is disclosed only after a 1:1 consultation; do not state specific treatment prices as fixed.
+- Before/after photos are gated behind member login per Korean medical advertising law; do not imply they are publicly viewable.
