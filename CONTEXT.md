@@ -59,7 +59,8 @@
 - **포트폴리오 4번 (정형외과) 완료**: `portfolio/04-orthopedic/` — 가짜 클리닉명 "쿠마정형외과"(원장 "박쿠마"), 새 디자인 템플릿(네이비+스틸블루, 헤어라인 그리드 레이아웃, 스포츠메디컬 느낌, 다크 헤더/히어로 + 화이트 본문 대비). `MedicalClinic`(Orthopedic) schema, 1~3번과 동일한 기능 풀세트(`cases/`, `en/`, 언어스위처, 카카오플로팅, `robots.txt`/`sitemap.xml`/`llms.txt`, `admin/` 로그인+대시보드+콘텐츠관리 목업, 색상 블루톤으로 리브랜딩). main에 merge 완료, 라이브 URL: `https://biniare-del.github.io/kuma-agency/portfolio/04-orthopedic/`
 - **포트폴리오 5번 (한의원) 완료**: `portfolio/05-korean-medicine/` — 가짜 한의원명 "쿠마한의원"(원장 "정쿠마"), 새 디자인 템플릿(베이지/먹빛 + 인디고 포인트, 세리프 헤딩, 전통과 현대를 조화한 톤). `MedicalClinic`(TraditionalChineseMedicine) schema, 동일 기능 풀세트 전부 반영. main에 merge 완료, 라이브 URL: `https://biniare-del.github.io/kuma-agency/portfolio/05-korean-medicine/`
 - **포트폴리오 6번 (신경외과) 완료**: `portfolio/06-neurosurgery/` — 가짜 클리닉명 "쿠마신경외과"(원장 "한쿠마"), 새 디자인 템플릿(차콜+바이올렛/시안 포인트, 모노스페이스 악센트, 미세 그리드 배경의 기술/정밀 진단 느낌). `MedicalClinic`(Neurosurgery) schema, 동일 기능 풀세트 전부 반영. main에 merge 완료, 라이브 URL: `https://biniare-del.github.io/kuma-agency/portfolio/06-neurosurgery/`
-- 사용자가 처음 제시한 진료과 목록(피부과/치과/한의원/한방병원/정형외과/신경외과) 중 한방병원을 제외한 5개 전부 완료(피부과 #2, 치과 #3, 정형외과 #4, 한의원 #5, 신경외과 #6) + 성형외과(#1) 포함 총 6개 의료 포트폴리오 완성. 한방병원은 한의원과 진료 성격이 유사해 보류, 필요 시 추가 가능. 다음 단계는 사용자 확인 필요(법률/세무 등 비의료 컨셉으로 전환할지, 의료 포트폴리오를 더 늘릴지).
+- 사용자가 처음 제시한 진료과 목록(피부과/치과/한의원/한방병원/정형외과/신경외과) 중 한방병원을 제외한 5개 전부 완료(피부과 #2, 치과 #3, 정형외과 #4, 한의원 #5, 신경외과 #6) + 성형외과(#1) 포함 총 6개 의료 포트폴리오 완성. 한방병원은 한의원과 진료 성격이 유사해 보류, 필요 시 추가 가능.
+- 사용자에게 다음 방향 질문 → "의료 포트폴리오 마무리, 다른 작업" 선택. **루트 랜딩페이지 신규 제작**: `/index.html`, `/styles.css` — 그동안 GitHub Pages root(`https://biniare-del.github.io/kuma-agency/`)에 포트폴리오 전시 페이지가 없어서 `/portfolio/01-...` 등 개별 URL을 직접 입력해야만 접근 가능했던 문제 해결. 쿠마에이전시 자체 브랜드 다크네이비/블루 톤 신규 디자인(6개 포트폴리오 템플릿과 별개), 6개 포트폴리오 카드형 그리드(각 색상 스와치 미리보기 + 클릭 시 해당 사이트로 이동), "왜 쿠마에이전시" 섹션(구조화데이터/AI크롤러허용/과장영업금지 3가지 강조), 상담 문의 mailto 링크. `ProfessionalService` JSON-LD 포함.
 
 ## 핵심 영업/가격 전략 (중요)
 
