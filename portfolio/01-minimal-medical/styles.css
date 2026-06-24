@@ -346,3 +346,14 @@ a:hover { text-decoration: underline; }
   .kakao-float { bottom: 18px; right: 18px; width: 48px; height: 48px; }
   .case-grid { grid-template-columns: 1fr; }
 }
+
+/* AI image fill */
+.about-image, .doctor-image, .hero-image, .hero-media, .procedure-image, .case-image {
+  overflow: hidden;
+}
+.about-image img, .doctor-image img, .hero-image img, .hero-media img, .procedure-image img, .case-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
