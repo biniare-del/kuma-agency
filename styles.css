@@ -43,7 +43,7 @@ a:hover { text-decoration: underline; }
 .header-cta { white-space: nowrap; }
 
 /* Hero */
-.hero { background: var(--color-ink); color: #fff; padding: 88px 0 96px; }
+.hero { background: linear-gradient(rgba(12,14,19,0.88), rgba(12,14,19,0.93)), url("images/hero-bg.jpg") center/cover no-repeat; color: #fff; padding: 88px 0 96px; }
 .hero .eyebrow { color: #aebdf7; }
 .hero h1 { color: #fff; max-width: 760px; }
 .hero-sub { font-size: 1.1rem; max-width: 640px; color: rgba(255,255,255,0.72); }
