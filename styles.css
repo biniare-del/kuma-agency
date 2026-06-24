@@ -90,6 +90,8 @@ a:hover { text-decoration: underline; }
 /* Footer */
 .site-footer { background: var(--color-ink); color: rgba(255,255,255,0.55); padding: 28px 0; font-size: 0.85rem; }
 .footer-disclaimer { margin-top: 4px; font-style: italic; }
+.footer-tools { margin-top: 10px; font-size: 0.8rem; }
+.footer-tools a { color: rgba(255,255,255,0.75); }
 
 @media (max-width: 900px) {
   .site-header nav { display: none; }
