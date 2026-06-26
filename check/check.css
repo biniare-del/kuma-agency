@@ -18,21 +18,23 @@ body { margin: 0; font-family: var(--font-base); color: var(--color-text); backg
 .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
 
 .tool-header { background: var(--color-ink); color: #fff; padding: 18px 0; }
-.tool-header .wrap { display: flex; align-items: center; justify-content: space-between; }
-.tool-header .logo { font-weight: 800; font-family: var(--font-mono); color: #fff; text-decoration: none; }
+.tool-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.tool-header .logo { font-weight: 800; font-family: var(--font-mono); color: #fff; text-decoration: none; flex-shrink: 0; }
 .tool-header .logo span { color: var(--color-accent); }
-.tool-header p { margin: 0; font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+.tool-header p { margin: 0; font-size: 0.8rem; letter-spacing: -0.01em; line-height: 1.4; color: rgba(255,255,255,0.6); text-align: right; }
 
 .intro { padding: 48px 0 16px; }
 .intro h1 { font-size: 1.9rem; margin: 0 0 12px; letter-spacing: -0.01em; }
 .intro p { color: var(--color-text-muted); margin: 0; }
 
 .check-form { padding: 16px 0 40px; }
-.check-form form { display: flex; gap: 10px; }
-.check-form input[type=url] { flex: 1; padding: 14px 16px; border: 1px solid var(--color-border); border-radius: 8px; font-size: 1rem; }
-.check-form button { padding: 14px 22px; border-radius: 8px; border: none; background: var(--color-accent); color: #fff; font-weight: 700; cursor: pointer; }
+.check-form form { display: flex; gap: 12px; }
+.check-form input#urlInput { flex: 1; padding: 18px 20px; border: 1.5px solid var(--color-border); border-radius: 10px; font-size: 1.08rem; min-width: 0; transition: border-color 0.15s ease; }
+.check-form input#urlInput:focus { outline: none; border-color: var(--color-accent); }
+.check-form button { padding: 0 28px; border-radius: 10px; border: none; background: var(--color-accent); color: #fff; font-weight: 700; font-size: 1.02rem; letter-spacing: -0.01em; cursor: pointer; transition: background 0.15s ease, transform 0.1s ease; }
 .check-form button:hover { background: var(--color-accent-dark); }
-.check-form button:disabled { background: #aab2c8; cursor: wait; }
+.check-form button:active { transform: scale(0.98); }
+.check-form button:disabled { background: #aab2c8; cursor: wait; transform: none; }
 .check-form .hint { color: var(--color-text-muted); font-size: 0.82rem; margin: 12px 0 0; }
 
 .result { padding: 24px 0 64px; border-top: 1px solid var(--color-border); }
@@ -66,7 +68,10 @@ body { margin: 0; font-family: var(--font-base); color: var(--color-text); backg
 
 @media (max-width: 560px) {
   .check-form form { flex-direction: column; }
+  .check-form button { padding: 16px 22px; }
   .score-summary { flex-direction: column; align-items: flex-start; }
+  .tool-header .wrap { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .tool-header p { text-align: left; }
 }
 
 /* Mobile line-wrap fix: Korean text wraps at word boundaries, not mid-syllable */
