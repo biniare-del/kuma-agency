@@ -21,36 +21,40 @@
 
   <section class="intro">
     <h1>병원 정보를 남겨주시면 확인 후 연락드립니다</h1>
-    <p>아래 항목을 입력하고 보내기를 누르면, 입력하신 메일 앱이 열리며 내용이 채워집니다. 메일을 그대로 전송해주시면 됩니다.</p>
+    <p>아래 항목을 입력하고 보내기를 누르면 바로 접수되며, 메일 앱을 열 필요 없이 자동으로 전송됩니다.</p>
   </section>
 
-  <form class="contact-form" id="contactForm">
+  <form class="contact-form" action="https://formsubmit.co/biniare@gmail.com" method="POST">
+    <input type="hidden" name="_subject" value="[꿈을 담은 에이전시] 홈페이지 상담 문의">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://biniare-del.github.io/kuma-agency/contact/thanks.html">
     <div class="form-row">
       <label for="f-name">이름 *</label>
-      <input type="text" id="f-name" required>
+      <input type="text" id="f-name" name="이름" required>
     </div>
     <div class="form-row">
       <label for="f-phone">연락처 *</label>
-      <input type="tel" id="f-phone" placeholder="010-0000-0000" required>
+      <input type="tel" id="f-phone" name="연락처" placeholder="010-0000-0000" required>
     </div>
     <div class="form-row">
       <label for="f-hospital">병원명</label>
-      <input type="text" id="f-hospital">
+      <input type="text" id="f-hospital" name="병원명">
     </div>
     <div class="form-row">
       <label for="f-dept">진료과목</label>
-      <input type="text" id="f-dept" placeholder="예: 성형외과, 치과, 한의원">
+      <input type="text" id="f-dept" name="진료과목" placeholder="예: 성형외과, 치과, 한의원">
     </div>
     <div class="form-row">
       <label for="f-url">홈페이지 주소</label>
-      <input type="text" id="f-url" placeholder="www.우리병원홈페이지.com">
+      <input type="text" id="f-url" name="홈페이지주소" placeholder="www.우리병원홈페이지.com">
     </div>
     <div class="form-row">
       <label for="f-msg">문의 내용 *</label>
-      <textarea id="f-msg" rows="6" required placeholder="궁금하신 점이나 현재 상황을 자유롭게 남겨주세요."></textarea>
+      <textarea id="f-msg" name="문의내용" rows="6" required placeholder="궁금하신 점이나 현재 상황을 자유롭게 남겨주세요."></textarea>
     </div>
-    <button type="submit" class="btn-cta">메일로 보내기</button>
-    <p class="hint">버튼을 누르면 기본 메일 앱이 열립니다. 메일 앱이 바로 열리지 않는다면 <a href="mailto:biniare@gmail.com">biniare@gmail.com</a>으로 직접 보내주세요.</p>
+    <button type="submit" class="btn-cta">문의 보내기</button>
+    <p class="hint">전송 후 별도의 메일 앱을 열지 않아도 biniare@gmail.com으로 바로 접수됩니다.</p>
   </form>
 
 </main>
@@ -59,6 +63,5 @@
   <p>꿈을담은에이전시 | 사업자등록번호 117-14-33223 | biniare@gmail.com</p>
 </footer>
 
-<script src="contact.js"></script>
 </body>
 </html>
