@@ -150,3 +150,35 @@
 - 문의 수신처: mailto는 즉시 변경 가능, 폼 백엔드(Formspree 등)는 병원 이메일을 1회 등록/인증해야 함 — 로코코 건은 그 백엔드가 로코코 계정에 묶여 있었던 경우로 추정. 새로 만들면 병원마다 자유롭게 설정 가능.
 - 결제: 계좌이체만 사용.
 - 레퍼런스 고객 발굴 방식: 네이버 등 대량 자동 스크래핑은 ToS/실행 가능성 문제로 보류, 대신 검색 기반 소규모 큐레이션(서울·경기권 1인~3인 이하 성형외과/피부과 20~30곳) 후 개별 맞춤 콜드메일("(광고)" 라벨 + 옵트아웃 명시로 정보통신망법 준수) 방식으로 진행 합의. **단, 진단 도구(`/check/`) 완성 후 착수하기로 사용자가 결정** — 아직 미착수.
+
+## 2026-06-26 작업 내역 (헤드라인/진단도구 안정화/SEO 정비/모바일 UX)
+
+### 콘텐츠·디자인 보강
+- 전 페이지 헤드라인/여백 키움 (h1 3.2rem, section padding 104px 등), 히어로 카피·CTA 재배치
+- 메인에 "환자의 검색 여정" 4단계 다이어그램, "실제 적용 항목" AI 검색 최적화 체크리스트(4개) 섹션 추가
+- FAQ 아코디언 섹션 + `FAQPage` JSON-LD 추가
+- `/check/` 진단 도구에 적용 전/후 비교 테이블 추가
+- `/proposal/`에 "작동 원리" 4단계 타임라인 섹션 추가, 가격 설명에 "1회 구축 vs 월 구독 아님" 대비 카피 추가, CTA에 진단 도구 버튼 추가
+- 포트폴리오 6종 `robots.txt`에 Claude-User/Claude-SearchBot 허용 추가
+
+### 진단 도구(`/check/`) 안정성 — Cloudflare Worker 도입
+- 기존 공개 CORS 프록시(allorigins 등) 단독 사용 시 대상 사이트 차단/프록시 다운으로 진단 실패 빈발 → 전용 Cloudflare Worker(`https://dream-ag.biniare.workers.dev`)를 1차 프록시로 추가, 기존 공개 프록시들은 폴백으로 유지
+- 사용자가 Cloudflare 대시보드에서 직접 Worker 생성·배포 (`check/worker/proxy-worker.js` 소스, `check/worker/README.md` 가이드 작성)
+- 실제 운영 중인 외부 사이트(journal.rococops.com)로 테스트 → 진단 실패하던 문제 해결, 100점 확인됨
+
+### SEO 인프라 정비 (자체 사이트 기술 감사 결과 반영)
+- 루트 `robots.txt`, `sitemap.xml`, `llms.txt` 누락 발견 → 신규 생성
+- `index.html`/`check/index.html`에 남아있던 구 GitHub Pages URL(`biniare-del.github.io`)을 `canonical`/`og:url`/`og:image`/JSON-LD `url` 전부 `https://dream-ag.co.kr`로 수정
+- 개인정보 수집(상담폼)에도 정책 페이지가 없던 문제 발견 → `/privacy/` 신규 생성, 메인·문의 페이지 footer에 링크 추가
+
+### 디자인 감사 → 모바일 내비/이미지 수정
+- 디자인 재점검: (1) 900px 이하에서 헤더 nav가 `display:none`으로 완전히 사라지고 대체 메뉴 없음 (2) 히어로 배경 이미지 662KB로 과도하게 무거움 — 2건 확인 후 모두 수정
+- `index.html`에 햄버거 토글 버튼 + 슬라이드 모바일 메뉴 마크업/JS 추가, `styles.css`에 `.nav-toggle`/`.mobile-nav` 스타일 추가
+- `images/hero-bg.jpg` PIL로 압축 (662KB → 57KB, quality 72/progressive)
+
+### 기타
+- 경쟁사 패키지("CMS+MCP 연동" 등)의 마케팅 문구를 사용자에게 풀어서 설명 — MCP는 AI검색 노출과 직접 관련 없는 프로토콜이라 다소 오해 유발 가능한 표현이라고 판단(완전 사기는 아님)
+- 모든 변경은 `claude/amazing-thompson-pntxth` 브랜치에서 작업 후 `main`에 merge·push 완료 (최신 커밋 `c6d632f`)
+
+### 다음 단계
+- 레퍼런스 고객 발굴(서울·경기권 성형외과/피부과 20~30곳 큐레이션 + 개별 콜드메일) — 아직 미착수, 이번 정비 작업 완료로 착수 가능한 상태
