@@ -17,7 +17,8 @@ h2 { font-size: 1.25rem; margin: 0 0 14px; }
 p { color: var(--color-text-muted); margin: 0 0 12px; }
 
 .p-header { text-align: center; border-bottom: 2px solid var(--color-ink); padding-bottom: 20px; margin-bottom: 32px; }
-.logo { font-family: var(--font-mono); font-weight: 800; font-size: 1.6rem; margin: 0; color: var(--color-ink); }
+.logo { display: flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--font-mono); font-weight: 800; font-size: 1.6rem; margin: 0; color: var(--color-ink); }
+.logo img { display: block; }
 .logo span { color: var(--color-accent); }
 .tagline { margin: 6px 0 0; font-size: 0.95rem; }
 
