@@ -1,0 +1,70 @@
+:root {
+  --color-bg: #ffffff;
+  --color-bg-soft: #f5f6fa;
+  --color-text: #16181d;
+  --color-text-muted: #5a5f6b;
+  --color-ink: #0c0e13;
+  --color-accent: #3a5ddb;
+  --color-accent-dark: #2944a8;
+  --color-border: #e6e8ef;
+  --color-good: #1d9a6c;
+  --color-mid: #d99a1f;
+  --color-bad: #d6432f;
+  --font-base: -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  --font-mono: "SF Mono", "Consolas", monospace;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: var(--font-base); color: var(--color-text); background: var(--color-bg); line-height: 1.65; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+.tool-header { background: var(--color-ink); color: #fff; padding: 18px 0; }
+.tool-header .wrap { display: flex; align-items: center; justify-content: space-between; }
+.tool-header .logo { font-weight: 800; font-family: var(--font-mono); color: #fff; text-decoration: none; }
+.tool-header .logo span { color: var(--color-accent); }
+.tool-header p { margin: 0; font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+
+.intro { padding: 48px 0 16px; }
+.intro h1 { font-size: 1.9rem; margin: 0 0 12px; letter-spacing: -0.01em; }
+.intro p { color: var(--color-text-muted); margin: 0; }
+
+.check-form { padding: 16px 0 40px; }
+.check-form form { display: flex; gap: 10px; }
+.check-form input[type=url] { flex: 1; padding: 14px 16px; border: 1px solid var(--color-border); border-radius: 8px; font-size: 1rem; }
+.check-form button { padding: 14px 22px; border-radius: 8px; border: none; background: var(--color-accent); color: #fff; font-weight: 700; cursor: pointer; }
+.check-form button:hover { background: var(--color-accent-dark); }
+.check-form button:disabled { background: #aab2c8; cursor: wait; }
+.check-form .hint { color: var(--color-text-muted); font-size: 0.82rem; margin: 12px 0 0; }
+
+.result { padding: 24px 0 64px; border-top: 1px solid var(--color-border); }
+
+.score-summary { display: flex; align-items: center; gap: 28px; margin-bottom: 32px; flex-wrap: wrap; }
+.score-circle { width: 140px; height: 140px; border-radius: 50%; background: var(--color-bg-soft); border: 6px solid var(--color-accent); display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0; }
+.score-circle strong { font-size: 2.4rem; font-family: var(--font-mono); line-height: 1; }
+.score-circle span { font-size: 0.78rem; color: var(--color-text-muted); margin-top: 4px; }
+.score-message { flex: 1; min-width: 220px; font-size: 1.02rem; }
+
+.score-bars { display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
+.score-bar-row { }
+.score-bar-row .label-row { display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 5px; }
+.score-bar-row .label-row .val { font-family: var(--font-mono); font-weight: 700; }
+.score-bar-track { height: 10px; background: var(--color-bg-soft); border-radius: 6px; overflow: hidden; }
+.score-bar-fill { height: 100%; border-radius: 6px; transition: width 0.6s ease; }
+.score-bar-row .detail { font-size: 0.8rem; color: var(--color-text-muted); margin-top: 4px; }
+.score-bar-row.unknown .label-row .val { color: var(--color-text-muted); }
+
+.explain { background: var(--color-bg-soft); border-radius: 12px; padding: 28px 26px; }
+.explain h2 { font-size: 1.25rem; margin: 0 0 12px; }
+.explain p { color: var(--color-text-muted); }
+.explain-actions { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+.btn-cta { display: inline-block; padding: 12px 22px; border-radius: 6px; font-weight: 700; background: var(--color-accent); color: #fff; text-decoration: none; }
+.btn-cta:hover { background: var(--color-accent-dark); }
+.btn-cta-ghost { background: transparent; border: 1px solid var(--color-accent); color: var(--color-accent-dark); }
+
+.error { padding: 0 0 60px; color: var(--color-bad); }
+
+.tool-footer { background: var(--color-ink); color: rgba(255,255,255,0.55); padding: 24px 0; font-size: 0.82rem; text-align: center; }
+
+@media (max-width: 560px) {
+  .check-form form { flex-direction: column; }
+  .score-summary { flex-direction: column; align-items: flex-start; }
+}
