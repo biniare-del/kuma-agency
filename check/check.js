@@ -1,4 +1,8 @@
-const PROXY = "https://api.allorigins.win/raw?url=";
+const PROXIES = [
+  (u) => "https://api.allorigins.win/raw?url=" + encodeURIComponent(u),
+  (u) => "https://corsproxy.io/?url=" + encodeURIComponent(u),
+  (u) => "https://api.codetabs.com/v1/proxy?quest=" + encodeURIComponent(u),
+];
 
 function colorFor(score) {
   if (score >= 70) return "var(--color-good)";
@@ -7,18 +11,29 @@ function colorFor(score) {
 }
 
 async function fetchText(url) {
-  const res = await fetch(PROXY + encodeURIComponent(url));
-  if (!res.ok) throw new Error("fetch failed: " + url);
-  return res.text();
+  let lastErr;
+  for (const buildProxyUrl of PROXIES) {
+    try {
+      const res = await fetch(buildProxyUrl(url));
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const text = await res.text();
+      if (text && text.length > 0) return text;
+      throw new Error("empty response");
+    } catch (err) {
+      lastErr = err;
+    }
+  }
+  throw lastErr || new Error("fetch failed: " + url);
 }
 
 async function fetchOk(url) {
-  try {
-    const res = await fetch(PROXY + encodeURIComponent(url));
-    return res.ok;
-  } catch {
-    return false;
+  for (const buildProxyUrl of PROXIES) {
+    try {
+      const res = await fetch(buildProxyUrl(url));
+      if (res.ok) return true;
+    } catch {}
   }
+  return false;
 }
 
 function scoreMeta(doc) {
@@ -154,6 +169,8 @@ document.getElementById("checkForm").addEventListener("submit", async (e) => {
   } catch (err) {
     resultEl.hidden = true;
     errorEl.hidden = false;
+    errorEl.querySelector("p").textContent =
+      "진단 중 문제가 발생했습니다. 사이트가 외부 접근을 차단했거나 주소가 올바르지 않을 수 있습니다. (오류: " + err.message + ") 잠시 후 다시 시도하시거나, 직접 문의해 주시면 수동으로 확인해 드립니다.";
   } finally {
     btn.disabled = false;
     btn.textContent = "진단 시작";
