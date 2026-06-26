@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>무료 홈페이지 진단 | 꿈을담은에이전시</title>
+<meta name="description" content="병원 홈페이지 주소를 입력하면 검색·AI검색 노출 상태를 카테고리별로 무료 진단해 드립니다. 우리 병원에 두 번째 홈페이지가 필요한지 점수로 확인하세요.">
+<link rel="canonical" href="https://biniare-del.github.io/kuma-agency/check/index.html">
+<link rel="stylesheet" href="check.css">
+</head>
+<body>
+
+<header class="tool-header">
+  <div class="wrap">
+    <a href="../index.html" class="logo">꿈을담은<span>에이전시</span></a>
+    <p>홈페이지 검색·AI검색 노출 무료 진단</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="intro">
+    <h1>우리 병원 홈페이지, 검색에 잘 보이고 있을까요?</h1>
+    <p>홈페이지 주소를 입력하면 검색엔진·AI검색이 우리 병원 정보를 얼마나 잘 읽을 수 있는지 카테고리별로 점수를 매겨드립니다. 진단은 무료이며, 입력한 주소는 저장되지 않습니다.</p>
+  </section>
+
+  <section class="check-form">
+    <form id="checkForm">
+      <input type="url" id="urlInput" placeholder="https://우리병원홈페이지.com" required>
+      <button type="submit" id="checkBtn">진단 시작</button>
+    </form>
+    <p class="hint">※ 일부 사이트는 보안 설정상 외부 진단 도구의 접근을 막아 일부 항목이 "확인 불가"로 표시될 수 있습니다. 이는 감점이 아닌 별도 표시입니다.</p>
+  </section>
+
+  <section class="result" id="result" hidden>
+    <div class="score-summary">
+      <div class="score-circle" id="scoreCircle">
+        <strong id="scoreTotal">-</strong>
+        <span>종합 점수</span>
+      </div>
+      <div class="score-message" id="scoreMessage"></div>
+    </div>
+
+    <div class="score-bars" id="scoreBars"></div>
+
+    <div class="explain">
+      <h2>왜 점수가 낮은 항목이 문제가 될까요?</h2>
+      <p>구글·네이버 같은 검색엔진과 ChatGPT·Perplexity 같은 AI 검색은 사람처럼 화면을 "보는" 게 아니라 HTML 코드 안의 텍스트와 구조화된 정보를 읽습니다. 위 항목들이 비어있으면 홈페이지가 아무리 예뻐도 검색 결과나 AI 답변에 우리 병원이 노출되지 않을 수 있습니다.</p>
+      <p><strong>기존 홈페이지를 그대로 두고</strong>, 검색·AI검색 노출과 해외환자 유입만 전담하는 "두 번째 홈페이지"를 별도로 만드는 것이 꿈을담은에이전시가 제안하는 해결 방법입니다.</p>
+      <div class="explain-actions">
+        <a href="../proposal/index.html" class="btn-cta">제안서 보기</a>
+        <a href="mailto:biniare@gmail.com" class="btn-cta btn-cta-ghost">무료 상담 신청</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="error" id="errorBox" hidden>
+    <p>진단 중 문제가 발생했습니다. 사이트가 외부 접근을 차단했거나 주소가 올바르지 않을 수 있습니다. 잠시 후 다시 시도하시거나, 직접 문의해 주시면 수동으로 확인해 드립니다.</p>
+  </section>
+
+</main>
+
+<footer class="tool-footer">
+  <p>꿈을담은에이전시 | 사업자등록번호 117-14-33223 | 전화 010-2022-1425 | biniare@gmail.com</p>
+</footer>
+
+<script src="check.js"></script>
+</body>
+</html>
