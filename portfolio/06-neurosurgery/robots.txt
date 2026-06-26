@@ -26,6 +26,14 @@ User-agent: anthropic-ai
 Allow: /
 Disallow: /admin/
 
+User-agent: Claude-User
+Allow: /
+Disallow: /admin/
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /admin/
+
 User-agent: Google-Extended
 Allow: /
 
