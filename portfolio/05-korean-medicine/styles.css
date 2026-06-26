@@ -156,6 +156,9 @@ a:hover { text-decoration: underline; }
   .case-grid { grid-template-columns: 1fr; }
   .kakao-float { bottom: 18px; right: 18px; width: 48px; height: 48px; }
 }
+@media (max-width: 480px) {
+  .procedure-grid { grid-template-columns: 1fr; }
+}
 
 /* AI image fill */
 .about-image, .doctor-image, .hero-image, .hero-media, .procedure-image, .case-image {
