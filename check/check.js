@@ -137,7 +137,8 @@ async function runCheck(url) {
 
 document.getElementById("checkForm").addEventListener("submit", async (e) => {
   e.preventDefault();
-  const url = document.getElementById("urlInput").value.trim();
+  let url = document.getElementById("urlInput").value.trim();
+  if (url && !/^https?:\/\//i.test(url)) url = "https://" + url;
   const btn = document.getElementById("checkBtn");
   const resultEl = document.getElementById("result");
   const errorEl = document.getElementById("errorBox");
