@@ -28,6 +28,12 @@ p { color: var(--color-text-muted); margin: 0 0 12px; }
 .check-list li::before { content: "✓"; position: absolute; left: 0; color: var(--color-accent); font-weight: 800; }
 .check-list li:last-child { border-bottom: none; }
 
+.timeline { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
+.timeline li { display: flex; gap: 14px; align-items: flex-start; }
+.timeline-num { display: flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: var(--color-accent); color: #fff; font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem; flex-shrink: 0; }
+.timeline strong { display: block; font-size: 0.95rem; margin-bottom: 2px; color: var(--color-text); }
+.timeline p { margin: 0; font-size: 0.86rem; }
+
 .sample-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
 .sample { display: flex; flex-direction: column; gap: 8px; font-size: 0.82rem; font-weight: 700; color: var(--color-text); text-decoration: none; }
 .swatch { display: block; height: 60px; border-radius: 8px; }
@@ -47,8 +53,10 @@ p { color: var(--color-text-muted); margin: 0 0 12px; }
 .cta-section { text-align: center; background: var(--color-ink); color: #fff; padding: 36px 28px; border-radius: 14px; }
 .cta-section h2 { color: #fff; }
 .cta-section p { color: rgba(255,255,255,0.72); }
-.btn-cta { display: inline-block; margin-top: 8px; padding: 12px 22px; background: var(--color-accent); color: #fff; border-radius: 6px; font-weight: 700; text-decoration: none; }
+.btn-cta { display: inline-block; margin: 8px 6px 0; padding: 12px 22px; background: var(--color-accent); color: #fff; border-radius: 6px; font-weight: 700; text-decoration: none; }
 .btn-cta:hover { background: var(--color-accent-dark); }
+.btn-cta-ghost { background: transparent; border: 1px solid rgba(255,255,255,0.5); color: #fff; }
+.btn-cta-ghost:hover { background: rgba(255,255,255,0.1); }
 
 .p-footer { text-align: center; margin-top: 28px; font-size: 0.76rem; color: var(--color-text-muted); font-style: italic; }
 
