@@ -25,15 +25,8 @@ a { color: var(--color-accent-dark); }
 .intro h1 { font-size: 1.7rem; margin: 0 0 12px; letter-spacing: -0.01em; }
 .intro p { color: var(--color-text-muted); margin: 0; }
 
-.contact-form { padding: 24px 0 60px; }
-.form-row { margin-bottom: 18px; }
-.form-row label { display: block; font-size: 0.88rem; font-weight: 700; margin-bottom: 6px; }
-.form-row input, .form-row textarea {
-  width: 100%; padding: 12px 14px; border: 1.5px solid var(--color-border); border-radius: 8px;
-  font-size: 0.98rem; font-family: inherit; color: var(--color-text); transition: border-color 0.15s ease;
-}
-.form-row input:focus, .form-row textarea:focus { outline: none; border-color: var(--color-accent); }
-.form-row textarea { resize: vertical; }
+.form-embed { padding: 8px 0 60px; }
+.form-embed iframe { display: block; width: 100%; border: none; }
 
 .btn-cta { display: inline-block; padding: 13px 26px; border-radius: 6px; font-weight: 700; background: var(--color-accent); color: #fff; text-decoration: none; border: none; cursor: pointer; font-size: 0.98rem; }
 .btn-cta:hover { background: var(--color-accent-dark); }
