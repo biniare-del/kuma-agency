@@ -24,20 +24,23 @@
 
   <main class="admin-main">
     <div class="admin-topbar">
-      <h1>검색 노출 대시보드</h1>
-      <span class="admin-user">관리자님, 안녕하세요 · 2026-06-23</span>
+      <div>
+        <h1>검색 노출 대시보드</h1>
+        <p class="admin-subtitle">최근 30일간 검색·AI검색에서의 노출 흐름을 한눈에 확인하세요.</p>
+      </div>
+      <span class="admin-user">관리자님, 좋은 하루입니다 · 2026-06-23</span>
     </div>
 
     <section class="stat-grid">
       <div class="stat-card">
         <span>총 노출수 (30일)</span>
         <strong>48,210</strong>
-        <span class="delta up">▲ 12.4% vs 이전 30일</span>
+        <span class="delta up">▲ 12.4% 전월 대비</span>
       </div>
       <div class="stat-card">
         <span>총 클릭수 (30일)</span>
         <strong>2,930</strong>
-        <span class="delta up">▲ 8.1%</span>
+        <span class="delta up">▲ 8.1% 전월 대비</span>
       </div>
       <div class="stat-card">
         <span>평균 게재순위</span>
@@ -47,23 +50,26 @@
       <div class="stat-card">
         <span>상담 신청 (30일)</span>
         <strong>57건</strong>
-        <span class="delta down">▼ 3.5%</span>
+        <span class="delta down">▼ 3.5% 전월 대비</span>
       </div>
     </section>
 
     <section class="chart-grid">
       <div class="chart-card">
         <h2>일별 노출수 / 클릭수</h2>
+        <p class="chart-note">검색 결과에 노출된 횟수와 실제 클릭으로 이어진 횟수를 함께 보여줍니다.</p>
         <canvas id="trendChart" height="140"></canvas>
       </div>
       <div class="chart-card">
         <h2>인기 시술 키워드</h2>
+        <p class="chart-note">환자들이 검색해서 들어온 시술 분야별 비중입니다.</p>
         <canvas id="keywordChart" height="140"></canvas>
       </div>
     </section>
 
     <section class="table-card">
       <h2>최근 검색 유입 쿼리</h2>
+      <p class="table-note">어떤 검색어로 우리 병원 페이지까지 도달했는지 확인할 수 있습니다.</p>
       <table>
         <thead>
           <tr><th>검색어</th><th>노출수</th><th>클릭수</th><th>평균 순위</th></tr>
