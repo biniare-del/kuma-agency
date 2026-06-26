@@ -262,5 +262,12 @@
   </div>
 </footer>
 
+<script>
+document.querySelector('.contact-form').addEventListener('submit', function (e) {
+  e.preventDefault();
+  this.hidden = true;
+  this.insertAdjacentHTML('afterend', '<p class="form-success">상담 신청이 접수되었습니다. (포트폴리오 샘플 — 실제 서비스에서는 이 단계에서 담당자에게 알림이 전송됩니다)</p>');
+});
+</script>
 </body>
 </html>

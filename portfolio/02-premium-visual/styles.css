@@ -190,3 +190,5 @@ body { word-break: keep-all; overflow-wrap: break-word; }
 @media (max-width: 640px) {
   .lg-break { display: none; }
 }
+
+.form-success { background: var(--color-bg-soft); border: 1px solid var(--color-border); border-radius: 10px; padding: 20px 22px; font-weight: 600; }
