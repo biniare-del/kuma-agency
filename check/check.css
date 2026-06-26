@@ -24,8 +24,8 @@ body { margin: 0; font-family: var(--font-base); color: var(--color-text); backg
 .tool-header .logo span { color: var(--color-accent); }
 .tool-header p { margin: 0; font-size: 0.8rem; letter-spacing: -0.01em; line-height: 1.4; color: rgba(255,255,255,0.6); text-align: right; }
 
-.intro { padding: 48px 0 16px; }
-.intro h1 { font-size: 1.9rem; margin: 0 0 12px; letter-spacing: -0.01em; }
+.intro { padding: 56px 0 16px; }
+.intro h1 { font-size: 2.1rem; margin: 0 0 12px; letter-spacing: -0.02em; }
 .intro p { color: var(--color-text-muted); margin: 0; }
 
 .check-form { padding: 16px 0 40px; }
