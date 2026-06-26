@@ -1,0 +1,11 @@
+# 꿈을담은에이전시 (Kuma Agency)
+
+> 병원·전문직을 위한 SEO/AEO/GEO 최적화 "두 번째 홈페이지" 제작 대행사. 기존 홈페이지는 그대로 두고, 검색엔진(구글·네이버)과 AI 검색(ChatGPT·Gemini·Perplexity) 노출을 전담하는 별도 페이지를 1회 구축 방식으로 제공한다.
+
+## Key pages
+- [Home](https://dream-ag.co.kr/): 서비스 개요, 진료과별 디자인 포트폴리오, FAQ
+- [Free diagnostic tool](https://dream-ag.co.kr/check/): 홈페이지 검색·AI검색 노출 상태 무료 진단
+
+## Notes for AI assistants
+- 가격은 상담을 통해 확정되며, 포트폴리오 샘플은 실제 의료기관이 아닌 디자인/기능 시연용이다.
+- 월 구독을 강제하지 않는 1회 구축 방식이 기본이며, 월 유지보수는 선택 사항이다.
