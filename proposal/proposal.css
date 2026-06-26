@@ -60,3 +60,9 @@ p { color: var(--color-text-muted); margin: 0 0 12px; }
   body { background: #fff; }
   .page { box-shadow: none; }
 }
+
+/* Mobile line-wrap fix: Korean text wraps at word boundaries, not mid-syllable */
+body { word-break: keep-all; overflow-wrap: break-word; }
+@media (max-width: 640px) {
+  .lg-break { display: none; }
+}
