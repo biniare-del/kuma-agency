@@ -167,3 +167,9 @@ a:hover { text-decoration: underline; }
   object-fit: cover;
   display: block;
 }
+
+/* Mobile line-wrap fix: Korean text wraps at word boundaries, not mid-syllable */
+body { word-break: keep-all; overflow-wrap: break-word; }
+@media (max-width: 640px) {
+  .lg-break { display: none; }
+}

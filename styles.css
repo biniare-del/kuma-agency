@@ -102,3 +102,9 @@ a:hover { text-decoration: underline; }
   .portfolio-grid { grid-template-columns: 1fr; }
   .why-grid { grid-template-columns: 1fr; }
 }
+
+/* Mobile line-wrap fix: Korean text wraps at word boundaries, not mid-syllable */
+body { word-break: keep-all; overflow-wrap: break-word; }
+@media (max-width: 640px) {
+  .lg-break { display: none; }
+}

@@ -71,3 +71,9 @@ fieldset.field legend { font-size: 0.85rem; font-weight: 700; padding: 0 4px; }
   .layout { grid-template-columns: 1fr; padding: 0; }
   .panel.quote-panel { border: none; padding: 0; }
 }
+
+/* Mobile line-wrap fix: Korean text wraps at word boundaries, not mid-syllable */
+body { word-break: keep-all; overflow-wrap: break-word; }
+@media (max-width: 640px) {
+  .lg-break { display: none; }
+}
