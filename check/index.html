@@ -16,10 +16,21 @@
 <body>
 
 <header class="tool-header">
-  <div class="wrap">
+  <div class="wrap tool-header-inner">
     <a href="../index.html" class="logo"><img src="../images/logo-kit/png/logo-header-white.png" alt="꿈을담은에이전시" height="32" style="vertical-align:middle;margin-right:6px;"></a>
-    <p>AI검색(ChatGPT·Gemini 등) 및 포털 검색엔진(구글·네이버 등) 노출 진단</p>
+    <p class="tool-header-desc">AI검색(ChatGPT·Gemini 등) 및 포털 검색엔진(구글·네이버 등) 노출 진단</p>
+    <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="메뉴 열기">
+      <span></span><span></span><span></span>
+    </button>
   </div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="모바일 메뉴">
+    <ul>
+      <li><a href="../index.html#portfolio">포트폴리오</a></li>
+      <li><a href="../index.html#why">왜 필요한가</a></li>
+      <li><a href="../index.html#contact">문의</a></li>
+      <li><a href="../index.html" class="mobile-cta">홈으로</a></li>
+    </ul>
+  </nav>
 </header>
 
 <main class="wrap">
@@ -85,5 +96,16 @@
 </footer>
 
 <script src="check.js"></script>
+<script>
+const t = document.getElementById('navToggle');
+const m = document.getElementById('mobileNav');
+if (t && m) {
+  t.addEventListener('click', () => {
+    const open = m.classList.toggle('is-open');
+    t.classList.toggle('is-open', open);
+    t.setAttribute('aria-expanded', open);
+  });
+}
+</script>
 </body>
 </html>
