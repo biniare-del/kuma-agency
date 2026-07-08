@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>온라인 예약 | 쿠마피부과</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+.reserve-hero {
+  background: var(--color-bg-soft);
+  border-bottom: 1px solid var(--color-border);
+  padding: 48px 0 36px;
+  text-align: center;
+}
+.reserve-hero h1 { font-size: 2rem; margin: 0 0 8px; letter-spacing: -0.02em; }
+.reserve-hero p { color: var(--color-text-muted); margin: 0; }
+
+.reserve-wrap {
+  max-width: 720px;
+  margin: 48px auto;
+  padding: 0 24px 80px;
+}
+
+.reserve-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 36px 40px;
+}
+
+.step-bar {
+  display: flex;
+  gap: 0;
+  margin-bottom: 36px;
+}
+.step {
+  flex: 1;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  position: relative;
+  padding-bottom: 12px;
+}
+.step::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--color-border);
+  border-radius: 2px;
+}
+.step.active { color: var(--color-accent-dark); font-weight: 700; }
+.step.active::after { background: var(--color-accent-dark); }
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--color-border);
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.step.active .step-num { background: var(--color-accent-dark); color: #fff; }
+
+.form-section { margin-bottom: 28px; }
+.form-section h2 { font-size: 1rem; font-weight: 700; margin: 0 0 14px; color: var(--color-text); }
+
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-field { display: flex; flex-direction: column; gap: 6px; }
+.form-field.full { grid-column: 1 / -1; }
+.form-field label { font-size: 0.85rem; font-weight: 600; color: var(--color-text); }
+.form-field input,
+.form-field select,
+.form-field textarea {
+  padding: 11px 13px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-size: 0.92rem;
+  font-family: inherit;
+  color: var(--color-text);
+  background: #fff;
+  transition: border-color 0.15s;
+}
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+.form-field textarea { resize: vertical; min-height: 80px; }
+
+/* 날짜 선택 캘린더 스타일 */
+.date-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-top: 4px;
+}
+.date-head { text-align: center; font-size: 0.75rem; font-weight: 700; color: var(--color-text-muted); padding: 6px 0; }
+.date-btn {
+  text-align: center;
+  padding: 9px 4px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: none;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.12s;
+}
+.date-btn:hover:not(:disabled) { background: var(--color-bg-soft); border-color: var(--color-border); }
+.date-btn.selected { background: var(--color-accent-dark); color: #fff; border-color: var(--color-accent-dark); font-weight: 700; }
+.date-btn.today { color: var(--color-accent-dark); font-weight: 700; }
+.date-btn:disabled { color: #ccc; cursor: default; }
+.date-btn.empty { cursor: default; }
+
+.cal-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.cal-nav strong { font-size: 0.95rem; }
+.cal-nav button { background: none; border: 1px solid var(--color-border); border-radius: 6px; padding: 4px 10px; cursor: pointer; font-size: 0.85rem; }
+
+/* 시간 선택 */
+.time-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.time-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: #fff;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.12s;
+}
+.time-btn:hover { border-color: var(--color-accent); color: var(--color-accent-dark); }
+.time-btn.selected { background: var(--color-accent-dark); color: #fff; border-color: var(--color-accent-dark); font-weight: 600; }
+.time-btn.full { color: #ccc; cursor: default; text-decoration: line-through; }
+
+.divider { border: none; border-top: 1px solid var(--color-border); margin: 24px 0; }
+
+.agree-row { display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.5; }
+.agree-row input[type="checkbox"] { margin-top: 2px; flex-shrink: 0; }
+
+.submit-btn {
+  width: 100%;
+  padding: 15px;
+  background: var(--color-accent-dark);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.15s;
+}
+.submit-btn:hover { background: var(--color-accent); }
+
+.demo-note {
+  margin-top: 16px;
+  padding: 12px 14px;
+  background: var(--color-bg-soft);
+  border-radius: 8px;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .reserve-card { padding: 24px 20px; }
+  .form-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="../" class="logo">쿠마피부과</a>
+    <nav aria-label="주요 메뉴">
+      <ul>
+        <li><a href="../#about">병원소개</a></li>
+        <li><a href="../#procedures">진료분야</a></li>
+        <li><a href="../cases/">케이스/후기</a></li>
+        <li><a href="../#doctor">의료진</a></li>
+        <li><a href="../#contact">상담문의</a></li>
+      </ul>
+    </nav>
+    <a href="./index.html" class="btn btn-primary header-cta">온라인 예약</a>
+  </div>
+</header>
+
+<div class="reserve-hero">
+  <div class="container">
+    <h1>온라인 예약</h1>
+    <p>원하시는 날짜와 시간을 선택하고 간단한 정보를 입력하시면 상담 예약이 완료됩니다.</p>
+  </div>
+</div>
+
+<div class="reserve-wrap">
+  <div class="reserve-card">
+
+    <div class="step-bar">
+      <div class="step active">
+        <div class="step-num">1</div>
+        <div>날짜·시간 선택</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>정보 입력</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>예약 완료</div>
+      </div>
+    </div>
+
+    <form id="reserveForm" action="#done">
+
+      <!-- 날짜 선택 -->
+      <div class="form-section">
+        <h2>날짜 선택</h2>
+        <div class="cal-nav">
+          <button type="button">◀</button>
+          <strong>2026년 7월</strong>
+          <button type="button">▶</button>
+        </div>
+        <div class="date-grid">
+          <div class="date-head">일</div><div class="date-head">월</div><div class="date-head">화</div>
+          <div class="date-head">수</div><div class="date-head">목</div><div class="date-head">금</div><div class="date-head">토</div>
+          <div class="date-btn empty"></div><div class="date-btn empty"></div><button type="button" class="date-btn" disabled>1</button>
+          <button type="button" class="date-btn">2</button><button type="button" class="date-btn">3</button><button type="button" class="date-btn">4</button><button type="button" class="date-btn" disabled>5</button>
+          <button type="button" class="date-btn" disabled>6</button><button type="button" class="date-btn">7</button><button type="button" class="date-btn today selected">8</button>
+          <button type="button" class="date-btn">9</button><button type="button" class="date-btn">10</button><button type="button" class="date-btn">11</button><button type="button" class="date-btn" disabled>12</button>
+          <button type="button" class="date-btn" disabled>13</button><button type="button" class="date-btn">14</button><button type="button" class="date-btn">15</button>
+          <button type="button" class="date-btn">16</button><button type="button" class="date-btn">17</button><button type="button" class="date-btn">18</button><button type="button" class="date-btn" disabled>19</button>
+          <button type="button" class="date-btn" disabled>20</button><button type="button" class="date-btn">21</button><button type="button" class="date-btn">22</button>
+          <button type="button" class="date-btn">23</button><button type="button" class="date-btn">24</button><button type="button" class="date-btn">25</button><button type="button" class="date-btn" disabled>26</button>
+          <button type="button" class="date-btn" disabled>27</button><button type="button" class="date-btn">28</button><button type="button" class="date-btn">29</button>
+          <button type="button" class="date-btn">30</button><button type="button" class="date-btn">31</button>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <!-- 시간 선택 -->
+      <div class="form-section">
+        <h2>시간 선택 <span style="font-size:0.8rem;font-weight:400;color:var(--color-text-muted);">— 7월 8일 (화) 기준</span></h2>
+        <div class="time-grid">
+          <button type="button" class="time-btn full">10:00 마감</button>
+          <button type="button" class="time-btn full">10:30 마감</button>
+          <button type="button" class="time-btn selected">11:00</button>
+          <button type="button" class="time-btn">11:30</button>
+          <button type="button" class="time-btn">13:00</button>
+          <button type="button" class="time-btn">13:30</button>
+          <button type="button" class="time-btn">14:00</button>
+          <button type="button" class="time-btn full">14:30 마감</button>
+          <button type="button" class="time-btn">15:00</button>
+          <button type="button" class="time-btn">15:30</button>
+          <button type="button" class="time-btn">16:00</button>
+          <button type="button" class="time-btn">16:30</button>
+          <button type="button" class="time-btn full">17:00 마감</button>
+          <button type="button" class="time-btn">17:30</button>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <!-- 정보 입력 -->
+      <div class="form-section">
+        <h2>상담 정보</h2>
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="r-name">이름 <span style="color:#c1473f">*</span></label>
+            <input type="text" id="r-name" placeholder="홍길동" required>
+          </div>
+          <div class="form-field">
+            <label for="r-phone">휴대폰 번호 <span style="color:#c1473f">*</span></label>
+            <input type="tel" id="r-phone" placeholder="010-0000-0000" required>
+          </div>
+          <div class="form-field full">
+            <label for="r-procedure">관심 시술</label>
+            <select id="r-procedure">
+              <option value="">선택하세요</option>
+              <option>보톡스·필러</option>
+              <option>레이저 토닝</option>
+              <option>여드름·흉터</option>
+              <option>색소·미백</option>
+              <option>피부관리</option>
+              <option>기타 / 아직 모름</option>
+</select>
+          </div>
+          <div class="form-field full">
+            <label for="r-memo">남기실 말씀 <span style="font-weight:400;color:var(--color-text-muted)">(선택)</span></label>
+            <textarea id="r-memo" placeholder="궁금하신 점이나 미리 알려주실 내용을 적어주세요."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="agree-row">
+        <input type="checkbox" id="r-agree" required>
+        <label for="r-agree">개인정보 수집·이용에 동의합니다. 수집 항목: 이름, 휴대폰 번호. 목적: 예약 확인 및 안내 연락. 보유 기간: 예약 완료 후 1년.</label>
+      </div>
+
+      <button type="submit" class="submit-btn">예약 신청하기</button>
+    </form>
+
+    <div class="demo-note">포트폴리오 데모 화면입니다. 실제 예약은 접수되지 않습니다.</div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>쿠마피부과 | 대표 김쿠마 | 서울 강남구 강남대로 123</p>
+    <p class="footer-disclaimer">본 사이트는 포트폴리오 목적의 샘플이며, 실제 의료기관이 아닙니다.</p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.date-btn:not(:disabled):not(.empty)').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.date-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+  });
+});
+document.querySelectorAll('.time-btn:not(.full)').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+  });
+});
+</script>
+</body>
+</html>
