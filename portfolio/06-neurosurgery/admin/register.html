@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>회원가입 | 쿠마신경외과</title>
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="login-page">
+  <div class="login-card" style="max-width:440px;">
+    <h1>상담 회원 가입</h1>
+    <p class="login-sub">가입 후 전후 사진 열람 및 온라인 상담 신청이 가능합니다.</p>
+    <form action="index.html">
+      <div class="form-row">
+        <label for="name">이름</label>
+        <input type="text" id="name" placeholder="홍길동" required>
+      </div>
+      <div class="form-row">
+        <label for="email">이메일</label>
+        <input type="email" id="email" placeholder="you@example.com" required>
+      </div>
+      <div class="form-row">
+        <label for="phone">휴대폰 번호</label>
+        <input type="tel" id="phone" placeholder="010-0000-0000" required>
+      </div>
+      <div class="form-row">
+        <label for="password">비밀번호</label>
+        <input type="password" id="password" placeholder="8자 이상" required>
+      </div>
+      <div class="form-row">
+        <label for="password2">비밀번호 확인</label>
+        <input type="password" id="password2" placeholder="비밀번호 재입력" required>
+      </div>
+      <div class="form-row" style="display:flex;align-items:flex-start;gap:8px;">
+        <input type="checkbox" id="agree" style="margin-top:3px;width:auto;" required>
+        <label for="agree" style="font-weight:400;font-size:0.85rem;line-height:1.5;">개인정보 수집·이용에 동의합니다. 수집 항목: 이름, 이메일, 휴대폰 번호. 목적: 상담 회원 관리 및 전후 사진 열람 서비스 제공.</label>
+      </div>
+      <button type="submit" class="btn-primary" style="margin-top:4px;">가입하기</button>
+    </form>
+    <p class="login-footnote">이미 계정이 있으신가요? <a href="index.html">로그인</a></p>
+    <div class="login-note">
+      포트폴리오 데모 화면입니다. 실제 가입은 동작하지 않으며, "가입하기" 클릭 시 로그인 화면으로 이동합니다.
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
