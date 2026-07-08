@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>온라인 상담 | 쿠마정형외과 관리자</title>
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="admin-shell">
+  <aside class="admin-sidebar">
+    <span class="brand">쿠마 어드민</span>
+    <ul class="admin-nav">
+      <li class="nav-group-label">현황</li>
+      <li><a href="dashboard.html">대시보드</a></li>
+      <li class="nav-group-label">환자 관리</li>
+      <li><a href="consultations.html" class="active">온라인 상담</a></li>
+      <li><a href="reservations.html">예약 관리</a></li>
+      <li><a href="reviews.html">후기 관리</a></li>
+      <li class="nav-group-label">운영</li>
+      <li><a href="content.html">콘텐츠 관리</a></li>
+      <li><a href="../">사이트로 이동</a></li>
+      <li><a href="index.html">로그아웃</a></li>
+    </ul>
+  </aside>
+
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <div>
+        <h1>온라인 상담</h1>
+        <p class="admin-subtitle">홈페이지를 통해 접수된 상담 문의를 확인하고 답변 상태를 관리합니다.</p>
+      </div>
+      <span class="admin-user">미답변 <strong style="color:#c1473f">4건</strong> · 전체 23건</span>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active">전체</button>
+      <button class="filter-btn">미답변</button>
+      <button class="filter-btn">답변완료</button>
+      <button class="filter-btn">스팸</button>
+    </div>
+
+    <section class="table-card">
+      <table>
+        <thead>
+          <tr><th></th><th>이름</th><th>문의 내용</th><th>관심 시술</th><th>접수일시</th><th>상태</th><th></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="unread-dot"></span></td>
+            <td>김○○</td>
+            <td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">쌍커풀 매몰법 비용이 궁금합니다. 회복기간도...</td>
+            <td>눈성형</td>
+            <td>2026-07-08 14:22</td>
+            <td><span class="status-pill new">미답변</span></td>
+            <td><div class="action-row"><button class="btn-ghost-small">보기</button><button class="btn-small" style="padding:6px 10px;font-size:0.78rem;">답변</button></div></td>
+          </tr>
+          <tr>
+            <td><span class="unread-dot"></span></td>
+            <td>이○○</td>
+            <td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">코 재수술 상담을 받고 싶습니다. 타원에서...</td>
+            <td>코성형</td>
+            <td>2026-07-08 11:05</td>
+            <td><span class="status-pill new">미답변</span></td>
+            <td><div class="action-row"><button class="btn-ghost-small">보기</button><button class="btn-small" style="padding:6px 10px;font-size:0.78rem;">답변</button></div></td>
+          </tr>
+          <tr>
+            <td><span class="unread-dot"></span></td>
+            <td>박○○</td>
+            <td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">안면윤곽 수술 상담 원합니다. 광대+턱 동시...</td>
+            <td>안면윤곽</td>
+            <td>2026-07-07 18:43</td>
+            <td><span class="status-pill new">미답변</span></td>
+            <td><div class="action-row"><button class="btn-ghost-small">보기</button><button class="btn-small" style="padding:6px 10px;font-size:0.78rem;">답변</button></div></td>
+          </tr>
+          <tr>
+            <td><span class="unread-dot"></span></td>
+            <td>최○○</td>
+            <td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">리프팅 시술 종류와 비용을 알고 싶어요...</td>
+            <td>리프팅</td>
+            <td>2026-07-07 09:11</td>
+            <td><span class="status-pill new">미답변</span></td>
+            <td><div class="action-row"><button class="btn-ghost-small">보기</button><button class="btn-small" style="padding:6px 10px;font-size:0.78rem;">답변</button></div></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>정○○</td>
+            <td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">가슴 성형 상담 문의드립니다. 비용과 회복...</td>
+            <td>가슴성형</td>
+            <td>2026-07-06 16:30</td>
+            <td><span class="status-pill replied">답변완료</span></td>
+            <td><div class="action-row"><button class="btn-ghost-small">보기</button></div></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>강○○</td>
+            <td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">눈밑지방 재배치 수술 후기를 보고 문의드려요...</td>
+            <td>눈성형</td>
+            <td>2026-07-06 10:55</td>
+            <td><span class="status-pill replied">답변완료</span></td>
+            <td><div class="action-row"><button class="btn-ghost-small">보기</button></div></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>윤○○</td>
+            <td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">코필러와 코수술 차이가 궁금합니다...</td>
+            <td>코성형</td>
+            <td>2026-07-05 14:20</td>
+            <td><span class="status-pill replied">답변완료</span></td>
+            <td><div class="action-row"><button class="btn-ghost-small">보기</button></div></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>임○○</td>
+            <td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">쌍커풀 수술 후 눈이 비대칭인데 교정 가능한지...</td>
+            <td>눈성형</td>
+            <td>2026-07-04 09:33</td>
+            <td><span class="status-pill replied">답변완료</span></td>
+            <td><div class="action-row"><button class="btn-ghost-small">보기</button></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <div style="margin-top:16px;display:flex;gap:12px;">
+      <div class="chart-card" style="flex:1">
+        <h2>이번 주 상담 현황</h2>
+        <p class="chart-note">요일별 접수 건수입니다.</p>
+        <div style="display:flex;align-items:flex-end;gap:8px;height:80px;margin-top:12px;">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+            <div style="width:100%;background:var(--color-accent);border-radius:4px 4px 0 0;height:30px;opacity:0.6"></div>
+            <span style="font-size:0.72rem;color:var(--color-text-muted)">월</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+            <div style="width:100%;background:var(--color-accent);border-radius:4px 4px 0 0;height:50px;opacity:0.7"></div>
+            <span style="font-size:0.72rem;color:var(--color-text-muted)">화</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+            <div style="width:100%;background:var(--color-accent);border-radius:4px 4px 0 0;height:40px;opacity:0.7"></div>
+            <span style="font-size:0.72rem;color:var(--color-text-muted)">수</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+            <div style="width:100%;background:var(--color-accent);border-radius:4px 4px 0 0;height:70px;opacity:0.8"></div>
+            <span style="font-size:0.72rem;color:var(--color-text-muted)">목</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+            <div style="width:100%;background:var(--color-accent-dark);border-radius:4px 4px 0 0;height:80px"></div>
+            <span style="font-size:0.72rem;color:var(--color-text-muted)">금</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+            <div style="width:100%;background:var(--color-accent);border-radius:4px 4px 0 0;height:20px;opacity:0.4"></div>
+            <span style="font-size:0.72rem;color:var(--color-text-muted)">토</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+            <div style="width:100%;background:var(--color-accent);border-radius:4px 4px 0 0;height:10px;opacity:0.3"></div>
+            <span style="font-size:0.72rem;color:var(--color-text-muted)">일</span>
+          </div>
+        </div>
+      </div>
+      <div class="chart-card" style="flex:1">
+        <h2>관심 시술 분포</h2>
+        <p class="chart-note">이번 달 상담 문의 기준입니다.</p>
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;">
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:0.8rem;margin-bottom:3px;"><span>눈성형</span><span>38%</span></div>
+            <div style="background:var(--color-bg);border-radius:4px;height:8px;"><div style="background:var(--color-accent-dark);width:38%;height:100%;border-radius:4px;"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:0.8rem;margin-bottom:3px;"><span>코성형</span><span>27%</span></div>
+            <div style="background:var(--color-bg);border-radius:4px;height:8px;"><div style="background:var(--color-accent-dark);width:27%;height:100%;border-radius:4px;"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:0.8rem;margin-bottom:3px;"><span>안면윤곽</span><span>18%</span></div>
+            <div style="background:var(--color-bg);border-radius:4px;height:8px;"><div style="background:var(--color-accent-dark);width:18%;height:100%;border-radius:4px;"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:0.8rem;margin-bottom:3px;"><span>리프팅</span><span>11%</span></div>
+            <div style="background:var(--color-bg);border-radius:4px;height:8px;"><div style="background:var(--color-accent-dark);width:11%;height:100%;border-radius:4px;"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:0.8rem;margin-bottom:3px;"><span>기타</span><span>6%</span></div>
+            <div style="background:var(--color-bg);border-radius:4px;height:8px;"><div style="background:var(--color-accent-dark);width:6%;height:100%;border-radius:4px;"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+</body>
+</html>
