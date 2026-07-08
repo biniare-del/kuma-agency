@@ -178,3 +178,24 @@ body { word-break: keep-all; overflow-wrap: break-word; }
 }
 
 .form-success { background: var(--color-bg-soft); border: 1px solid var(--color-border); border-radius: 10px; padding: 20px 22px; font-weight: 600; }
+
+/* 상담 옵션 (온라인 예약 + 간단 문의) */
+.contact-options { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 28px; flex-wrap: wrap; }
+.contact-opt-primary {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 6px; text-decoration: none; text-align: center;
+  background: var(--color-accent-dark); color: #fff;
+  border-radius: 14px; padding: 28px 32px; min-width: 160px;
+  transition: opacity 0.15s; flex-shrink: 0;
+}
+.contact-opt-primary:hover { opacity: 0.88; }
+.contact-opt-primary .opt-icon { font-size: 1.8rem; line-height: 1; }
+.contact-opt-primary strong { font-size: 1rem; font-weight: 700; }
+.contact-opt-primary span { font-size: 0.8rem; opacity: 0.85; }
+.contact-opt-divider { align-self: center; color: var(--color-text-muted); font-size: 0.85rem; padding: 0 4px; flex-shrink: 0; }
+.contact-opt-form { flex: 1; min-width: 240px; }
+.opt-form-label { font-size: 0.82rem; color: var(--color-text-muted); margin: 0 0 10px; }
+@media (max-width: 600px) {
+  .contact-options { flex-direction: column; }
+  .contact-opt-primary { width: 100%; }
+}
