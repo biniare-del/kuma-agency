@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>예약 관리 | 쿠마성형외과 관리자</title>
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="admin-shell">
+  <aside class="admin-sidebar">
+    <span class="brand">쿠마 어드민</span>
+    <ul class="admin-nav">
+      <li class="nav-group-label">현황</li>
+      <li><a href="dashboard.html">대시보드</a></li>
+      <li class="nav-group-label">환자 관리</li>
+      <li><a href="consultations.html">온라인 상담</a></li>
+      <li><a href="reservations.html" class="active">예약 관리</a></li>
+      <li><a href="reviews.html">후기 관리</a></li>
+      <li class="nav-group-label">운영</li>
+      <li><a href="content.html">콘텐츠 관리</a></li>
+      <li><a href="../">사이트로 이동</a></li>
+      <li><a href="index.html">로그아웃</a></li>
+    </ul>
+  </aside>
+
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <div>
+        <h1>예약 관리</h1>
+        <p class="admin-subtitle">온라인으로 접수된 상담 예약을 날짜별로 확인하고 상태를 관리합니다.</p>
+      </div>
+      <span class="admin-user">오늘 예약 <strong>5건</strong> · 이번 주 <strong>18건</strong></span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:260px 1fr;gap:20px;align-items:start;">
+
+      <!-- 미니 캘린더 -->
+      <div class="chart-card">
+        <h2 style="margin:0 0 12px;">2026년 7월</h2>
+        <div class="cal-grid">
+          <div class="cal-head">일</div><div class="cal-head">월</div><div class="cal-head">화</div>
+          <div class="cal-head">수</div><div class="cal-head">목</div><div class="cal-head">금</div><div class="cal-head">토</div>
+          <div class="cal-day empty"></div><div class="cal-day empty"></div><div class="cal-day">1</div>
+          <div class="cal-day has-event">2</div><div class="cal-day has-event">3</div><div class="cal-day has-event">4</div><div class="cal-day">5</div>
+          <div class="cal-day">6</div><div class="cal-day has-event">7</div><div class="cal-day today">8</div>
+          <div class="cal-day has-event">9</div><div class="cal-day has-event">10</div><div class="cal-day has-event">11</div><div class="cal-day">12</div>
+          <div class="cal-day">13</div><div class="cal-day has-event">14</div><div class="cal-day has-event">15</div>
+          <div class="cal-day">16</div><div class="cal-day has-event">17</div><div class="cal-day has-event">18</div><div class="cal-day">19</div>
+          <div class="cal-day">20</div><div class="cal-day">21</div><div class="cal-day">22</div>
+          <div class="cal-day">23</div><div class="cal-day">24</div><div class="cal-day">25</div><div class="cal-day">26</div>
+          <div class="cal-day">27</div><div class="cal-day">28</div><div class="cal-day">29</div>
+          <div class="cal-day">30</div><div class="cal-day">31</div>
+        </div>
+        <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--color-border);">
+          <p class="section-label">이번 달 요약</p>
+          <div style="display:flex;flex-direction:column;gap:6px;font-size:0.85rem;">
+            <div style="display:flex;justify-content:space-between;"><span>예약 확정</span><strong>42건</strong></div>
+            <div style="display:flex;justify-content:space-between;"><span>대기중</span><strong style="color:#9a6b1f">7건</strong></div>
+            <div style="display:flex;justify-content:space-between;"><span>취소</span><strong style="color:#c1473f">3건</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 예약 목록 -->
+      <div>
+        <div class="filter-bar">
+          <button class="filter-btn active">오늘 (7/8)</button>
+          <button class="filter-btn">이번 주</button>
+          <button class="filter-btn">전체</button>
+        </div>
+        <section class="table-card">
+          <table>
+            <thead>
+              <tr><th>시간</th><th>이름</th><th>연락처</th><th>상담 항목</th><th>상태</th><th></th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>10:00</strong></td>
+                <td>김○○</td>
+                <td>010-****-3821</td>
+                <td>눈성형 초진 상담</td>
+                <td><span class="status-pill confirmed">확정</span></td>
+                <td><div class="action-row"><button class="btn-ghost-small">상세</button><button class="btn-danger-small">취소</button></div></td>
+              </tr>
+              <tr>
+                <td><strong>11:00</strong></td>
+                <td>이○○</td>
+                <td>010-****-7102</td>
+                <td>코 재수술 상담</td>
+                <td><span class="status-pill confirmed">확정</span></td>
+                <td><div class="action-row"><button class="btn-ghost-small">상세</button><button class="btn-danger-small">취소</button></div></td>
+              </tr>
+              <tr>
+                <td><strong>14:00</strong></td>
+                <td>박○○</td>
+                <td>010-****-5540</td>
+                <td>안면윤곽 상담</td>
+                <td><span class="status-pill waiting">대기중</span></td>
+                <td><div class="action-row"><button class="btn-small" style="padding:6px 10px;font-size:0.78rem;">확정</button><button class="btn-danger-small">취소</button></div></td>
+              </tr>
+              <tr>
+                <td><strong>15:30</strong></td>
+                <td>최○○</td>
+                <td>010-****-9934</td>
+                <td>리프팅 상담</td>
+                <td><span class="status-pill confirmed">확정</span></td>
+                <td><div class="action-row"><button class="btn-ghost-small">상세</button><button class="btn-danger-small">취소</button></div></td>
+              </tr>
+              <tr>
+                <td><strong>17:00</strong></td>
+                <td>정○○</td>
+                <td>010-****-2271</td>
+                <td>가슴성형 초진 상담</td>
+                <td><span class="status-pill waiting">대기중</span></td>
+                <td><div class="action-row"><button class="btn-small" style="padding:6px 10px;font-size:0.78rem;">확정</button><button class="btn-danger-small">취소</button></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <div class="chart-card" style="margin-top:16px;">
+          <h2>예약 추가</h2>
+          <p class="chart-note" style="margin-bottom:14px;">전화 등 오프라인으로 접수된 예약을 직접 등록합니다.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div class="form-row" style="margin:0">
+              <label>환자 이름</label>
+              <input type="text" placeholder="홍길동">
+            </div>
+            <div class="form-row" style="margin:0">
+              <label>연락처</label>
+              <input type="text" placeholder="010-0000-0000">
+            </div>
+            <div class="form-row" style="margin:0">
+              <label>예약 일시</label>
+              <input type="datetime-local" value="2026-07-09T10:00">
+            </div>
+            <div class="form-row" style="margin:0">
+              <label>상담 항목</label>
+              <input type="text" placeholder="눈성형 초진 상담">
+            </div>
+          </div>
+          <button type="button" class="btn-small" style="margin-top:14px;">예약 등록</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+</body>
+</html>

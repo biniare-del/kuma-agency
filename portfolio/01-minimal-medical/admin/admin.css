@@ -182,5 +182,77 @@ tbody tr:hover { background: var(--color-bg); }
   .admin-topbar { align-items: flex-start; flex-direction: column; }
 }
 
+/* Badge / status pills extended */
+.status-pill.pending   { background: #fef3e2; color: #9a6b1f; }
+.status-pill.replied   { background: #e3f2e8; color: #2f8f5b; }
+.status-pill.new       { background: #e8effe; color: #3a5ddb; }
+.status-pill.confirmed { background: #e3f2e8; color: #2f8f5b; }
+.status-pill.cancelled { background: #fce8e8; color: #c1473f; }
+.status-pill.waiting   { background: #fef3e2; color: #9a6b1f; }
+.status-pill.approved  { background: #e3f2e8; color: #2f8f5b; }
+.status-pill.hidden    { background: #f0f0f0; color: #888; }
+
+/* Unread indicator */
+.unread-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #3a5ddb; margin-right: 6px; vertical-align: middle; }
+
+/* Action buttons row */
+.action-row { display: flex; gap: 6px; }
+.btn-danger-small {
+  padding: 6px 10px;
+  background: transparent;
+  border: 1px solid #f0bcbc;
+  border-radius: 7px;
+  font-size: 0.78rem;
+  color: #c1473f;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.btn-danger-small:hover { background: #fce8e8; }
+
+/* Calendar mini */
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  text-align: center;
+  font-size: 0.8rem;
+  margin-bottom: 20px;
+}
+.cal-grid .cal-head { font-weight: 700; color: var(--color-text-muted); padding: 6px 0; }
+.cal-grid .cal-day {
+  padding: 8px 4px;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+.cal-day:hover { background: var(--color-bg); }
+.cal-day.today { background: var(--color-accent-dark); color: #fff; font-weight: 700; }
+.cal-day.has-event { position: relative; }
+.cal-day.has-event::after { content: ''; position: absolute; bottom: 3px; left: 50%; transform: translateX(-50%); width: 5px; height: 5px; border-radius: 50%; background: var(--color-accent); }
+.cal-day.empty { cursor: default; }
+
+/* Star rating */
+.stars { color: #f5a623; letter-spacing: 1px; }
+
+/* Section divider label */
+.section-label { font-size: 0.78rem; font-weight: 700; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 10px; }
+
+/* Filter bar */
+.filter-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.filter-btn {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+.filter-btn.active { background: var(--color-accent-dark); color: #fff; border-color: var(--color-accent-dark); }
+.filter-btn:hover:not(.active) { border-color: var(--color-accent); }
+
+/* Sidebar nav group label */
+.nav-group-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.3); padding: 16px 12px 6px; }
+
 /* Mobile line-wrap fix: Korean text wraps at word boundaries, not mid-syllable */
 body { word-break: keep-all; overflow-wrap: break-word; }
