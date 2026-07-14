@@ -2,19 +2,44 @@ function won(n) {
   return n.toLocaleString("ko-KR") + "원";
 }
 
+function getPagePrice(count) {
+  if (count <= 0) return 0;
+  if (count >= 30) return 600000;
+  if (count >= 10) return 250000;
+  return count * 30000;
+}
+
+function getPageLabel(count) {
+  if (count <= 0) return null;
+  if (count >= 30) return `시술 상세페이지 ${count}개 (30개 이상 묶음)`;
+  if (count >= 10) return `시술 상세페이지 ${count}개 (10개 이상 묶음)`;
+  return `시술 상세페이지 ${count}개 (개당 30,000원)`;
+}
+
+function getPageHint(count) {
+  if (count <= 0) return "추가 없음";
+  if (count >= 30) return `${count}개 → 60만원 (30개 이상 묶음가)`;
+  if (count >= 10) return `${count}개 → 25만원 (10개 이상 묶음가)`;
+  return `${count}개 × 30,000원 = ${won(count * 30000)}`;
+}
+
 function render() {
   const clientName = document.getElementById("clientName").value.trim() || "-";
   const contactName = document.getElementById("contactName").value.trim();
   const specialty = document.getElementById("specialty").value;
   const note = document.getElementById("note").value.trim();
+  const pageCount = parseInt(document.getElementById("pageCount").value) || 0;
+
+  document.getElementById("pageCountHint").textContent = getPageHint(pageCount);
 
   const checked = Array.from(document.querySelectorAll(".checkbox input[type=checkbox][data-price]:checked"));
   const optionTotal = checked.reduce((sum, el) => sum + Number(el.dataset.price), 0);
+  const pagePrice = getPagePrice(pageCount);
 
   const BASE_LIST_PRICE = 4400000;
   const discountApplied = document.getElementById("discountToggle").checked;
   const basePrice = discountApplied ? BASE_LIST_PRICE / 2 : BASE_LIST_PRICE;
-  const buildTotal = basePrice + optionTotal;
+  const buildTotal = basePrice + optionTotal + pagePrice;
 
   const planEl = document.querySelector('input[name="plan"]:checked');
   const planPrice = Number(planEl.value);
@@ -24,15 +49,22 @@ function render() {
   document.getElementById("outSpecialty").textContent = specialty;
 
   const rows = document.getElementById("quoteRows");
-  rows.innerHTML = `<tr><td>기본 구축 (검색·AI검색 최적화 세컨 홈페이지) 정가</td><td>${won(BASE_LIST_PRICE)}</td></tr>`;
+  rows.innerHTML = `<tr><td>기본 구축</td><td>검색·AI검색 최적화 세컨 홈페이지</td><td>${won(BASE_LIST_PRICE)}</td></tr>`;
+
   if (discountApplied) {
-    rows.innerHTML += `<tr><td>초기 레퍼런스 고객 한정 50% 할인</td><td>-${won(BASE_LIST_PRICE / 2)}</td></tr>`;
+    rows.innerHTML += `<tr class="discount-row"><td>오픈 기념 특별 할인</td><td>50% 할인</td><td>−${won(BASE_LIST_PRICE / 2)}</td></tr>`;
   }
+
+  if (pageCount > 0) {
+    rows.innerHTML += `<tr><td>시술 상세페이지</td><td>${pageCount}개</td><td>${won(pagePrice)}</td></tr>`;
+  }
+
   checked.forEach((el) => {
-    rows.innerHTML += `<tr><td>${el.dataset.label}</td><td>${won(Number(el.dataset.price))}</td></tr>`;
+    rows.innerHTML += `<tr><td>${el.dataset.label.split(' (')[0].replace(/\s+\S+$/, el.dataset.label.includes('(') ? '' : '')}</td><td>${el.dataset.label}</td><td>${won(Number(el.dataset.price))}</td></tr>`;
   });
 
   document.getElementById("outBuildTotal").textContent = won(buildTotal);
+  document.getElementById("outGrandTotal").textContent = won(buildTotal);
   document.getElementById("outPlanTotal").textContent =
     planPrice === 0 ? "없음" : `${won(planPrice)} / 월 (${planEl.dataset.label})`;
 
@@ -42,6 +74,18 @@ function render() {
   document.getElementById("quoteDate").textContent =
     `발행일: ${today.getFullYear()}.${String(today.getMonth() + 1).padStart(2, "0")}.${String(today.getDate()).padStart(2, "0")}`;
 }
+
+// 페이지 수 +/- 버튼
+document.getElementById("pageCountMinus").addEventListener("click", () => {
+  const el = document.getElementById("pageCount");
+  el.value = Math.max(0, (parseInt(el.value) || 0) - 1);
+  render();
+});
+document.getElementById("pageCountPlus").addEventListener("click", () => {
+  const el = document.getElementById("pageCount");
+  el.value = (parseInt(el.value) || 0) + 1;
+  render();
+});
 
 document.querySelectorAll("input, select, textarea").forEach((el) => {
   el.addEventListener("input", render);
