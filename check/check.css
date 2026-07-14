@@ -134,3 +134,15 @@ body { word-break: keep-all; overflow-wrap: break-word; }
   .tool-header-desc { display: none; }
   .tool-header { padding: 14px 0; }
 }
+
+/* ── 통합 헤더 네비 ── */
+.tool-header-inner { display: flex; align-items: center; gap: 20px; }
+.desk-nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 4px; }
+.desk-nav a { color: rgba(255,255,255,0.75); font-size: 0.88rem; font-weight: 600; padding: 6px 10px; border-radius: 6px; text-decoration: none; transition: color 0.15s; }
+.desk-nav a:hover { color: #fff; }
+.header-cta-btn { margin-left: auto; background: #3a5ddb; color: #fff; font-size: 0.85rem; font-weight: 700; padding: 8px 16px; border-radius: 7px; text-decoration: none; white-space: nowrap; transition: background 0.15s; }
+.header-cta-btn:hover { background: #2944a8; }
+@media (max-width: 700px) {
+  .desk-nav { display: none; }
+  .header-cta-btn { display: none; }
+}
