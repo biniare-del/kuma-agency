@@ -109,3 +109,28 @@ body { word-break: keep-all; overflow-wrap: break-word; }
   .nav-toggle { display: flex; }
   .tool-header-desc { display: none; }
 }
+
+/* 하단 CTA */
+.check-cta {
+  text-align: center; padding: 56px 0 72px;
+  border-top: 1px solid var(--color-border); margin-top: 16px;
+}
+.check-cta p { color: var(--color-text-muted); font-size: 0.9rem; margin: 0 0 8px; }
+.check-cta h2 { font-size: 1.5rem; font-weight: 800; margin: 0 0 28px; letter-spacing: -0.02em; }
+.check-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.cta-btn-primary {
+  padding: 13px 28px; border-radius: 8px; font-weight: 700; font-size: 0.98rem;
+  background: var(--color-accent); color: #fff; text-decoration: none; transition: background 0.15s;
+}
+.cta-btn-primary:hover { background: var(--color-accent-dark); }
+.cta-btn-ghost {
+  padding: 13px 28px; border-radius: 8px; font-weight: 700; font-size: 0.98rem;
+  border: 1.5px solid var(--color-accent); color: var(--color-accent); text-decoration: none; transition: all 0.15s;
+}
+.cta-btn-ghost:hover { background: var(--color-accent); color: #fff; }
+
+/* 모바일에서 헤더 텍스트 숨겨서 크기 줄이기 */
+@media (max-width: 560px) {
+  .tool-header-desc { display: none; }
+  .tool-header { padding: 14px 0; }
+}
