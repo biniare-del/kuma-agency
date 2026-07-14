@@ -108,7 +108,7 @@ fieldset.field legend { font-size: 0.82rem; font-weight: 700; padding: 0; color:
 .quote-table thead { background: var(--color-bg-soft); }
 .quote-table th { padding: 9px 8px; text-align: left; font-size: 0.8rem; color: var(--color-text-muted); border-bottom: 1px solid var(--color-border); }
 .quote-table td { padding: 9px 8px; border-bottom: 1px solid var(--color-border); vertical-align: top; }
-.quote-table th:last-child, .quote-table td:last-child { text-align: right; font-family: var(--font-mono); font-size: 0.85rem; white-space: nowrap; }
+.quote-table th:last-child, .quote-table td:last-child { text-align: right; font-family: var(--font-mono); font-size: 0.85rem; white-space: nowrap; width: 1%; }
 .discount-row td { color: #c1473f; }
 .quote-table tfoot .sub-total td { font-weight: 600; border-top: 1px solid var(--color-border); background: var(--color-bg-soft); }
 .quote-table tfoot .grand-total td { font-weight: 800; font-size: 1rem; border-top: 2px solid var(--color-ink); color: var(--color-accent-dark); background: var(--color-accent-light); }
