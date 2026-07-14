@@ -254,7 +254,7 @@ p { margin: 0 0 12px; }
 .price-table th:nth-child(1) { width: 40%; }
 .price-table td { padding: 11px 12px; border-bottom: 1px solid var(--gray-border); vertical-align: top; font-size: 0.88rem; word-break: keep-all; overflow-wrap: break-word; }
 .price-table td:nth-child(2) { font-size: 0.82rem; color: var(--text-muted); }
-.price-amount { font-weight: 700; color: var(--navy); font-size: 0.95rem; white-space: nowrap; }
+.price-amount { font-weight: 700; color: var(--navy); font-size: 0.95rem; }
 .price-orig { font-size: 0.78rem; color: #999; }
 .price-unit { font-size: 0.78rem; color: var(--text-muted); }
 .price-table tr:last-child td { border-bottom: none; }
