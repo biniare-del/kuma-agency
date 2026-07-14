@@ -19,6 +19,26 @@ body { margin: 0; font-family: var(--font-base); color: var(--text); background:
 a { color: var(--teal-dark); }
 p { margin: 0 0 12px; }
 
+/* ── 제안서 헤더 ── */
+.prop-header { position: sticky; top: 0; z-index: 20; background: rgba(12,14,19,0.94); backdrop-filter: blur(6px); }
+.prop-header-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; max-width: 860px; margin: 0 auto; }
+.prop-logo img { display: block; }
+.prop-desk-nav { display: flex; gap: 20px; }
+.prop-desk-nav a { color: rgba(255,255,255,0.78); font-size: 0.88rem; font-weight: 600; text-decoration: none; }
+.prop-desk-nav a:hover { color: #fff; }
+.prop-nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+.prop-nav-toggle span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; transition: transform 0.2s, opacity 0.2s; }
+.prop-nav-toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.prop-nav-toggle.is-open span:nth-child(2) { opacity: 0; }
+.prop-nav-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.prop-mobile-nav { display: none; background: #0c0e13; }
+.prop-mobile-nav.is-open { display: flex; flex-direction: column; }
+.prop-mobile-nav a { display: block; padding: 13px 24px; color: rgba(255,255,255,0.85); font-weight: 600; font-size: 1rem; border-bottom: 1px solid rgba(255,255,255,0.08); text-decoration: none; }
+@media (max-width: 600px) {
+  .prop-desk-nav { display: none; }
+  .prop-nav-toggle { display: flex; }
+}
+
 /* ── 표지 ── */
 .cover {
   background: linear-gradient(135deg, #0d1b2e 0%, #162e45 60%, #0d2a3a 100%);
@@ -195,7 +215,8 @@ p { margin: 0 0 12px; }
 .timeline p { margin: 0; font-size: 0.86rem; color: var(--text-muted); }
 
 /* ── 비교 테이블 ── */
-.compare-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-top: 24px; }
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.compare-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-top: 24px; min-width: 480px; }
 .compare-table thead { background: var(--navy); color: #fff; }
 .compare-table th { padding: 12px 14px; text-align: left; font-size: 0.8rem; font-weight: 600; }
 .col-after { color: var(--teal); }
@@ -228,9 +249,12 @@ p { margin: 0 0 12px; }
 .hint { font-size: 0.78rem; color: var(--text-muted); margin-top: 8px; }
 
 /* ── 가격 테이블 ── */
-.price-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-top: 24px; }
+.price-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-top: 24px; table-layout: fixed; }
 .price-table th { padding: 10px 12px; text-align: left; font-size: 0.78rem; color: var(--text-muted); font-weight: 700; border-bottom: 2px solid var(--navy); }
-.price-table td { padding: 11px 12px; border-bottom: 1px solid var(--gray-border); vertical-align: top; font-size: 0.88rem; }
+.price-table th:nth-child(1) { width: 36%; }
+.price-table th:nth-child(2) { width: 26%; }
+.price-table th:nth-child(3) { width: 38%; }
+.price-table td { padding: 11px 12px; border-bottom: 1px solid var(--gray-border); vertical-align: top; font-size: 0.88rem; word-break: keep-all; }
 .price-table tr:last-child td { border-bottom: none; }
 .price-highlight td { background: var(--teal-light); }
 .price-badge {
