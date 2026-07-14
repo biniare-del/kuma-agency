@@ -67,13 +67,31 @@ a:hover { text-decoration: underline; }
 
 /* Channels */
 .channels-bar { padding: 40px 0; background: var(--color-bg-soft); border-bottom: 1px solid var(--color-border); }
-.channels-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; text-align: center; }
-.channel-group { display: flex; flex-direction: column; align-items: center; gap: 8px; }
-.channel-number { font-size: 1.9rem; color: var(--color-accent-dark); font-family: var(--font-mono); line-height: 1; }
-.channel-label { font-size: 0.85rem; color: var(--color-text-muted); }
-.channel-badges { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
-.channel-badges .badge { font-size: 0.78rem; font-weight: 700; color: var(--color-accent-dark); background: #fff; border: 1px solid var(--color-border); border-radius: 20px; padding: 4px 12px; }
-.channel-badges.flags { font-size: 1.3rem; gap: 8px; }
+.channels-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; align-items: start; }
+.channel-group { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.channel-label { font-size: 0.78rem; font-weight: 700; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.06em; text-align: center; }
+.channel-sublabel { font-size: 0.75rem; color: var(--color-accent-dark); font-weight: 600; }
+
+/* Portfolio thumbnails strip */
+.channel-thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; width: 100%; }
+.channel-thumbs a { display: block; aspect-ratio: 4/3; overflow: hidden; border-radius: 6px; border: 1px solid var(--color-border); }
+.channel-thumbs img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 0.2s; }
+.channel-thumbs a:hover img { transform: scale(1.05); }
+
+/* AI badges */
+.ai-badges { display: flex; flex-direction: column; gap: 6px; width: 100%; }
+.ai-badge { display: flex; align-items: center; gap: 7px; background: #fff; border: 1px solid var(--color-border); border-radius: 8px; padding: 7px 10px; font-size: 0.82rem; font-weight: 600; color: var(--color-text); }
+.ai-badge svg { flex-shrink: 0; }
+
+/* Portal badges */
+.portal-badges { display: flex; flex-direction: column; gap: 6px; width: 100%; }
+.portal-badge { display: flex; align-items: center; gap: 7px; background: #fff; border: 1px solid var(--color-border); border-radius: 8px; padding: 7px 10px; font-size: 0.82rem; font-weight: 600; color: var(--color-text); }
+.portal-badge svg { flex-shrink: 0; }
+
+/* Flag items */
+.channel-badges.flags { display: flex; flex-direction: column; gap: 6px; width: 100%; }
+.flag-item { display: flex; align-items: center; gap: 8px; background: #fff; border: 1px solid var(--color-border); border-radius: 8px; padding: 7px 10px; font-size: 0.88rem; }
+.flag-item span { font-size: 0.82rem; font-weight: 600; color: var(--color-text); }
 
 .section { padding: 104px 0; }
 
@@ -150,7 +168,7 @@ a:hover { text-decoration: underline; }
   .header-cta { display: none; }
   .nav-toggle { display: flex; }
   h1 { font-size: 2.1rem; }
-  .channels-grid { grid-template-columns: repeat(2, 1fr); }
+  .channels-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .portfolio-grid { grid-template-columns: 1fr; }
   .why-grid { grid-template-columns: 1fr; }
   .journey-grid { grid-template-columns: 1fr; }
