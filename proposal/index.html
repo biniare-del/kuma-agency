@@ -10,6 +10,27 @@
 </head>
 <body>
 
+<header class="prop-header">
+  <div class="prop-header-inner">
+    <a href="../index.html" class="prop-logo"><img src="../images/logo-kit/png/logo-header-white.png" alt="꿈을담은에이전시" height="28"></a>
+    <nav class="prop-desk-nav">
+      <a href="../index.html#portfolio">포트폴리오</a>
+      <a href="../check/index.html">무료 진단</a>
+      <a href="../contact/index.html">상담 문의</a>
+      <a href="../quote/index.html">견적서</a>
+    </nav>
+    <button type="button" class="prop-nav-toggle" id="propNavToggle" aria-expanded="false" aria-label="메뉴">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="prop-mobile-nav" id="propMobileNav">
+    <a href="../index.html#portfolio">포트폴리오</a>
+    <a href="../check/index.html">무료 진단</a>
+    <a href="../contact/index.html">상담 문의</a>
+    <a href="../quote/index.html">견적서</a>
+  </nav>
+</header>
+
 <div class="page">
 
   <!-- 1페이지: 표지 -->
@@ -168,6 +189,7 @@
   <section class="p-section">
     <div class="section-label">실제 적용 효과</div>
     <h2>목업이나 가상이 아닌,<br>실제 운영 데이터를 기반으로 입증된<br>최적화 효과</h2>
+    <div class="table-scroll">
     <table class="compare-table">
       <thead>
         <tr>
@@ -199,6 +221,7 @@
         </tr>
       </tbody>
     </table>
+    </div>
     <p class="hint">실제 의료기관명은 비공개로 하며, 위 결과는 본 에이전시 대표가 동일한 방식으로 직접 구축·운영한 사례입니다.</p>
   </section>
 
@@ -325,5 +348,16 @@
 
 </div>
 
+<script>
+const t = document.getElementById('propNavToggle');
+const m = document.getElementById('propMobileNav');
+if (t && m) {
+  t.addEventListener('click', () => {
+    const open = m.classList.toggle('is-open');
+    t.classList.toggle('is-open', open);
+    t.setAttribute('aria-expanded', open);
+  });
+}
+</script>
 </body>
 </html>
