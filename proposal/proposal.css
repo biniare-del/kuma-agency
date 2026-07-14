@@ -249,10 +249,11 @@ p { margin: 0 0 12px; }
 .hint { font-size: 0.78rem; color: var(--text-muted); margin-top: 8px; }
 
 /* ── 가격 테이블 ── */
-.price-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-top: 24px; }
+.price-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-top: 24px; table-layout: fixed; }
 .price-table th { padding: 10px 12px; text-align: left; font-size: 0.78rem; color: var(--text-muted); font-weight: 700; border-bottom: 2px solid var(--navy); }
 .price-table th:nth-child(1) { width: 40%; }
-.price-table td { padding: 11px 12px; border-bottom: 1px solid var(--gray-border); vertical-align: top; font-size: 0.88rem; word-break: keep-all; }
+.price-table td { padding: 11px 12px; border-bottom: 1px solid var(--gray-border); vertical-align: top; font-size: 0.88rem; word-break: keep-all; overflow-wrap: break-word; }
+.price-table td:nth-child(2) { font-size: 0.82rem; color: var(--text-muted); }
 .price-amount { font-weight: 700; color: var(--navy); font-size: 0.95rem; white-space: nowrap; }
 .price-orig { font-size: 0.78rem; color: #999; }
 .price-unit { font-size: 0.78rem; color: var(--text-muted); }
