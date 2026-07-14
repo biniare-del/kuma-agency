@@ -180,4 +180,6 @@ a:hover { text-decoration: underline; }
 body { word-break: keep-all; overflow-wrap: break-word; }
 @media (max-width: 640px) {
   .lg-break { display: none; }
+  .sm-break { display: block; }
 }
+.sm-break { display: none; }
