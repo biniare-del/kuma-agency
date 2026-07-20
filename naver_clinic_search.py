@@ -6,26 +6,22 @@ import re
 CLIENT_ID = "r_1K9ZtkLbWZ3KLADEae"
 CLIENT_SECRET = "U_rB637zWG"
 
-DISTRICTS = [
-    # 서울 (강남구만 제외)
-    "노원구", "도봉구", "중랑구", "강동구", "구로구", "금천구",
-    "관악구", "동대문구", "성북구", "강북구", "은평구", "양천구",
-    "영등포구", "동작구", "광진구", "서초구", "마포구", "용산구",
-    "송파구", "강서구", "종로구", "중구", "성동구",
-    # 경기도
-    "의정부시", "광명시", "시흥시", "평택시", "안산시", "부천시",
-    "고양시", "수원시", "성남시", "용인시", "화성시", "남양주시",
-    "파주시", "김포시", "안양시", "구리시", "하남시", "오산시",
-    "양주시", "이천시", "광주시",
+LOCATIONS = [
+    # 구 단위
+    "강남구", "서초구", "마포구", "용산구", "양천구",
+    # 동 단위 — 강남/부촌 권역
+    "압구정", "청담", "대치", "역삼", "도곡", "개포", "논현", "신사", "학동",
+    "방배", "반포", "잠원",
+    "한남", "이태원",
+    "홍대", "합정", "연남", "상수",
+    "목동",
 ]
 
 SPECIALTIES = [
-    "정형외과", "이비인후과", "산부인과", "안과", "한의원",
-    "재활의학과", "가정의학과", "외과", "신경과", "비뇨의학과",
-    "피부과", "성형외과",
+    "성형외과", "피부과", "안과", "치과",
 ]
 
-QUERIES = [f"{d} {s}" for d in DISTRICTS for s in SPECIALTIES]
+QUERIES = [f"{loc} {sp}" for loc in LOCATIONS for sp in SPECIALTIES]
 
 def clean(text):
     return re.sub(r"<[^>]+>", "", text)
@@ -77,13 +73,14 @@ df["_sort"] = df["등급"].map(order).fillna(3)
 df = df.sort_values("_sort").drop(columns=["_sort"])
 
 output = "영업대상_네이버.xlsx"
-df.to_excel(output, index=False)
+with pd.ExcelWriter(output, engine="openpyxl") as writer:
+    df.to_excel(writer, sheet_name="전체", index=False)
+    for sp in SPECIALTIES:
+        sheet = df[df["카테고리"].str.contains(sp.replace("과", "").replace("과", ""), na=False) |
+                   df["검색어"].str.contains(sp, na=False)]
+        sheet.to_excel(writer, sheet_name=sp, index=False)
 
-a1 = len(df[df["등급"] == "A등급 (홈페이지 없음)"])
-a2 = len(df[df["등급"] == "A등급 (블로그만 있음)"])
-b  = len(df[df["등급"] == "확인필요"])
-print(f"\n완료! 총 {len(df)}개 병원")
-print(f"  A등급 (홈페이지 없음):   {a1}개  ← 버전A 이메일 즉시 발송")
-print(f"  A등급 (블로그만 있음):   {a2}개  ← 버전A 이메일 발송")
-print(f"  확인필요 (홈페이지 있음): {b}개  ← URL 점수 확인 필요")
+b = len(df[df["등급"] == "확인필요"])
+print(f"\n완료! 총 {len(df)}개 병원 (중복 제거 후)")
+print(f"  확인필요 (홈페이지 있음): {b}개  ← URL 점수 확인 → B등급 후보")
 print(f"  저장: {output}")
