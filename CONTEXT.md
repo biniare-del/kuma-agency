@@ -116,7 +116,7 @@
 - 다국어 `/en/ /ja/ /zh/` 랜딩 + 브라우저 언어 자동 감지 리다이렉트 + 헤더 언어 스위처
 - 어드민(`/admin/`): GitHub API로 글 등록/삭제만 가능(수정 미구현)
 - SEO/AI: sitemap.xml, robots.txt, **llms.txt**, JSON-LD(MedicalWebPage/BreadcrumbList/MedicalBusiness), canonical, og:*, GSC/네이버서치어드바이저/Bing 등록, 외부 디렉토리(WhatClinic 등) 등록
-- 제약: 이미지 핫링크 의존(자체 호스팅 아님), DNS는 가비아(Gabia) 관리 (accounts.gabia.com → dream-ag.co.kr), Resend 도메인 인증 미완
+- 제약: 이미지 핫링크 의존(자체 호스팅 아님), DNS는 가비아(Gabia) 관리 (accounts.gabia.com → dream-ag.co.kr, 구글 계정으로 로그인), Resend 도메인 인증 미완
 
 ### 꿈을담은에이전시 포트폴리오 1번에 반영할 사항 (확정)
 1. **콘텐츠**: 로코코의 869개 동적 페이지 구조는 그대로 따라할 필요 없음(콘텐츠 자체가 차별점이었음) — 케이스/후기 통합페이지 1개만 추가
