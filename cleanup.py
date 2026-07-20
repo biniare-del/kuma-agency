@@ -18,6 +18,12 @@ def remap(g):
 
 df["등급"] = df["등급"].apply(remap)
 
+# A등급은 경쟁 있는 과목만 타깃 (동네병원 제외)
+A_TARGET = ["피부과", "성형외과", "산부인과", "안과"]
+a_mask = df["등급"] == "A등급"
+a_target_mask = df["카테고리"].str.contains("|".join(A_TARGET), na=False)
+df = df[~a_mask | a_target_mask]
+
 # 발송 템플릿 컬럼
 df["발송템플릿"] = df["등급"].apply(lambda x: "버전A" if x == "A등급" else "버전C")
 
