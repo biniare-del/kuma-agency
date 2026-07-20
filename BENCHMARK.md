@@ -34,6 +34,17 @@
 - **문제점**: 유명 의사(1세대 피부과 유튜버, 스타 의사)인데 사이트는 구형 구조. AI 검색 최적화 전혀 안 됨.
 - **콜드메일 활용**: 버전 C 이메일 타깃 전형 — "유명한 병원인데 검색 최적화는 안 돼있다" 설득 포인트
 
+### dosan.miliclinic.co.kr — 밀리클리닉 도산 (강남구 피부과/리프팅)
+- **수준**: 최상급 — 영업 부적합
+- **기술 스택**: WordPress 7.0.2 + Elementor Pro 3.14.1 + Ametrine 테마 + Qi Addons Premium + Slider Revolution
+- **SEO**: All in One SEO (AIOSEO) 4.4.5.1, JSON-LD ✅ (BreadcrumbList + Organization + WebPage + WebSite), 네이버 서치어드바이저 ✅, 구글 사이트 인증 ✅
+- **GA**: MonsterInsights 설치되어 있으나 GA4 미활성 ❌ (설정 안 됨)
+- **SNS**: 인스타그램 라이브 피드 ✅ (18 posts), 카카오톡 문의 ✅, 네이버예약 ✅, 유튜브 ✅
+- **다국어**: miliclinic.com (별도 도메인) EN/JA/ZH ✅
+- **브랜드 포지셔닝**: "BEYOND THE REMEDY", "단 1mm의 변화" — 하이엔드 리프팅 전문
+- **벤치마킹 포인트**: AIOSEO 기반 JSON-LD 구조, 인스타그램 피드 통합, 다국어 별도 도메인 전략, 카카오+네이버예약 복합 CTA
+- **콜드메일 활용**: "강남 주요 피부과가 갖춘 구조" 레퍼런스로 언급 가능
+
 ### btq.co.kr — 비티큐의원 (선릉역 피부과)
 - **수준**: 최상급 — 영업 부적합
 - **기술 스택**: WordPress + Elementor Pro + Rank Math Pro + TranslatePress
