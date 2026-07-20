@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- 메인 -->
   <url>
     <loc>https://dream-ag.co.kr/</loc>
     <changefreq>weekly</changefreq>
@@ -9,5 +10,119 @@
     <loc>https://dream-ag.co.kr/check/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dream-ag.co.kr/proposal/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- 포트폴리오 01 성형외과 -->
+  <url>
+    <loc>https://dream-ag.co.kr/portfolio/01-minimal-medical/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://dream-ag.co.kr/portfolio/01-minimal-medical/en/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dream-ag.co.kr/portfolio/01-minimal-medical/cases/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 포트폴리오 02 피부과 -->
+  <url>
+    <loc>https://dream-ag.co.kr/portfolio/02-premium-visual/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://dream-ag.co.kr/portfolio/02-premium-visual/en/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dream-ag.co.kr/portfolio/02-premium-visual/cases/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 포트폴리오 03 치과 -->
+  <url>
+    <loc>https://dream-ag.co.kr/portfolio/03-dental-clinic/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://dream-ag.co.kr/portfolio/03-dental-clinic/en/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dream-ag.co.kr/portfolio/03-dental-clinic/cases/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 포트폴리오 04 정형외과 -->
+  <url>
+    <loc>https://dream-ag.co.kr/portfolio/04-orthopedic/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://dream-ag.co.kr/portfolio/04-orthopedic/en/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dream-ag.co.kr/portfolio/04-orthopedic/cases/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 포트폴리오 05 한의원 -->
+  <url>
+    <loc>https://dream-ag.co.kr/portfolio/05-korean-medicine/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://dream-ag.co.kr/portfolio/05-korean-medicine/en/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dream-ag.co.kr/portfolio/05-korean-medicine/cases/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 포트폴리오 06 신경외과 -->
+  <url>
+    <loc>https://dream-ag.co.kr/portfolio/06-neurosurgery/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://dream-ag.co.kr/portfolio/06-neurosurgery/en/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dream-ag.co.kr/portfolio/06-neurosurgery/cases/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 기타 -->
+  <url>
+    <loc>https://dream-ag.co.kr/privacy/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>
