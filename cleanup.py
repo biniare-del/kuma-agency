@@ -2,11 +2,9 @@ import pandas as pd
 
 df = pd.read_excel(r"C:\Users\binia\Desktop\영업대상_네이버.xlsx")
 
-# 약국, 종합병원 제거
-df = df[~df["카테고리"].str.contains("약국|종합병원", na=False)]
-
-# 전남 광주 제거
-df = df[~df["주소"].str.contains("전남|전라|광주광역시|광주통합", na=False)]
+# 타겟 의원급 카테고리만 남기기
+TARGET_CATEGORIES = ["병원,의원>성형외과", "병원,의원>피부과", "병원,의원>안과", "병원,의원>치과"]
+df = df[df["카테고리"].isin(TARGET_CATEGORIES)]
 
 # B등급만 타깃 (홈페이지 있는데 허접한 곳)
 df = df[df["등급"] == "확인필요"]
