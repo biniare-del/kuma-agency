@@ -1,10 +1,11 @@
+import os
 import requests
 import pandas as pd
 import time
 import re
 
-CLIENT_ID = "r_1K9ZtkLbWZ3KLADEae"
-CLIENT_SECRET = "U_rB637zWG"
+CLIENT_ID = os.environ["NAVER_CLIENT_ID"]
+CLIENT_SECRET = os.environ["NAVER_CLIENT_SECRET"]
 
 LOCATIONS = [
     # 구 단위
