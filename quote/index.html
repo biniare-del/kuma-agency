@@ -64,21 +64,22 @@
         <option value="신경외과">신경외과</option>
         <option value="기타 병원/의원">기타 병원/의원</option>
         <option value="법률/세무 등 전문직">법률/세무 등 전문직</option>
+        <option value="소상공인 (원페이지형)">소상공인 (원페이지형)</option>
       </select>
     </label>
 
     <fieldset class="field">
       <legend>기본 구성 (포함)</legend>
-      <p class="hint">검색·AI검색 최적화 구조화 데이터, 국문 랜딩페이지, 모바일 반응형, robots.txt/sitemap.xml/llms.txt 기본 포함 — 정가 4,400,000원</p>
+      <p class="hint" id="baseConfigHint">검색·AI검색 최적화 구조화 데이터, 국문 랜딩페이지, 모바일 반응형, robots.txt/sitemap.xml/llms.txt 기본 포함 — 정가 4,400,000원</p>
     </fieldset>
 
     <fieldset class="field">
       <legend>오픈 기념 특별 할인</legend>
-      <label class="checkbox"><input type="checkbox" id="discountToggle" checked> 오픈 기념 특별 할인 50% 적용 <span class="price">−2,200,000원</span></label>
-      <p class="hint">한정 기간 특별가입니다. 정식가는 3,500,000원~4,400,000원 구간입니다.</p>
+      <label class="checkbox"><input type="checkbox" id="discountToggle" checked> 오픈 기념 특별 할인 50% 적용 <span class="price" id="discountAmountLabel">−2,200,000원</span></label>
+      <p class="hint" id="discountHint">한정 기간 특별가입니다. 정식가는 3,500,000원~4,400,000원 구간입니다.</p>
     </fieldset>
 
-    <fieldset class="field">
+    <fieldset class="field" id="pageCountFieldset">
       <legend>시술 상세페이지</legend>
       <p class="hint">홈페이지에 시술별 개별 페이지가 필요한 경우 추가합니다. 페이지가 많을수록 검색 노출 키워드도 늘어납니다.</p>
       <div class="page-count-row">
