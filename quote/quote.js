@@ -23,20 +23,34 @@ function getPageHint(count) {
   return `${count}개 × 30,000원 = ${won(count * 30000)}`;
 }
 
+const SOLO_TIER_SPECIALTY = "소상공인 (원페이지형)";
+const SOLO_LIST_PRICE = 2000000;
+const STANDARD_LIST_PRICE = 4400000;
+
 function render() {
   const clientName = document.getElementById("clientName").value.trim() || "-";
   const contactName = document.getElementById("contactName").value.trim();
   const specialty = document.getElementById("specialty").value;
   const note = document.getElementById("note").value.trim();
-  const pageCount = parseInt(document.getElementById("pageCount").value) || 0;
+  const isSolo = specialty === SOLO_TIER_SPECIALTY;
+  const pageCount = isSolo ? 0 : (parseInt(document.getElementById("pageCount").value) || 0);
 
+  document.getElementById("pageCountFieldset").style.display = isSolo ? "none" : "";
   document.getElementById("pageCountHint").textContent = getPageHint(pageCount);
 
   const checked = Array.from(document.querySelectorAll(".checkbox input[type=checkbox][data-price]:checked"));
   const optionTotal = checked.reduce((sum, el) => sum + Number(el.dataset.price), 0);
   const pagePrice = getPagePrice(pageCount);
 
-  const BASE_LIST_PRICE = 4400000;
+  const BASE_LIST_PRICE = isSolo ? SOLO_LIST_PRICE : STANDARD_LIST_PRICE;
+  document.getElementById("baseConfigHint").textContent = isSolo
+    ? `검색·AI검색 최적화 구조화 데이터, 원페이지 랜딩, 모바일 반응형, robots.txt/sitemap.xml/llms.txt 기본 포함 — 정가 ${won(SOLO_LIST_PRICE)}`
+    : `검색·AI검색 최적화 구조화 데이터, 국문 랜딩페이지, 모바일 반응형, robots.txt/sitemap.xml/llms.txt 기본 포함 — 정가 ${won(STANDARD_LIST_PRICE)}`;
+  document.getElementById("discountAmountLabel").textContent = `−${won(BASE_LIST_PRICE / 2)}`;
+  document.getElementById("discountHint").textContent = isSolo
+    ? `한정 기간 특별가입니다. 정식가는 ${won(SOLO_LIST_PRICE * 0.8)}~${won(SOLO_LIST_PRICE)} 구간입니다.`
+    : "한정 기간 특별가입니다. 정식가는 3,500,000원~4,400,000원 구간입니다.";
+
   const discountApplied = document.getElementById("discountToggle").checked;
   const basePrice = discountApplied ? BASE_LIST_PRICE / 2 : BASE_LIST_PRICE;
   const buildTotal = basePrice + optionTotal + pagePrice;
@@ -49,7 +63,8 @@ function render() {
   document.getElementById("outSpecialty").textContent = specialty;
 
   const rows = document.getElementById("quoteRows");
-  rows.innerHTML = `<tr><td>기본 구축</td><td>검색·AI검색 최적화 세컨 홈페이지</td><td>${won(BASE_LIST_PRICE)}</td></tr>`;
+  const baseLabel = isSolo ? "기본 구축 (소상공인 원페이지형)" : "기본 구축";
+  rows.innerHTML = `<tr><td>${baseLabel}</td><td>검색·AI검색 최적화 세컨 홈페이지</td><td>${won(BASE_LIST_PRICE)}</td></tr>`;
 
   if (discountApplied) {
     rows.innerHTML += `<tr class="discount-row"><td>오픈 기념 특별 할인</td><td>50% 할인</td><td>−${won(BASE_LIST_PRICE / 2)}</td></tr>`;
