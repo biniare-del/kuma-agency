@@ -45,7 +45,7 @@ function render() {
   const BASE_LIST_PRICE = isSolo ? SOLO_LIST_PRICE : STANDARD_LIST_PRICE;
   document.getElementById("baseConfigHint").textContent = isSolo
     ? `검색·AI검색 최적화 구조화 데이터, 원페이지 랜딩, 모바일 반응형, robots.txt/sitemap.xml/llms.txt 기본 포함 — 정가 ${won(SOLO_LIST_PRICE)}`
-    : `검색·AI검색 최적화 구조화 데이터, 국문 랜딩페이지, 모바일 반응형, robots.txt/sitemap.xml/llms.txt 기본 포함 — 정가 ${won(STANDARD_LIST_PRICE)}`;
+    : `검색·AI검색 최적화 구조화 데이터, 국문 랜딩페이지, 모바일 반응형, 케이스/후기 페이지, 관리자 페이지, robots.txt/sitemap.xml/llms.txt 기본 포함 — 정가 ${won(STANDARD_LIST_PRICE)}`;
   document.getElementById("discountAmountLabel").textContent = `−${won(BASE_LIST_PRICE / 2)}`;
   document.getElementById("discountHint").textContent = isSolo
     ? `한정 기간 특별가입니다. 정식가는 ${won(SOLO_LIST_PRICE * 0.8)}~${won(SOLO_LIST_PRICE)} 구간입니다.`
