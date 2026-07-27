@@ -67,6 +67,11 @@ body { margin: 0; font-family: var(--font-base); color: var(--color-text); backg
 .explain { background: var(--color-bg-soft); border-radius: 12px; padding: 28px 26px; }
 .explain h2 { font-size: 1.25rem; margin: 0 0 12px; }
 .explain p { color: var(--color-text-muted); }
+.explain-faq { background: var(--color-surface, #fff); border-left: 3px solid var(--color-accent, #0bbfad); border-radius: 8px; padding: 20px 22px; margin: 20px 0; }
+.explain-faq h3 { font-size: 1.05rem; margin: 0 0 12px; line-height: 1.5; }
+.explain-faq p { margin: 0 0 10px; font-size: 0.95rem; line-height: 1.7; }
+.explain-faq p:last-child { margin-bottom: 0; }
+.explain-faq-try { margin-top: 14px !important; padding-top: 14px; border-top: 1px solid var(--color-border, #e4e7e2); }
 .explain-actions { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
 .btn-cta { display: inline-block; padding: 12px 22px; border-radius: 6px; font-weight: 700; background: var(--color-accent); color: #fff; text-decoration: none; }
 .btn-cta:hover { background: var(--color-accent-dark); }
