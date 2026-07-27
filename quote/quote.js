@@ -25,7 +25,7 @@ function getPageHint(count) {
 
 const SOLO_TIER_SPECIALTY = "소상공인 (원페이지형)";
 const SOLO_LIST_PRICE = 2000000;
-const STANDARD_LIST_PRICE = 4400000;
+const STANDARD_LIST_PRICE = 5900000;
 
 function render() {
   const clientName = document.getElementById("clientName").value.trim() || "-";
@@ -49,7 +49,7 @@ function render() {
   document.getElementById("discountAmountLabel").textContent = `−${won(BASE_LIST_PRICE / 2)}`;
   document.getElementById("discountHint").textContent = isSolo
     ? `한정 기간 특별가입니다. 정식가는 ${won(SOLO_LIST_PRICE * 0.8)}~${won(SOLO_LIST_PRICE)} 구간입니다.`
-    : "한정 기간 특별가입니다. 정식가는 3,500,000원~4,400,000원 구간입니다.";
+    : "선착순 3~5곳 한정 특가입니다. 마감 후에는 정가로 진행됩니다.";
 
   const discountApplied = document.getElementById("discountToggle").checked;
   const basePrice = discountApplied ? BASE_LIST_PRICE / 2 : BASE_LIST_PRICE;
@@ -67,7 +67,7 @@ function render() {
   rows.innerHTML = `<tr><td>${baseLabel}</td><td>검색·AI검색 최적화 세컨 홈페이지</td><td>${won(BASE_LIST_PRICE)}</td></tr>`;
 
   if (discountApplied) {
-    rows.innerHTML += `<tr class="discount-row"><td>오픈 기념 특별 할인</td><td>50% 할인</td><td>−${won(BASE_LIST_PRICE / 2)}</td></tr>`;
+    rows.innerHTML += `<tr class="discount-row"><td>레퍼런스 구축 특가</td><td>선착순 3~5곳 · 50% 할인</td><td>−${won(BASE_LIST_PRICE / 2)}</td></tr>`;
   }
 
   if (pageCount > 0) {
