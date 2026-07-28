@@ -11,11 +11,18 @@ function colorFor(score) {
   return "var(--color-bad)";
 }
 
+// 프록시가 응답을 안 하면 무한 대기하는 문제 방지 — 개별 요청에 타임아웃 부여
+function timedFetch(u, ms = 9000) {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), ms);
+  return fetch(u, { signal: ctrl.signal }).finally(() => clearTimeout(timer));
+}
+
 async function fetchText(url) {
   let lastErr;
   for (const buildProxyUrl of PROXIES) {
     try {
-      const res = await fetch(buildProxyUrl(url));
+      const res = await timedFetch(buildProxyUrl(url));
       if (!res.ok) throw new Error("HTTP " + res.status);
       const text = await res.text();
       if (text && text.length > 0) return text;
@@ -27,14 +34,18 @@ async function fetchText(url) {
   throw lastErr || new Error("fetch failed: " + url);
 }
 
-async function fetchOk(url) {
+// robots.txt / sitemap.xml 존재 여부 확인.
+// 반환: "ok"(있음) | "missing"(404로 명확히 없음) | "unknown"(프록시 실패·차단 등 확인 불가)
+// "확인 불가"를 "없음"으로 단정하지 않는 것이 핵심 — 실제로 있는데 없다고 표시하면 신뢰를 잃음.
+async function fetchStatus(url) {
   for (const buildProxyUrl of PROXIES) {
     try {
-      const res = await fetch(buildProxyUrl(url));
-      if (res.ok) return true;
+      const res = await timedFetch(buildProxyUrl(url));
+      if (res.ok) return "ok";
+      if (res.status === 404) return "missing";
     } catch {}
   }
-  return false;
+  return "unknown";
 }
 
 function scoreMeta(doc) {
@@ -94,15 +105,28 @@ function scoreImages(doc) {
 }
 
 async function scoreCrawlSetup(pageUrl) {
-  const origin = new URL(pageUrl).origin;
+  let origin;
+  try { origin = new URL(pageUrl).origin; }
+  catch { return { score: 50, notes: ["주소 형식을 확인하지 못해 크롤링 설정은 평가에서 제외"] }; }
+
   const [robots, sitemap] = await Promise.all([
-    fetchOk(origin + "/robots.txt"),
-    fetchOk(origin + "/sitemap.xml"),
+    fetchStatus(origin + "/robots.txt"),
+    fetchStatus(origin + "/sitemap.xml"),
   ]);
-  let score = 0;
+
   const notes = [];
-  if (robots) score += 50; else notes.push("robots.txt 없음");
-  if (sitemap) score += 50; else notes.push("sitemap.xml 없음 — 검색엔진이 전체 페이지를 못 찾을 수 있음");
+  // 확인 불가(unknown)는 감점하지 않고 별도 표시 — "있는데 없다고 단정"하는 오류 방지
+  const sub = (status, okNote, missingNote) => {
+    if (status === "ok") return 50;
+    if (status === "missing") { notes.push(missingNote); return 0; }
+    notes.push(okNote + " 확인 불가 (사이트가 외부 접근을 차단했을 수 있음 — 감점 아님)");
+    return 50;
+  };
+
+  const score =
+    sub(robots, "robots.txt", "robots.txt 없음") +
+    sub(sitemap, "sitemap.xml", "sitemap.xml 없음 — 검색엔진이 전체 페이지를 못 찾을 수 있음");
+
   return { score, notes };
 }
 
@@ -118,9 +142,39 @@ function renderBar(container, label, result) {
   container.appendChild(row);
 }
 
+// meta refresh(<meta http-equiv="refresh" content="0; URL=...">) 리다이렉트 대상 URL 추출.
+// 카페24 등 옛 병원 사이트가 루트를 빈 스플래시로 두고 내부 페이지로 튕기는 패턴 대응.
+function findMetaRefreshTarget(doc, baseUrl) {
+  const metas = doc.querySelectorAll('meta[http-equiv]');
+  for (const m of metas) {
+    if ((m.getAttribute("http-equiv") || "").toLowerCase() !== "refresh") continue;
+    const content = m.getAttribute("content") || "";
+    const match = content.match(/url\s*=\s*['"]?([^'";]+)/i);
+    if (match) {
+      try { return new URL(match[1].trim(), baseUrl).href; } catch { return null; }
+    }
+  }
+  return null;
+}
+
 async function runCheck(url) {
-  const html = await fetchText(url);
-  const doc = new DOMParser().parseFromString(html, "text/html");
+  let html = await fetchText(url);
+  let doc = new DOMParser().parseFromString(html, "text/html");
+
+  // 루트가 meta refresh 스플래시면 실제 콘텐츠 페이지로 한 번 따라가서 재채점
+  // (최대 2회 추적하여 무한 루프 방지)
+  for (let hops = 0; hops < 2; hops++) {
+    const target = findMetaRefreshTarget(doc, url);
+    if (!target || target === url) break;
+    try {
+      const nextHtml = await fetchText(target);
+      html = nextHtml;
+      doc = new DOMParser().parseFromString(html, "text/html");
+      url = target;
+    } catch {
+      break;
+    }
+  }
 
   const categories = [
     { label: "메타데이터 (제목/설명)", result: scoreMeta(doc) },
