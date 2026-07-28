@@ -142,6 +142,21 @@ function renderBar(container, label, result) {
   container.appendChild(row);
 }
 
+// JS로 화면을 그리는 사이트(SPA) 감지.
+// 우리 도구는 HTML 원본만 읽고 JS를 실행하지 않으므로, 이런 사이트는 실제 내용이 있어도
+// 낮게 나온다. 이 경우 거짓 저점을 주는 대신 "수동 확인 필요"로 정직하게 표시한다.
+function looksJsRendered(doc) {
+  const bodyText = (doc.body ? doc.body.textContent : "").replace(/\s+/g, " ").trim();
+  if (bodyText.length >= 300) return false; // 실제 텍스트가 충분하면 정상 페이지
+
+  // 본문이 거의 비었는데 아래 신호가 있으면 JS 렌더링 앱 껍데기로 판단
+  const spaRoot = doc.querySelector(
+    '#root, #app, #__next, #__nuxt, [data-reactroot], [ng-app], [data-server-rendered]'
+  );
+  const scriptCount = doc.querySelectorAll("script[src]").length;
+  return !!spaRoot || scriptCount >= 3;
+}
+
 // meta refresh(<meta http-equiv="refresh" content="0; URL=...">) 리다이렉트 대상 URL 추출.
 // 카페24 등 옛 병원 사이트가 루트를 빈 스플래시로 두고 내부 페이지로 튕기는 패턴 대응.
 function findMetaRefreshTarget(doc, baseUrl) {
@@ -186,16 +201,28 @@ async function runCheck(url) {
   ];
 
   const total = Math.round(categories.reduce((sum, c) => sum + c.result.score, 0) / categories.length);
+  const jsRendered = looksJsRendered(doc);
 
   const bars = document.getElementById("scoreBars");
   bars.innerHTML = "";
   categories.forEach((c) => renderBar(bars, c.label, c.result));
 
   const circle = document.getElementById("scoreCircle");
+  const msgEl = document.getElementById("scoreMessage");
+
+  if (jsRendered) {
+    // 자동 진단이 부정확할 수 있는 사이트 — 거짓 점수 대신 수동 확인 안내
+    circle.style.borderColor = "var(--color-mid)";
+    document.getElementById("scoreTotal").textContent = "?";
+    msgEl.innerHTML =
+      "⚠️ 이 홈페이지는 접속 후 자바스크립트로 화면을 그리는 방식이라, 자동 진단 도구가 실제 내용을 정확히 읽지 못합니다. " +
+      "아래 점수는 <strong>참고용</strong>이며 실제보다 낮게 나올 수 있으니, 정확한 진단은 직접 문의해 주시면 수동으로 확인해 드립니다.";
+    return;
+  }
+
   circle.style.borderColor = colorFor(total);
   document.getElementById("scoreTotal").textContent = total;
 
-  const msgEl = document.getElementById("scoreMessage");
   if (total >= 70) {
     msgEl.textContent = "검색·AI검색 노출 기본기는 갖춰져 있습니다. 다만 부분적으로 보완하면 더 많은 노출 기회를 잡을 수 있습니다.";
   } else if (total >= 40) {
