@@ -73,6 +73,18 @@ body { margin: 0; font-family: var(--font-base); color: var(--color-text); backg
 .explain-faq p:last-child { margin-bottom: 0; }
 .explain-faq-try { margin-top: 14px !important; padding-top: 14px; border-top: 1px solid var(--color-border, #e4e7e2); }
 .explain-actions { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+
+/* 내부(영업용) 상세 모드 — ?detail=1 */
+.detail-pro { color: var(--color-accent, #3a5ddb); font-family: Consolas, monospace; font-size: 0.85rem; margin-top: 4px; }
+.pro-banner { background: #17203a; color: #fff; text-align: center; padding: 8px 12px; font-size: 0.9rem; font-weight: 600; }
+.pro-card { margin-top: 22px; border: 2px dashed var(--color-accent, #3a5ddb); border-radius: 12px; padding: 20px 22px; background: rgba(58,93,219,0.05); }
+.pro-card-head { font-size: 0.82rem; color: var(--color-accent-dark, #2944a8); margin-bottom: 10px; }
+.pro-card-head code { background: rgba(58,93,219,0.12); padding: 1px 5px; border-radius: 3px; }
+.pro-card-meta { margin: 0 0 14px; font-size: 0.95rem; }
+.pro-card-title { font-weight: 700; margin: 0 0 8px; }
+.pro-card-list { margin: 0 0 12px; padding-left: 20px; }
+.pro-card-list li { margin-bottom: 7px; line-height: 1.6; }
+.pro-card-tip { font-size: 0.88rem; color: var(--color-text-muted, #5b6760); margin: 0; }
 .btn-cta { display: inline-block; padding: 12px 22px; border-radius: 6px; font-weight: 700; background: var(--color-accent); color: #fff; text-decoration: none; }
 .btn-cta:hover { background: var(--color-accent-dark); }
 .btn-cta-ghost { background: transparent; border: 1px solid var(--color-accent); color: var(--color-accent-dark); }

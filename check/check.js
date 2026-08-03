@@ -5,6 +5,10 @@ const PROXIES = [
   (u) => "https://api.codetabs.com/v1/proxy?quest=" + encodeURIComponent(u),
 ];
 
+// 내부(영업용) 상세 모드: /check/?detail=1 로 접속하면 항목별 실측 수치 + 영업 공략 카드가 추가로 표시됨.
+// 공개 링크(파라미터 없음)에는 노출되지 않음 — 원장에게 보여주는 화면과 분리.
+const DETAIL = new URLSearchParams(location.search).get("detail") === "1";
+
 function colorFor(score) {
   if (score >= 70) return "var(--color-good)";
   if (score >= 40) return "var(--color-mid)";
@@ -52,26 +56,36 @@ function scoreMeta(doc) {
   let score = 0;
   const notes = [];
   const title = doc.querySelector("title");
-  if (title && title.textContent.trim().length >= 10) { score += 35; }
+  const titleLen = title ? title.textContent.trim().length : 0;
+  if (titleLen >= 10) { score += 35; }
   else notes.push("title 태그 미흡");
   const desc = doc.querySelector('meta[name="description"]');
-  if (desc && desc.getAttribute("content") && desc.getAttribute("content").trim().length >= 20) { score += 35; }
+  const descLen = desc && desc.getAttribute("content") ? desc.getAttribute("content").trim().length : 0;
+  if (descLen >= 20) { score += 35; }
   else notes.push("meta description 없음/짧음");
   const og = doc.querySelector('meta[property^="og:"]');
   if (og) { score += 30; }
   else notes.push("Open Graph 태그 없음");
-  return { score, notes };
+  const detail = `title ${titleLen}자 · description ${descLen ? descLen + "자" : "없음"} · OG ${og ? "있음" : "없음"}`;
+  return { score, notes, detail };
 }
 
 function scoreStructuredData(doc) {
   const scripts = doc.querySelectorAll('script[type="application/ld+json"]');
-  if (scripts.length === 0) return { score: 0, notes: ["구조화 데이터(JSON-LD) 없음 — AI검색이 병원 정보를 이해하기 어려움"] };
+  if (scripts.length === 0) return { score: 0, notes: ["구조화 데이터(JSON-LD) 없음 — AI검색이 병원 정보를 이해하기 어려움"], detail: "JSON-LD 0개" };
   let valid = 0;
+  const types = [];
   scripts.forEach((s) => {
-    try { JSON.parse(s.textContent); valid++; } catch {}
+    try {
+      const data = JSON.parse(s.textContent);
+      valid++;
+      const t = Array.isArray(data) ? data.map((d) => d["@type"]).join(",") : data["@type"];
+      if (t) types.push(t);
+    } catch {}
   });
-  if (valid === 0) return { score: 20, notes: ["JSON-LD가 있지만 형식 오류로 읽히지 않을 수 있음"] };
-  return { score: 100, notes: [] };
+  const detail = `JSON-LD ${scripts.length}개 (유효 ${valid})${types.length ? " · 타입: " + types.join(", ") : ""}`;
+  if (valid === 0) return { score: 20, notes: ["JSON-LD가 있지만 형식 오류로 읽히지 않을 수 있음"], detail };
+  return { score: 100, notes: [], detail };
 }
 
 function hasResponsiveViewport(doc) {
@@ -96,7 +110,7 @@ async function mobileHasViewport(u) {
 }
 
 async function scoreMobile(doc, pageUrl) {
-  if (hasResponsiveViewport(doc)) return { score: 100, notes: [] };
+  if (hasResponsiveViewport(doc)) return { score: 100, notes: [], detail: "viewport(device-width) 태그 있음" };
 
   // 데스크톱 HTML엔 viewport가 없지만, 기기별로 다른 페이지를 주는 사이트(allfit.kr류)일 수 있음.
   // 모바일 UA로 재요청. https/http 둘 다 시도 (HTTPS 미지원 사이트는 http로만 열림).
@@ -106,11 +120,11 @@ async function scoreMobile(doc, pageUrl) {
 
   for (const u of variants) {
     if (await mobileHasViewport(u)) {
-      return { score: 100, notes: ["기기별 모바일 전용 페이지 제공 — 모바일 대응 확인됨"] };
+      return { score: 100, notes: ["기기별 모바일 전용 페이지 제공 — 모바일 대응 확인됨"], detail: "데스크톱엔 viewport 없음, 모바일 UA 접속 시 별도 모바일 페이지 제공" };
     }
   }
 
-  return { score: 0, notes: ["모바일 반응형 viewport 설정 없음"] };
+  return { score: 0, notes: ["모바일 반응형 viewport 설정 없음"], detail: "데스크톱·모바일 모두 viewport(device-width) 없음" };
 }
 
 function scoreI18n(doc) {
@@ -132,17 +146,19 @@ function scoreI18n(doc) {
   }
   if (langAttr) score += 30;
   else notes.push("html lang 속성 없음");
-  return { score: Math.min(score, 100), notes };
+  const detail = `hreflang ${hreflang.length}개 · html lang ${langAttr || "없음"} · 외국어 페이지 링크 ${foreignLink ? "있음" : "없음"}`;
+  return { score: Math.min(score, 100), notes, detail };
 }
 
 function scoreImages(doc) {
   const imgs = Array.from(doc.querySelectorAll("img"));
-  if (imgs.length === 0) return { score: 50, notes: ["이미지가 거의 없어 평가 어려움"] };
+  if (imgs.length === 0) return { score: 50, notes: ["이미지가 거의 없어 평가 어려움"], detail: "<img> 태그 0개 (CSS 배경이미지 위주일 수 있음)" };
   const withAlt = imgs.filter((img) => (img.getAttribute("alt") || "").trim().length > 0).length;
   const ratio = withAlt / imgs.length;
   const score = Math.round(ratio * 100);
   const notes = score < 70 ? [`이미지 ${imgs.length}개 중 alt텍스트 있는 이미지 ${withAlt}개 — 검색엔진이 이미지 내용을 읽지 못함`] : [];
-  return { score, notes };
+  const detail = `이미지 ${imgs.length}개 중 alt ${withAlt}개 (${score}%)`;
+  return { score, notes, detail };
 }
 
 async function scoreCrawlSetup(pageUrl) {
@@ -168,7 +184,9 @@ async function scoreCrawlSetup(pageUrl) {
     sub(robots, "robots.txt", "robots.txt 없음") +
     sub(sitemap, "sitemap.xml", "sitemap.xml 없음 — 검색엔진이 전체 페이지를 못 찾을 수 있음");
 
-  return { score, notes };
+  const kor = (s) => (s === "ok" ? "있음" : s === "missing" ? "없음" : "확인불가");
+  const detail = `robots.txt ${kor(robots)} · sitemap.xml ${kor(sitemap)}`;
+  return { score, notes, detail };
 }
 
 // HTTPS(보안 연결) 지원 여부. https가 실패하고 http만 열리면 명확히 "미지원"으로 표시.
@@ -178,13 +196,13 @@ async function scoreHttps(pageUrl) {
   catch { return { score: 50, notes: ["주소 형식을 확인하지 못해 HTTPS는 평가에서 제외"] }; }
 
   const httpsStatus = await fetchStatus("https://" + host + "/");
-  if (httpsStatus === "ok") return { score: 100, notes: [] };
+  if (httpsStatus === "ok") return { score: 100, notes: [], detail: "https 연결 정상" };
 
   const httpStatus = await fetchStatus("http://" + host + "/");
   if (httpStatus === "ok") {
-    return { score: 0, notes: ["HTTPS(보안 연결) 미지원 — 브라우저에 '주의 요함' 경고가 뜨고 검색 순위에도 불리"] };
+    return { score: 0, notes: ["HTTPS(보안 연결) 미지원 — 브라우저에 '주의 요함' 경고가 뜨고 검색 순위에도 불리"], detail: "https 실패 · http만 열림 → HTTPS 미지원" };
   }
-  return { score: 50, notes: ["HTTPS 지원 여부 확인 불가 (사이트가 외부 접근을 차단했을 수 있음)"] };
+  return { score: 50, notes: ["HTTPS 지원 여부 확인 불가 (사이트가 외부 접근을 차단했을 수 있음)"], detail: "https·http 모두 확인 불가" };
 }
 
 function renderBar(container, label, result) {
@@ -195,8 +213,32 @@ function renderBar(container, label, result) {
     <div class="label-row"><span>${label}</span><span class="val" style="color:${color}">${result.score}점</span></div>
     <div class="score-bar-track"><div class="score-bar-fill" style="width:${result.score}%;background:${color}"></div></div>
     ${result.notes.length ? `<div class="detail">${result.notes.join(" · ")}</div>` : ""}
+    ${DETAIL && result.detail ? `<div class="detail detail-pro">🔎 ${result.detail}</div>` : ""}
   `;
   container.appendChild(row);
+}
+
+// 내부 상세 모드: 약한 항목을 모아 "영업 공략 카드"로 표시 (원장에게 보낼 메시지 재료)
+function renderProCard(container, categories, url, total) {
+  const weak = categories
+    .filter((c) => c.result.score < 70)
+    .sort((a, b) => a.result.score - b.result.score);
+
+  const points = weak.map((c) => {
+    const note = c.result.notes[0] || c.result.detail || "";
+    return `<li><strong>${c.label} (${c.result.score}점)</strong> — ${note}</li>`;
+  });
+
+  const card = document.createElement("div");
+  card.className = "pro-card";
+  card.innerHTML = `
+    <div class="pro-card-head">🔒 내부 분석 (영업용) · 이 화면은 <code>?detail=1</code> 접속 시에만 보입니다</div>
+    <p class="pro-card-meta">진단 대상: <strong>${url}</strong> · 종합 ${total}점</p>
+    <p class="pro-card-title">공략 포인트 (약한 순)</p>
+    ${points.length ? `<ul class="pro-card-list">${points.join("")}</ul>` : "<p>뚜렷한 약점이 적습니다 — 이미 잘 되어있는 사이트일 수 있어요. 영업 우선순위 낮음.</p>"}
+    <p class="pro-card-tip">메시지엔 위에서 가장 위(약한) 1~2개만 골라 쓰세요. 검색 순위·AI 인용은 직접 확인 후 추가.</p>
+  `;
+  container.appendChild(card);
 }
 
 // JS로 화면을 그리는 사이트(SPA) 감지.
@@ -276,6 +318,7 @@ async function runCheck(url) {
   const bars = document.getElementById("scoreBars");
   bars.innerHTML = "";
   categories.forEach((c) => renderBar(bars, c.label, c.result));
+  if (DETAIL) renderProCard(bars, categories, url, total);
 
   const circle = document.getElementById("scoreCircle");
   const msgEl = document.getElementById("scoreMessage");
@@ -300,6 +343,14 @@ async function runCheck(url) {
   } else {
     msgEl.textContent = "현재 상태로는 검색엔진과 AI검색이 병원 정보를 거의 읽지 못하고 있을 가능성이 큽니다. 두 번째 홈페이지로 빠르게 보완하는 것을 권장합니다.";
   }
+}
+
+// 내부 상세 모드 표시 배너 (원장에게 노출되는 공개 화면엔 안 뜸)
+if (DETAIL) {
+  const banner = document.createElement("div");
+  banner.className = "pro-banner";
+  banner.textContent = "🔒 내부 분석 모드 (영업용) — 상세 수치·공략 카드가 함께 표시됩니다";
+  document.body.prepend(banner);
 }
 
 document.getElementById("checkForm").addEventListener("submit", async (e) => {
