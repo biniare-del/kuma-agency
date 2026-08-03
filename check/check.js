@@ -74,11 +74,26 @@ function scoreStructuredData(doc) {
   return { score: 100, notes: [] };
 }
 
-function scoreMobile(doc) {
+function hasResponsiveViewport(doc) {
   const vp = doc.querySelector('meta[name="viewport"]');
-  if (vp && /width=device-width/.test(vp.getAttribute("content") || "")) {
-    return { score: 100, notes: [] };
-  }
+  return !!(vp && /width=device-width/.test(vp.getAttribute("content") || ""));
+}
+
+async function scoreMobile(doc, pageUrl) {
+  if (hasResponsiveViewport(doc)) return { score: 100, notes: [] };
+
+  // 데스크톱 HTML엔 viewport가 없지만, 기기별로 다른 페이지를 주는 사이트(allfit.kr류)일 수 있음.
+  // 모바일 브라우저 UA로 다시 가져와 확인 (우리 Cloudflare Worker만 mobile=1 지원).
+  try {
+    const res = await timedFetch(PROXIES[0](pageUrl) + "&mobile=1");
+    if (res.ok) {
+      const mdoc = new DOMParser().parseFromString(await res.text(), "text/html");
+      if (hasResponsiveViewport(mdoc)) {
+        return { score: 100, notes: ["기기별 모바일 전용 페이지 제공 — 모바일 대응 확인됨"] };
+      }
+    }
+  } catch {}
+
   return { score: 0, notes: ["모바일 반응형 viewport 설정 없음"] };
 }
 
@@ -194,7 +209,7 @@ async function runCheck(url) {
   const categories = [
     { label: "메타데이터 (제목/설명)", result: scoreMeta(doc) },
     { label: "구조화 데이터 (AI검색용 JSON-LD)", result: scoreStructuredData(doc) },
-    { label: "모바일 대응", result: scoreMobile(doc) },
+    { label: "모바일 대응", result: await scoreMobile(doc, url) },
     { label: "해외환자 대응 (다국어)", result: scoreI18n(doc) },
     { label: "이미지 접근성 (alt텍스트)", result: scoreImages(doc) },
     { label: "검색엔진 크롤링 설정", result: await scoreCrawlSetup(url) },
