@@ -100,10 +100,20 @@ async function scoreMobile(doc, pageUrl) {
 function scoreI18n(doc) {
   const hreflang = doc.querySelectorAll('link[hreflang]');
   const langAttr = doc.documentElement.getAttribute("lang");
+  // 외국어 페이지 링크가 있는지 감지 (english/日本語/中文, /en /jp /cn 경로, lang= 등)
+  const foreignLink = [...doc.querySelectorAll("a[href]")].some((a) => {
+    const s = ((a.getAttribute("href") || "") + " " + (a.textContent || "")).toLowerCase();
+    return /english|japanese|chinese|日本語|中文|\/en\/|\/en\b|\/jp|\/jpn|\/cn\b|\/zh\b|lang=(en|ja|zh)/.test(s);
+  });
   let score = 0;
   const notes = [];
-  if (hreflang.length > 0) score += 70;
-  else notes.push("hreflang 다국어 태그 없음 — 해외환자 검색 노출 불리");
+  if (hreflang.length > 0) {
+    score += 70;
+  } else if (foreignLink) {
+    notes.push("외국어 페이지는 있으나 hreflang 미설정 — 검색엔진이 언어판으로 인식하지 못함");
+  } else {
+    notes.push("hreflang 다국어 태그 없음 — 해외환자 검색 노출 불리");
+  }
   if (langAttr) score += 30;
   else notes.push("html lang 속성 없음");
   return { score: Math.min(score, 100), notes };
@@ -143,6 +153,22 @@ async function scoreCrawlSetup(pageUrl) {
     sub(sitemap, "sitemap.xml", "sitemap.xml 없음 — 검색엔진이 전체 페이지를 못 찾을 수 있음");
 
   return { score, notes };
+}
+
+// HTTPS(보안 연결) 지원 여부. https가 실패하고 http만 열리면 명확히 "미지원"으로 표시.
+async function scoreHttps(pageUrl) {
+  let host;
+  try { host = new URL(pageUrl).host; }
+  catch { return { score: 50, notes: ["주소 형식을 확인하지 못해 HTTPS는 평가에서 제외"] }; }
+
+  const httpsStatus = await fetchStatus("https://" + host + "/");
+  if (httpsStatus === "ok") return { score: 100, notes: [] };
+
+  const httpStatus = await fetchStatus("http://" + host + "/");
+  if (httpStatus === "ok") {
+    return { score: 0, notes: ["HTTPS(보안 연결) 미지원 — 브라우저에 '주의 요함' 경고가 뜨고 검색 순위에도 불리"] };
+  }
+  return { score: 50, notes: ["HTTPS 지원 여부 확인 불가 (사이트가 외부 접근을 차단했을 수 있음)"] };
 }
 
 function renderBar(container, label, result) {
@@ -188,7 +214,19 @@ function findMetaRefreshTarget(doc, baseUrl) {
 }
 
 async function runCheck(url) {
-  let html = await fetchText(url);
+  let html;
+  try {
+    html = await fetchText(url);
+  } catch (e) {
+    // https로 접속이 안 되면 http로 재시도 (HTTPS 미지원 사이트도 진단 가능하게).
+    // HTTPS 미지원 자체는 scoreHttps에서 별도로 감점/표시된다.
+    if (url.startsWith("https://")) {
+      url = "http://" + url.slice(8);
+      html = await fetchText(url);
+    } else {
+      throw e;
+    }
+  }
   let doc = new DOMParser().parseFromString(html, "text/html");
 
   // 루트가 meta refresh 스플래시면 실제 콘텐츠 페이지로 한 번 따라가서 재채점
@@ -213,6 +251,7 @@ async function runCheck(url) {
     { label: "해외환자 대응 (다국어)", result: scoreI18n(doc) },
     { label: "이미지 접근성 (alt텍스트)", result: scoreImages(doc) },
     { label: "검색엔진 크롤링 설정", result: await scoreCrawlSetup(url) },
+    { label: "보안 연결 (HTTPS)", result: await scoreHttps(url) },
   ];
 
   const total = Math.round(categories.reduce((sum, c) => sum + c.result.score, 0) / categories.length);
