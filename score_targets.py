@@ -32,6 +32,47 @@ HEADERS = {"User-Agent": UA_DESKTOP, "Accept-Language": "ko-KR,ko;q=0.9,en;q=0.8
 
 SCORE_THRESHOLD = 50
 
+# ── 연락처(이메일·카카오) 추출 ──────────────────────────────
+EMAIL_RE = re.compile(r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}")
+JUNK_EMAIL_DOMAINS = (
+    "sentry.io", "wixpress.com", "w3.org", "example.com", "example.org", "godaddy.com",
+    "schema.org", "domain.com", "email.com", "mail.com", "google.com", "gstatic.com",
+    "googleapis.com", "cloudflare.com", "jquery.com", "sentry-cdn.com",
+    "test.com", "site.com", "yourdomain.com", "sample.com",
+)
+# 플레이스홀더 예시 이메일(가짜)의 흔한 아이디 부분 — 이런 건 실제 병원 이메일 아님
+JUNK_EMAIL_LOCAL = (
+    "email", "yourname", "your-email", "youremail", "name", "id", "user",
+    "test", "sample", "example", "abc", "info@example", "admin",
+)
+# pf.kakao.com 직접 링크뿐 아니라, 클릭 시 SDK가 주소를 만드는 channelPublicId,
+# 옛 plus.kakao, 오픈채팅까지 잡음 (버튼만 있고 링크가 HTML에 없던 케이스 대응)
+KAKAO_PATTERNS = [
+    re.compile(r"pf\.kakao\.com/(_?[a-zA-Z0-9]+)"),
+    re.compile(r"channelPublicId\s*[:=]\s*['\"](_?[a-zA-Z0-9]+)['\"]"),
+    re.compile(r"open\.kakao\.com/(?:o/)?([a-zA-Z0-9]+)"),
+    re.compile(r"plus\.kakao\.com/(?:home/)?(@[^\"'\s<>/]+)"),
+]
+
+
+def find_email(html):
+    for e in EMAIL_RE.findall(html):
+        local, domain = e.split("@")[0].lower(), e.split("@")[-1].lower()
+        if any(j in domain for j in JUNK_EMAIL_DOMAINS):
+            continue
+        if local in JUNK_EMAIL_LOCAL:
+            continue
+        return e
+    return None
+
+
+def find_kakao(html):
+    for pat in KAKAO_PATTERNS:
+        m = pat.search(html)
+        if m:
+            return m.group(1)
+    return None
+
 
 # ── 접속 유틸 ────────────────────────────────────────────────
 def is_real_homepage(url):
@@ -250,8 +291,12 @@ def score_site(url):
             break
         url, html, soup = target, h2, BeautifulSoup(h2, "html.parser")
 
+    email = find_email(html)
+    kakao = find_kakao(html)
+
     if looks_js_rendered(soup):
         return {"총점": "", "상태": "수동확인(JS렌더링)", "영업멘트": "JS로 화면을 그리는 사이트 — 자동진단 부정확, 수동 확인 필요",
+                "이메일": email or "", "카카오": kakao or "",
                 "메타데이터": "", "구조화데이터": "", "모바일대응": "", "다국어대응": "", "이미지alt": "", "크롤링설정": "", "HTTPS": ""}
 
     m_score, m_info = score_meta(soup)
@@ -270,7 +315,7 @@ def score_site(url):
     total = round(sum(parts.values()) / len(parts))
     pitch = build_pitch(parts, info)
 
-    row = {"총점": total, "상태": "정상", "영업멘트": pitch}
+    row = {"총점": total, "상태": "정상", "영업멘트": pitch, "이메일": email or "", "카카오": kakao or ""}
     row.update(parts)
     return row
 
