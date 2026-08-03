@@ -79,20 +79,36 @@ function hasResponsiveViewport(doc) {
   return !!(vp && /width=device-width/.test(vp.getAttribute("content") || ""));
 }
 
+// 모바일 UA로 페이지를 가져와 viewport(width=device-width) 여부 확인. (Worker만 mobile=1 지원)
+// 정적 <meta> 태그뿐 아니라, UA 감지 후 document.write로 viewport를 주입하는 옛 사이트
+// (allfit.kr류)도 인정하기 위해 원본 텍스트에서도 device-width viewport 문자열을 확인.
+async function mobileHasViewport(u) {
+  try {
+    const res = await timedFetch(PROXIES[0](u) + "&mobile=1");
+    if (res.ok) {
+      const txt = await res.text();
+      if (/name=["']?viewport/i.test(txt) && /width\s*=\s*device-width/i.test(txt)) return true;
+      const mdoc = new DOMParser().parseFromString(txt, "text/html");
+      return hasResponsiveViewport(mdoc);
+    }
+  } catch {}
+  return false;
+}
+
 async function scoreMobile(doc, pageUrl) {
   if (hasResponsiveViewport(doc)) return { score: 100, notes: [] };
 
   // 데스크톱 HTML엔 viewport가 없지만, 기기별로 다른 페이지를 주는 사이트(allfit.kr류)일 수 있음.
-  // 모바일 브라우저 UA로 다시 가져와 확인 (우리 Cloudflare Worker만 mobile=1 지원).
-  try {
-    const res = await timedFetch(PROXIES[0](pageUrl) + "&mobile=1");
-    if (res.ok) {
-      const mdoc = new DOMParser().parseFromString(await res.text(), "text/html");
-      if (hasResponsiveViewport(mdoc)) {
-        return { score: 100, notes: ["기기별 모바일 전용 페이지 제공 — 모바일 대응 확인됨"] };
-      }
+  // 모바일 UA로 재요청. https/http 둘 다 시도 (HTTPS 미지원 사이트는 http로만 열림).
+  const variants = [pageUrl];
+  if (pageUrl.startsWith("https://")) variants.push("http://" + pageUrl.slice(8));
+  else if (pageUrl.startsWith("http://")) variants.push("https://" + pageUrl.slice(7));
+
+  for (const u of variants) {
+    if (await mobileHasViewport(u)) {
+      return { score: 100, notes: ["기기별 모바일 전용 페이지 제공 — 모바일 대응 확인됨"] };
     }
-  } catch {}
+  }
 
   return { score: 0, notes: ["모바일 반응형 viewport 설정 없음"] };
 }
