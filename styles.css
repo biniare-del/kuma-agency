@@ -81,6 +81,22 @@ a:hover { text-decoration: underline; }
 .hero-sublinks a { color: rgba(255,255,255,0.9); font-weight: 700; font-size: 0.92rem; }
 .hero-sublinks a:hover { color: #fff; }
 
+/* Pricing tiers (viral) — one per row, color-coded */
+.price-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin: 40px auto 0; max-width: 760px; }
+.price-card { background: var(--color-bg); border: 1px solid var(--color-border); border-left: 5px solid var(--color-border); border-radius: 12px; padding: 24px 26px; }
+.price-card .price-label { display: inline-block; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.72rem; font-weight: 700; color: var(--color-text-muted); margin-bottom: 8px; }
+.price-card h3 { color: var(--color-text); margin-bottom: 10px; }
+.price-card p { margin-bottom: 0; }
+/* 초저가 — 회색 (피하세요) */
+.price-card--low { border-left-color: #9aa1ad; background: #fafafb; }
+.price-card--low .price-label { color: #6b7280; }
+/* 꿈담 블로그팀 — 브랜드 블루 (중심) */
+.price-card-feature { border-color: var(--color-accent); border-left: 5px solid var(--color-accent); box-shadow: 0 12px 30px rgba(58,93,219,0.14); background: linear-gradient(180deg, rgba(58,93,219,0.06), rgba(58,93,219,0.015)); }
+.price-card-feature .price-label-us { color: var(--color-accent-dark); }
+/* 최적화 홈페이지 + 브랜드 블로그 — 골드 (최고의 선택) */
+.price-card--combo { border-left-color: #c98a00; background: linear-gradient(180deg, rgba(201,138,0,0.06), rgba(201,138,0,0.015)); }
+.price-card--combo .price-label { color: #a9730a; }
+
 /* Channels */
 .channels-bar { padding: 40px 0; background: var(--color-bg-soft); border-bottom: 1px solid var(--color-border); }
 .channels-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; align-items: start; }
