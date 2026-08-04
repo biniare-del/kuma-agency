@@ -75,6 +75,11 @@ a:hover { text-decoration: underline; }
 .service-card p { margin-bottom: 20px; }
 .service-card .service-go { margin-top: auto; font-weight: 700; font-size: 0.95rem; color: var(--color-accent-dark); }
 .service-card:hover .service-go { color: var(--color-accent); }
+/* Two cards embedded in the hero */
+.hero-cards { margin-top: 38px; }
+.hero-sublinks { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 26px; }
+.hero-sublinks a { color: rgba(255,255,255,0.9); font-weight: 700; font-size: 0.92rem; }
+.hero-sublinks a:hover { color: #fff; }
 
 /* Channels */
 .channels-bar { padding: 40px 0; background: var(--color-bg-soft); border-bottom: 1px solid var(--color-border); }
