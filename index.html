@@ -262,11 +262,11 @@
             <text x="50" y="204">25</text>
             <text x="50" y="256">0</text>
           </g>
-          <polygon fill="url(#caseGrad)" points="60,252 60,250 93,246 126,244 159,235 192,173 225,111 258,190 291,169 324,177 357,119 390,144 423,102 456,86 489,71 522,115 555,196 588,160 621,115 654,127 687,69 720,138 720,252"/>
+          <polygon fill="url(#caseGrad)" points="60,252 60,250 93,246 126,244 159,235 192,173 225,111 258,190 291,169 324,177 357,119 390,144 423,102 456,86 489,71 522,115 555,196 588,160 621,115 654,120 687,88 720,64 720,252"/>
           <polyline fill="none" stroke="#e08a1e" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" points="60,252 93,252 126,252 159,250 192,246 225,240 258,248 291,246 324,246 357,242 390,244 423,240 456,237 489,235 522,240 555,248 588,244 621,240 654,242 687,233 720,242"/>
-          <polyline fill="none" stroke="#3a5ddb" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points="60,250 93,246 126,244 159,235 192,173 225,111 258,190 291,169 324,177 357,119 390,144 423,102 456,86 489,71 522,115 555,196 588,160 621,115 654,127 687,69 720,138"/>
+          <polyline fill="none" stroke="#3a5ddb" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points="60,250 93,246 126,244 159,235 192,173 225,111 258,190 291,169 324,177 357,119 390,144 423,102 456,86 489,71 522,115 555,196 588,160 621,115 654,120 687,88 720,64"/>
           <g fill="#3a5ddb">
-            <circle cx="60" cy="250" r="2.5"/><circle cx="93" cy="246" r="2.5"/><circle cx="126" cy="244" r="2.5"/><circle cx="159" cy="235" r="2.5"/><circle cx="192" cy="173" r="2.5"/><circle cx="225" cy="111" r="2.5"/><circle cx="258" cy="190" r="2.5"/><circle cx="291" cy="169" r="2.5"/><circle cx="324" cy="177" r="2.5"/><circle cx="357" cy="119" r="2.5"/><circle cx="390" cy="144" r="2.5"/><circle cx="423" cy="102" r="2.5"/><circle cx="456" cy="86" r="2.5"/><circle cx="489" cy="71" r="2.5"/><circle cx="522" cy="115" r="2.5"/><circle cx="555" cy="196" r="2.5"/><circle cx="588" cy="160" r="2.5"/><circle cx="621" cy="115" r="2.5"/><circle cx="654" cy="127" r="2.5"/><circle cx="687" cy="69" r="2.5"/><circle cx="720" cy="138" r="2.5"/>
+            <circle cx="60" cy="250" r="2.5"/><circle cx="93" cy="246" r="2.5"/><circle cx="126" cy="244" r="2.5"/><circle cx="159" cy="235" r="2.5"/><circle cx="192" cy="173" r="2.5"/><circle cx="225" cy="111" r="2.5"/><circle cx="258" cy="190" r="2.5"/><circle cx="291" cy="169" r="2.5"/><circle cx="324" cy="177" r="2.5"/><circle cx="357" cy="119" r="2.5"/><circle cx="390" cy="144" r="2.5"/><circle cx="423" cy="102" r="2.5"/><circle cx="456" cy="86" r="2.5"/><circle cx="489" cy="71" r="2.5"/><circle cx="522" cy="115" r="2.5"/><circle cx="555" cy="196" r="2.5"/><circle cx="588" cy="160" r="2.5"/><circle cx="621" cy="115" r="2.5"/><circle cx="654" cy="120" r="2.5"/><circle cx="687" cy="88" r="2.5"/><circle cx="720" cy="64" r="2.5"/>
           </g>
           <g fill="#9aa1ad" font-size="11" text-anchor="middle" font-family="sans-serif">
             <text x="60" y="272">06.16</text>
@@ -283,7 +283,7 @@
             <text x="392" y="24" fill="#5a5f6b">클릭</text>
           </g>
         </svg>
-        <figcaption>네이버 서치어드바이저 기준 · 개설 시점부터 우상향</figcaption>
+        <figcaption>네이버 서치어드바이저 기준 · 개설 시점부터 우상향<span class="tap-hint"> · 🔍 탭하여 크게 보기</span></figcaption>
       </figure>
       <p class="center case-disclaimer">순위를 보장하지 않습니다.<br>정직한 콘텐츠가 쌓이며 검색 노출이 자연스럽게 늘어난 실제 결과입니다.</p>
     </div>
@@ -471,6 +471,11 @@
 
 </main>
 
+<div class="chart-modal" id="chartModal" aria-hidden="true">
+  <button type="button" class="chart-modal-close" id="chartModalClose" aria-label="닫기">&times;</button>
+  <div class="chart-modal-inner" id="chartModalInner"></div>
+</div>
+
 <footer class="site-footer">
   <div class="container">
     <p>꿈을담은에이전시 | 병원이 AI 검색에서 발견되도록 만드는 회사</p>
@@ -495,6 +500,32 @@
       navToggle.setAttribute('aria-expanded', 'false');
     });
   });
+
+  // Chart zoom modal
+  const caseChart = document.querySelector('.case-chart');
+  const chartModal = document.getElementById('chartModal');
+  if (caseChart && chartModal) {
+    const chartModalInner = document.getElementById('chartModalInner');
+    const chartModalClose = document.getElementById('chartModalClose');
+    const openChart = () => {
+      const svg = caseChart.querySelector('svg');
+      if (!svg) return;
+      chartModalInner.innerHTML = '';
+      chartModalInner.appendChild(svg.cloneNode(true));
+      chartModal.classList.add('open');
+      chartModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    };
+    const closeChart = () => {
+      chartModal.classList.remove('open');
+      chartModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+    caseChart.addEventListener('click', openChart);
+    chartModalClose.addEventListener('click', closeChart);
+    chartModal.addEventListener('click', (e) => { if (e.target === chartModal) closeChart(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeChart(); });
+  }
 </script>
 </body>
 </html>
