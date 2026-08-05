@@ -97,6 +97,20 @@ a:hover { text-decoration: underline; }
 .price-card--combo { border-left-color: #c98a00; background: linear-gradient(180deg, rgba(201,138,0,0.06), rgba(201,138,0,0.015)); }
 .price-card--combo .price-label { color: #a9730a; }
 
+/* Real case (anonymized) */
+.case { background: var(--color-bg-soft); }
+.case-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 36px 0 14px; }
+.case-stat { background: #fff; border: 1px solid var(--color-border); border-radius: 12px; padding: 26px 20px; text-align: center; }
+.case-num { font-size: 2.3rem; font-weight: 800; color: var(--color-accent-dark); letter-spacing: -0.02em; line-height: 1.1; }
+.case-num span { font-size: 1.3rem; vertical-align: 6px; margin-left: 1px; }
+.case-label { font-size: 0.95rem; font-weight: 700; color: var(--color-text); margin-top: 8px; }
+.case-sub { font-size: 0.8rem; color: var(--color-text-muted); margin-top: 5px; }
+.case-chart { margin: 8px auto 0; max-width: 760px; }
+.case-chart svg { width: 100%; height: 130px; display: block; }
+.case-chart figcaption { text-align: center; font-size: 0.8rem; color: var(--color-text-muted); margin-top: 6px; }
+.case-disclaimer { max-width: 680px; margin: 20px auto 0; font-size: 0.88rem; color: var(--color-text-muted); }
+@media (max-width: 900px) { .case-stats { grid-template-columns: 1fr; } }
+
 /* Channels */
 .channels-bar { padding: 40px 0; background: var(--color-bg-soft); border-bottom: 1px solid var(--color-border); }
 .channels-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; align-items: start; }
