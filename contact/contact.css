@@ -17,7 +17,7 @@ a { color: var(--color-accent-dark); }
 .tool-header { position: sticky; top: 0; z-index: 10; background: rgba(12,14,19,0.94); backdrop-filter: blur(6px); color: #fff; padding: 0; }
 .tool-header .wrap { display: flex; align-items: center; gap: 16px; max-width: 600px; }
 .tool-header .logo { display: flex; align-items: center; }
-.tool-header .logo img { display: block; height: 28px; width: auto; }
+.tool-header .logo img { display: block; height: 32px; width: auto; }
 .tool-header p { margin: 0; font-size: 0.8rem; color: rgba(255,255,255,0.5); }
 
 .intro { padding: 48px 0 28px; }
