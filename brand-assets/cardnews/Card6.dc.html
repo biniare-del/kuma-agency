@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+  <style>
+    body { margin: 0; }
+    .kn-root, .kn-root * { box-sizing: border-box; }
+    .kn-root { font-family: "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #8aa2f5; } a:hover { color: #aebdf7; }
+  </style>
+</helmet>
+
+<div class="kn-root" style="position: relative; width: 1080px; height: 1080px; background: linear-gradient(155deg, #0d1024 0%, #1b1740 55%, #0f1330 100%); overflow: hidden; color: #ffffff;">
+  <div style="position: absolute; top: -160px; right: -120px; width: 620px; height: 620px; background: radial-gradient(circle, rgba(124,151,242,0.30) 0%, rgba(124,151,242,0) 68%); pointer-events: none;"></div>
+  <div style="position: absolute; bottom: -200px; left: -160px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(52,208,192,0.18) 0%, rgba(52,208,192,0) 66%); pointer-events: none;"></div>
+  <svg viewBox="0 0 1080 1080" width="1080" height="1080" style="position: absolute; inset: 0; opacity: 0.5; pointer-events: none;" aria-hidden="true">
+    <defs><pattern id="knGrid6" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M60 0H0V60" fill="none" stroke="rgba(255,255,255,0.035)" stroke-width="1"/></pattern></defs>
+    <rect width="1080" height="1080" fill="url(#knGrid6)"/>
+  </svg>
+
+  <div style="position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 78px 76px;">
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <span style="display: inline-block; width: 34px; height: 3px; border-radius: 2px; background: #34d0c0;"></span>
+      <span style="font-size: 20px; font-weight: 700; letter-spacing: 0.14em; color: #a8c4ff;">시작하기</span>
+    </div>
+
+    <h2 style="margin: 40px 0 0; font-weight: 900; font-size: 92px; line-height: 1.24; letter-spacing: -0.02em; color: #ffffff;">
+      블로그, 이렇게<br>시작하세요
+    </h2>
+
+    <p style="margin: 36px 0 0; font-size: 32px; font-weight: 500; line-height: 1.6; color: #bcc3da;">
+      우리 병원 검색·AI 노출,<br>
+      무료로 먼저 진단해 드립니다.
+    </p>
+
+    <!-- CTA 버튼 느낌 -->
+    <div style="margin-top: 54px; display: inline-flex; align-self: flex-start; align-items: center; gap: 16px; background: linear-gradient(135deg, #3a5ddb, #7c3aed); border-radius: 16px; padding: 26px 38px;">
+      <svg viewBox="0 0 40 40" width="38" height="38" aria-hidden="true"><g transform="translate(20,20)" stroke="#ffffff" stroke-width="3.5" fill="none" stroke-linecap="round"><circle cx="-4" cy="-4" r="12"/><path d="M6 6 L 15 15"/></g></svg>
+      <span style="font-size: 34px; font-weight: 900; color: #ffffff;">dream-ag.co.kr/check</span>
+    </div>
+    <p style="margin: 22px 0 0; font-size: 25px; font-weight: 500; color: #8b93aa;">홈페이지 주소만 넣으면 1분 만에 진단됩니다.</p>
+
+    <div style="position: absolute; left: 76px; right: 76px; bottom: 66px; display: flex; align-items: center; gap: 12px; border-top: 1px solid rgba(255,255,255,0.10); padding-top: 26px;">
+      <span style="display: inline-flex; width: 30px; height: 30px; border-radius: 8px; background: linear-gradient(135deg, #3a5ddb, #7c3aed); align-items: center; justify-content: center; font-weight: 900; font-size: 17px; color: #fff;">꿈</span>
+      <span style="font-size: 23px; font-weight: 700; color: #eef1f8;">꿈을담은에이전시</span>
+      <span style="margin-left: auto; font-size: 21px; font-weight: 500; color: #8b93aa;">순위를 조작하지 않습니다</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>

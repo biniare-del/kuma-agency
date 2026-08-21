@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700;900&display=swap">
+  <style>
+    body { margin: 0; }
+    .pf-root, .pf-root * { box-sizing: border-box; }
+    .pf-root { font-family: "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #8aa2f5; } a:hover { color: #aebdf7; }
+  </style>
+</helmet>
+
+<div class="pf-root" style="position: relative; width: 640px; height: 640px; background: linear-gradient(150deg, #151a35 0%, #241d4d 55%, #141833 100%); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+  <div style="position: absolute; top: -120px; right: -110px; width: 380px; height: 380px; background: radial-gradient(circle, rgba(124,151,242,0.32) 0%, rgba(124,151,242,0) 68%); pointer-events: none;"></div>
+  <div style="position: absolute; bottom: -130px; left: -120px; width: 360px; height: 360px; background: radial-gradient(circle, rgba(242,181,63,0.20) 0%, rgba(242,181,63,0) 66%); pointer-events: none;"></div>
+
+  <!-- 심볼: 돋보기 안에서 우상향하는 성장선 -->
+  <svg viewBox="0 0 320 320" width="380" height="380" style="position: relative; z-index: 2;" aria-label="검색 속 성장">
+    <circle cx="132" cy="132" r="98" fill="none" stroke="#7c97f2" stroke-width="26"/>
+    <path d="M206 206 L 272 272" stroke="#7c97f2" stroke-width="26" stroke-linecap="round" fill="none"/>
+    <path d="M86 164 L 122 122 L 150 148 L 190 92" fill="none" stroke="#34d0c0" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="190" cy="92" r="15" fill="#f2b53f"/>
+  </svg>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>

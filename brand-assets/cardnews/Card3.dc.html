@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+  <style>
+    body { margin: 0; }
+    .kn-root, .kn-root * { box-sizing: border-box; }
+    .kn-root { font-family: "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #ffd479; } a:hover { color: #ffe0a0; }
+  </style>
+</helmet>
+
+<div class="kn-root" style="position: relative; width: 1080px; height: 1080px; background: linear-gradient(150deg, #283593 0%, #5b21b6 48%, #9d2b6b 100%); overflow: hidden; color: #ffffff;">
+  <div style="position: absolute; top: -150px; right: -140px; width: 620px; height: 620px; background: radial-gradient(circle, rgba(94,234,212,0.20) 0%, rgba(94,234,212,0) 66%); pointer-events: none;"></div>
+  <div style="position: absolute; bottom: -190px; left: -150px; width: 560px; height: 560px; background: radial-gradient(circle, rgba(255,212,121,0.18) 0%, rgba(255,212,121,0) 66%); pointer-events: none;"></div>
+  <svg viewBox="0 0 1080 1080" width="1080" height="1080" style="position: absolute; inset: 0; opacity: 0.45; pointer-events: none;" aria-hidden="true">
+    <defs><pattern id="knGrid3" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M60 0H0V60" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs>
+    <rect width="1080" height="1080" fill="url(#knGrid3)"/>
+  </svg>
+
+  <div style="position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 78px;">
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 46px;">
+      <span style="display: inline-block; width: 30px; height: 3px; border-radius: 2px; background: #ffd479;"></span>
+      <span style="font-size: 20px; font-weight: 700; letter-spacing: 0.16em; color: #ecdcff;">핵심</span>
+      <span style="display: inline-block; width: 30px; height: 3px; border-radius: 2px; background: #ffd479;"></span>
+    </div>
+
+    <!-- 아이콘: 돋보기 + 하트(신뢰) -->
+    <svg viewBox="0 0 120 120" width="118" height="118" style="margin-bottom: 40px;" aria-hidden="true">
+      <g stroke="#5eead4" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="48" cy="48" r="30"/>
+        <path d="M70 70 L 96 96"/>
+      </g>
+      <path d="M48 40 c -9 -11 -26 -3 -21 11 c 3 9 21 20 21 20 c 0 0 18 -11 21 -20 c 5 -14 -12 -22 -21 -11 z" fill="#ffd479" stroke="none"/>
+    </svg>
+
+    <h2 style="margin: 0; font-weight: 900; font-size: 78px; line-height: 1.32; letter-spacing: -0.02em; color: #ffffff;">
+      환자는 &lsquo;키워드&rsquo;가<br>아니라 <span style="color: #ffd479;">&lsquo;신뢰&rsquo;</span>를<br>검색합니다
+    </h2>
+
+    <p style="margin: 46px 0 0; font-size: 30px; font-weight: 500; line-height: 1.65; color: #e6ddf6;">
+      검색 상위는 목적이 아니라 결과입니다.<br>
+      좋은 글이 쌓이면, 순위는 따라옵니다.
+    </p>
+
+    <div style="position: absolute; bottom: 58px; left: 0; right: 0; display: flex; align-items: center; justify-content: center; gap: 12px;">
+      <span style="display: inline-flex; width: 28px; height: 28px; border-radius: 8px; background: rgba(255,255,255,0.16); align-items: center; justify-content: center; font-weight: 900; font-size: 16px; color: #fff;">꿈</span>
+      <span style="font-size: 22px; font-weight: 700; color: #ffffff;">dream-ag.co.kr</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 1080, "h": 1080, "title": "① 표지 (A 미드나잇)" },
+    { "file": "Card2.dc.html", "x": 1200, "y": 0, "w": 1080, "h": 1080, "title": "② 문제 (B 라이트)" },
+    { "file": "Card3.dc.html", "x": 2400, "y": 0, "w": 1080, "h": 1080, "title": "③ 핵심 (C 그라디언트)" },
+    { "file": "Card4.dc.html", "x": 0, "y": 1200, "w": 1080, "h": 1080, "title": "④ 구조 (B 라이트)" },
+    { "file": "Card5.dc.html", "x": 1200, "y": 1200, "w": 1080, "h": 1080, "title": "⑤ 차별점 (B 라이트)" },
+    { "file": "Card6.dc.html", "x": 2400, "y": 1200, "w": 1080, "h": 1080, "title": "⑥ 마무리 (A 미드나잇)" }
+  ],
+  "launch": { "view": "canvas" }
+}

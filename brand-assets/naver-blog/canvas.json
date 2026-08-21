@@ -1,0 +1,55 @@
+{
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "x": 0,
+      "y": 0,
+      "w": 1080,
+      "h": 1440,
+      "title": "모바일 커버 (1080×1440)"
+    },
+    {
+      "file": "TitleBanner.dc.html",
+      "x": 1200,
+      "y": 0,
+      "w": 966,
+      "h": 300,
+      "title": "PC 타이틀 배너 (966×300)"
+    },
+    {
+      "file": "CtaBanner.dc.html",
+      "x": 1200,
+      "y": 420,
+      "w": 800,
+      "h": 420,
+      "title": "본문 하단 CTA 배너 (800×420)"
+    },
+    {
+      "file": "ProfileC.dc.html",
+      "x": 1200,
+      "y": 960,
+      "w": 640,
+      "h": 640,
+      "title": "프로필 C · 채택"
+    },
+    {
+      "file": "ProfileA.dc.html",
+      "x": 1960,
+      "y": 960,
+      "w": 640,
+      "h": 640,
+      "title": "프로필 A (미채택)"
+    },
+    {
+      "file": "ProfileB.dc.html",
+      "x": 2720,
+      "y": 960,
+      "w": 640,
+      "h": 640,
+      "title": "프로필 B (미채택)"
+    }
+  ],
+  "launch": {
+    "view": "canvas"
+  }
+}

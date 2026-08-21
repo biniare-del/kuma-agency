@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+  <style>
+    body { margin: 0; }
+    .kn-root, .kn-root * { box-sizing: border-box; }
+    .kn-root { font-family: "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #8aa2f5; } a:hover { color: #aebdf7; }
+  </style>
+</helmet>
+
+<div class="kn-root" style="position: relative; width: 1080px; height: 1440px; background: linear-gradient(158deg, #0d1024 0%, #1b1740 55%, #0f1330 100%); overflow: hidden; color: #ffffff;">
+
+  <div style="position: absolute; top: -160px; right: -140px; width: 660px; height: 660px; background: radial-gradient(circle, rgba(124,151,242,0.30) 0%, rgba(124,151,242,0) 68%); pointer-events: none;"></div>
+  <div style="position: absolute; bottom: -220px; left: -170px; width: 640px; height: 640px; background: radial-gradient(circle, rgba(52,208,192,0.20) 0%, rgba(52,208,192,0) 66%); pointer-events: none;"></div>
+  <div style="position: absolute; top: 620px; left: -120px; width: 440px; height: 440px; background: radial-gradient(circle, rgba(242,181,63,0.14) 0%, rgba(242,181,63,0) 66%); pointer-events: none;"></div>
+  <svg viewBox="0 0 1080 1440" width="1080" height="1440" style="position: absolute; inset: 0; opacity: 0.5; pointer-events: none;" aria-hidden="true">
+    <defs><pattern id="knCov" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M60 0H0V60" fill="none" stroke="rgba(255,255,255,0.035)" stroke-width="1"/></pattern></defs>
+    <rect width="1080" height="1440" fill="url(#knCov)"/>
+  </svg>
+
+  <!-- 크롭 안전영역: 콘텐츠를 중앙에 몰아 어떤 세로 크롭에도 안 잘리게 -->
+  <div style="position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 150px 96px 130px;">
+
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <span style="display: inline-block; width: 30px; height: 3px; border-radius: 2px; background: #34d0c0;"></span>
+      <span style="font-size: 26px; font-weight: 700; letter-spacing: 0.16em; color: #a8c4ff;">꿈을담은에이전시</span>
+      <span style="display: inline-block; width: 30px; height: 3px; border-radius: 2px; background: #34d0c0;"></span>
+    </div>
+
+    <h1 style="margin: 52px 0 0; font-weight: 900; font-size: 148px; line-height: 1.12; letter-spacing: -0.03em; color: #ffffff;">
+      병원 마케팅<br><span style="color: #f2b53f;">노트</span>
+    </h1>
+
+    <p style="margin: 44px 0 0; font-size: 38px; font-weight: 500; line-height: 1.55; color: #bcc3da;">
+      강남 성형외과 마케팅 15년,<br>검색에 보이는 병원의 기록.
+    </p>
+
+    <div style="flex: 1 1 auto;"></div>
+
+    <!-- 중앙 그래픽: 검색 위 우상향 성장 -->
+    <svg viewBox="0 0 720 360" width="100%" style="display: block; max-width: 720px;" aria-label="검색에서 성장하는 병원 블로그">
+      <path d="M40 320 C 180 300, 240 210, 380 200 S 600 120, 690 60" fill="none" stroke="#34d0c0" stroke-width="6" stroke-linecap="round"/>
+      <path d="M40 320 C 180 300, 240 210, 380 200 S 600 120, 690 60 L 690 340 L 40 340 Z" fill="url(#covFill)" opacity="0.25"/>
+      <defs><linearGradient id="covFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34d0c0" stop-opacity="0.5"/><stop offset="1" stop-color="#34d0c0" stop-opacity="0"/></linearGradient></defs>
+      <circle cx="380" cy="200" r="9" fill="#7c97f2"/>
+      <circle cx="690" cy="60" r="11" fill="#f2b53f"/>
+      <!-- 돋보기 -->
+      <g transform="translate(150,150)" stroke="#7c97f2" stroke-width="9" fill="none" stroke-linecap="round">
+        <circle cx="0" cy="0" r="34"/>
+        <path d="M25 25 L 52 52"/>
+      </g>
+    </svg>
+
+    <div style="margin-top: 60px; display: flex; align-items: center; gap: 14px;">
+      <span style="display: inline-flex; width: 40px; height: 40px; border-radius: 11px; background: linear-gradient(135deg, #3a5ddb, #7c3aed); align-items: center; justify-content: center; font-weight: 900; font-size: 22px; color: #fff;">꿈</span>
+      <span style="font-size: 32px; font-weight: 700; color: #eef1f8;">dream-ag.co.kr</span>
+    </div>
+    <p style="margin: 18px 0 0; font-size: 26px; font-weight: 500; color: #8b93aa;">순위를 조작하지 않습니다</p>
+
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>

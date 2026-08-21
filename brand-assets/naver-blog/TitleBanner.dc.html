@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+  <style>
+    body { margin: 0; }
+    .tb-root, .tb-root * { box-sizing: border-box; }
+    .tb-root { font-family: "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #8aa2f5; } a:hover { color: #aebdf7; }
+  </style>
+</helmet>
+
+<div class="tb-root" style="position: relative; width: 966px; height: 300px; background: linear-gradient(120deg, #0d1024 0%, #1b1740 58%, #0f1330 100%); overflow: hidden; color: #ffffff;">
+  <div style="position: absolute; top: -140px; right: -60px; width: 460px; height: 460px; background: radial-gradient(circle, rgba(124,151,242,0.32) 0%, rgba(124,151,242,0) 68%); pointer-events: none;"></div>
+  <div style="position: absolute; bottom: -180px; left: -100px; width: 420px; height: 420px; background: radial-gradient(circle, rgba(52,208,192,0.20) 0%, rgba(52,208,192,0) 66%); pointer-events: none;"></div>
+  <svg viewBox="0 0 966 300" width="966" height="300" style="position: absolute; inset: 0; opacity: 0.5; pointer-events: none;" aria-hidden="true">
+    <defs><pattern id="tbGrid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="rgba(255,255,255,0.035)" stroke-width="1"/></pattern></defs>
+    <rect width="966" height="300" fill="url(#tbGrid)"/>
+  </svg>
+
+  <div style="position: relative; z-index: 2; height: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0 62px;">
+
+    <div>
+      <div style="display: flex; align-items: center; gap: 11px;">
+        <span style="display: inline-block; width: 26px; height: 3px; border-radius: 2px; background: #34d0c0;"></span>
+        <span style="font-size: 16px; font-weight: 700; letter-spacing: 0.14em; color: #a8c4ff;">꿈을담은에이전시</span>
+      </div>
+
+      <h1 style="margin: 20px 0 0; font-weight: 900; font-size: 62px; line-height: 1.16; letter-spacing: -0.03em; color: #ffffff;">
+        병원 마케팅 <span style="color: #f2b53f;">노트</span>
+      </h1>
+
+      <p style="margin: 18px 0 0; font-size: 21px; font-weight: 500; line-height: 1.5; color: #bcc3da;">
+        강남 성형외과 마케팅 15년,<br>검색에 보이는 병원의 기록.
+      </p>
+    </div>
+
+    <!-- 우측 그래픽 -->
+    <svg viewBox="0 0 300 220" width="300" height="220" style="flex: 0 0 auto;" aria-label="검색에서 성장하는 곡선">
+      <path d="M16 190 C 80 176, 108 116, 168 106 S 258 52, 286 26" fill="none" stroke="#34d0c0" stroke-width="5" stroke-linecap="round"/>
+      <path d="M16 190 C 80 176, 108 116, 168 106 S 258 52, 286 26 L 286 204 L 16 204 Z" fill="url(#tbFill)" opacity="0.3"/>
+      <defs><linearGradient id="tbFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34d0c0" stop-opacity="0.5"/><stop offset="1" stop-color="#34d0c0" stop-opacity="0"/></linearGradient></defs>
+      <circle cx="168" cy="106" r="7" fill="#7c97f2"/>
+      <circle cx="286" cy="26" r="9" fill="#f2b53f"/>
+      <g transform="translate(74,86)" stroke="#7c97f2" stroke-width="7" fill="none" stroke-linecap="round">
+        <circle cx="0" cy="0" r="26"/>
+        <path d="M19 19 L 40 40"/>
+      </g>
+    </svg>
+
+  </div>
+
+  <div style="position: absolute; right: 62px; bottom: 22px; z-index: 2; font-size: 17px; font-weight: 700; color: #8b93aa;">dream-ag.co.kr</div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>

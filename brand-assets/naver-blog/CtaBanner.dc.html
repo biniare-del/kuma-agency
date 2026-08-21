@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+  <style>
+    body { margin: 0; }
+    .cta-root, .cta-root * { box-sizing: border-box; }
+    .cta-root { font-family: "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #8aa2f5; } a:hover { color: #aebdf7; }
+  </style>
+</helmet>
+
+<div class="cta-root" style="position: relative; width: 800px; height: 420px; background: linear-gradient(140deg, #0d1024 0%, #1b1740 58%, #0f1330 100%); overflow: hidden; color: #ffffff;">
+  <div style="position: absolute; top: -130px; right: -90px; width: 420px; height: 420px; background: radial-gradient(circle, rgba(124,151,242,0.30) 0%, rgba(124,151,242,0) 68%); pointer-events: none;"></div>
+  <div style="position: absolute; bottom: -160px; left: -110px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(52,208,192,0.18) 0%, rgba(52,208,192,0) 66%); pointer-events: none;"></div>
+  <svg viewBox="0 0 800 420" width="800" height="420" style="position: absolute; inset: 0; opacity: 0.5; pointer-events: none;" aria-hidden="true">
+    <defs><pattern id="ctaGrid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="rgba(255,255,255,0.035)" stroke-width="1"/></pattern></defs>
+    <rect width="800" height="420" fill="url(#ctaGrid)"/>
+  </svg>
+
+  <div style="position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 0 54px;">
+
+    <div style="display: flex; align-items: center; gap: 11px;">
+      <span style="display: inline-block; width: 26px; height: 3px; border-radius: 2px; background: #34d0c0;"></span>
+      <span style="font-size: 17px; font-weight: 700; letter-spacing: 0.12em; color: #a8c4ff;">무료 진단</span>
+    </div>
+
+    <h2 style="margin: 20px 0 0; font-weight: 900; font-size: 42px; line-height: 1.32; letter-spacing: -0.02em; color: #ffffff;">
+      우리 병원은 검색에<br>어떻게 보이고 있을까요?
+    </h2>
+
+    <p style="margin: 18px 0 0; font-size: 20px; font-weight: 500; line-height: 1.6; color: #bcc3da;">
+      홈페이지 주소만 넣으면 1분 만에 확인됩니다.<br>
+      네이버·구글·AI 검색 노출 상태를 무료로 진단해 드립니다.
+    </p>
+
+    <div style="margin-top: 30px; display: flex; align-items: center; gap: 18px;">
+      <div style="display: inline-flex; align-items: center; gap: 12px; background: linear-gradient(135deg, #3a5ddb, #7c3aed); border-radius: 13px; padding: 18px 26px;">
+        <svg viewBox="0 0 32 32" width="27" height="27" aria-hidden="true"><g transform="translate(16,16)" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round"><circle cx="-3" cy="-3" r="9.5"/><path d="M5 5 L 12 12"/></g></svg>
+        <span style="font-size: 25px; font-weight: 900; color: #ffffff;">dream-ag.co.kr/check</span>
+      </div>
+    </div>
+
+    <div style="margin-top: 26px; display: flex; align-items: center; gap: 12px; border-top: 1px solid rgba(255,255,255,0.10); padding-top: 20px;">
+      <span style="display: inline-flex; width: 26px; height: 26px; border-radius: 7px; background: linear-gradient(135deg, #3a5ddb, #7c3aed); align-items: center; justify-content: center; font-weight: 900; font-size: 14px; color: #fff;">꿈</span>
+      <span style="font-size: 18px; font-weight: 700; color: #eef1f8;">꿈을담은에이전시</span>
+      <span style="font-size: 18px; font-weight: 500; color: #8b93aa;">상담 010-2022-1425</span>
+      <span style="margin-left: auto; font-size: 17px; font-weight: 500; color: #8b93aa;">순위를 조작하지 않습니다</span>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>

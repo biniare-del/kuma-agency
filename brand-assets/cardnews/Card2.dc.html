@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+  <style>
+    body { margin: 0; }
+    .kn-root, .kn-root * { box-sizing: border-box; }
+    .kn-root { font-family: "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #3a5ddb; } a:hover { color: #2944a8; }
+  </style>
+</helmet>
+
+<div class="kn-root" style="position: relative; width: 1080px; height: 1080px; background: linear-gradient(160deg, #f3f7fd 0%, #eef3fb 55%, #f7f2f0 100%); overflow: hidden; color: #16213b;">
+  <div style="position: absolute; top: -170px; right: -130px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(249,115,106,0.15) 0%, rgba(249,115,106,0) 68%); pointer-events: none;"></div>
+  <div style="position: absolute; bottom: -190px; left: -150px; width: 560px; height: 560px; background: radial-gradient(circle, rgba(58,93,219,0.12) 0%, rgba(58,93,219,0) 66%); pointer-events: none;"></div>
+  <svg viewBox="0 0 1080 1080" width="1080" height="1080" style="position: absolute; inset: 0; opacity: 0.8; pointer-events: none;" aria-hidden="true">
+    <defs><pattern id="knGrid2" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M60 0H0V60" fill="none" stroke="rgba(22,33,59,0.045)" stroke-width="1"/></pattern></defs>
+    <rect width="1080" height="1080" fill="url(#knGrid2)"/>
+  </svg>
+
+  <div style="position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; padding: 82px 76px 62px;">
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <span style="font-size: 30px; font-weight: 900; color: #f9736a;">01</span>
+      <span style="display: inline-block; width: 30px; height: 3px; border-radius: 2px; background: #f9736a;"></span>
+      <span style="font-size: 19px; font-weight: 700; letter-spacing: 0.1em; color: #3a5ddb;">왜 대부분 실패하나</span>
+    </div>
+
+    <h2 style="margin: 54px 0 0; font-weight: 900; font-size: 76px; line-height: 1.28; letter-spacing: -0.02em; color: #14213e;">
+      블로그를 &lsquo;숙제&rsquo;처럼<br>쓰면, 환자는<br>오지 않습니다
+    </h2>
+
+    <p style="margin: 40px 0 0; font-size: 31px; font-weight: 500; line-height: 1.7; color: #55607a;">
+      하루에 수십 개씩 찍어내는 양산 글.<br>
+      도시 이름만 바꾼 복사 글.<br>
+      네이버는 이런 글을 저품질로 걸러냅니다.
+    </p>
+
+    <div style="flex: 1 1 auto;"></div>
+
+    <!-- 저품질 양산 글 시각화 -->
+    <svg viewBox="0 0 928 250" width="100%" style="display: block;" aria-label="복사된 저품질 글 3개가 걸러지는 모습">
+      <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <g transform="translate(70,50)" stroke="#c2ccdd" stroke-width="5">
+          <rect x="0" y="0" width="120" height="150" rx="14" fill="#ffffff"/>
+          <path d="M26 40 H 94 M26 66 H 94 M26 92 H 76" stroke-width="6"/>
+        </g>
+        <g transform="translate(210,50)" stroke="#c2ccdd" stroke-width="5">
+          <rect x="0" y="0" width="120" height="150" rx="14" fill="#ffffff"/>
+          <path d="M26 40 H 94 M26 66 H 94 M26 92 H 76" stroke-width="6"/>
+        </g>
+        <g transform="translate(350,50)" stroke="#c2ccdd" stroke-width="5">
+          <rect x="0" y="0" width="120" height="150" rx="14" fill="#ffffff"/>
+          <path d="M26 40 H 94 M26 66 H 94 M26 92 H 76" stroke-width="6"/>
+        </g>
+        <g transform="translate(120,58)" stroke="#f9736a" stroke-width="9" opacity="0.85">
+          <path d="M0 0 L 330 128"/>
+        </g>
+      </g>
+      <g transform="translate(600,86)">
+        <rect x="0" y="0" width="270" height="78" rx="39" fill="#fde8e6" stroke="#f9736a" stroke-width="2.5"/>
+        <text x="135" y="52" text-anchor="middle" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="34" font-weight="900" fill="#e0554b">저품질 필터</text>
+      </g>
+    </svg>
+
+    <div style="margin-top: 38px; display: flex; align-items: center; gap: 12px; border-top: 1px solid rgba(22,33,59,0.12); padding-top: 24px;">
+      <span style="display: inline-flex; width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, #3a5ddb, #14b8a6); align-items: center; justify-content: center; font-weight: 900; font-size: 16px; color: #fff;">꿈</span>
+      <span style="font-size: 22px; font-weight: 700; color: #1c2e4a;">dream-ag.co.kr</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>

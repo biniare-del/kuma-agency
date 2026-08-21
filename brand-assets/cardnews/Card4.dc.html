@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+  <style>
+    body { margin: 0; }
+    .kn-root, .kn-root * { box-sizing: border-box; }
+    .kn-root { font-family: "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #3a5ddb; } a:hover { color: #2944a8; }
+  </style>
+</helmet>
+
+<div class="kn-root" style="position: relative; width: 1080px; height: 1080px; background: linear-gradient(160deg, #f3f7fd 0%, #eef3fb 55%, #f7f2f0 100%); overflow: hidden; color: #16213b;">
+  <div style="position: absolute; top: -170px; right: -130px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(58,93,219,0.14) 0%, rgba(58,93,219,0) 68%); pointer-events: none;"></div>
+  <div style="position: absolute; bottom: -190px; left: -150px; width: 560px; height: 560px; background: radial-gradient(circle, rgba(20,184,166,0.12) 0%, rgba(20,184,166,0) 66%); pointer-events: none;"></div>
+  <svg viewBox="0 0 1080 1080" width="1080" height="1080" style="position: absolute; inset: 0; opacity: 0.8; pointer-events: none;" aria-hidden="true">
+    <defs><pattern id="knGrid4" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M60 0H0V60" fill="none" stroke="rgba(22,33,59,0.045)" stroke-width="1"/></pattern></defs>
+    <rect width="1080" height="1080" fill="url(#knGrid4)"/>
+  </svg>
+
+  <div style="position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; padding: 82px 76px 62px;">
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <span style="display: inline-block; width: 30px; height: 3px; border-radius: 2px; background: #14b8a6;"></span>
+      <span style="font-size: 19px; font-weight: 700; letter-spacing: 0.1em; color: #3a5ddb;">환자가 오는 구조</span>
+    </div>
+
+    <h2 style="margin: 44px 0 0; font-weight: 900; font-size: 68px; line-height: 1.3; letter-spacing: -0.02em; color: #14213e;">
+      검색에서 내원까지,<br>3단계로 설계합니다
+    </h2>
+
+    <div style="margin-top: 54px; display: flex; flex-direction: column; gap: 26px;">
+      <!-- 스텝 1 -->
+      <div style="display: flex; align-items: center; gap: 26px; background: #ffffff; border: 1px solid rgba(58,93,219,0.16); border-radius: 20px; padding: 28px 30px;">
+        <svg viewBox="0 0 64 64" width="60" height="60" style="flex: 0 0 auto;" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#eef2fe"/><g transform="translate(32,32)" stroke="#3a5ddb" stroke-width="4.5" fill="none" stroke-linecap="round"><circle cx="-5" cy="-5" r="14"/><path d="M6 6 L 17 17"/></g></svg>
+        <div>
+          <div style="font-size: 30px; font-weight: 900; color: #14213e;">검색 의도에서 시작</div>
+          <div style="margin-top: 6px; font-size: 25px; font-weight: 500; color: #5b6579;">원장이 하고 싶은 말이 아니라, 환자의 질문에서.</div>
+        </div>
+      </div>
+      <!-- 스텝 2 -->
+      <div style="display: flex; align-items: center; gap: 26px; background: #ffffff; border: 1px solid rgba(20,184,166,0.18); border-radius: 20px; padding: 28px 30px;">
+        <svg viewBox="0 0 64 64" width="60" height="60" style="flex: 0 0 auto;" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#e7f7f4"/><g transform="translate(19,16)" stroke="#14b8a6" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M3 0 H 22 L 27 6 V 32 H 3 Z"/><path d="M9 13 H 21 M9 20 H 21 M9 27 H 16"/></g></svg>
+        <div>
+          <div style="font-size: 30px; font-weight: 900; color: #14213e;">정직한 정보형 콘텐츠</div>
+          <div style="margin-top: 6px; font-size: 25px; font-weight: 500; color: #5b6579;">시술·회복·비용을 과장 없이 설명합니다.</div>
+        </div>
+      </div>
+      <!-- 스텝 3 -->
+      <div style="display: flex; align-items: center; gap: 26px; background: #ffffff; border: 1px solid rgba(249,115,106,0.2); border-radius: 20px; padding: 28px 30px;">
+        <svg viewBox="0 0 64 64" width="60" height="60" style="flex: 0 0 auto;" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#fdecea"/><g transform="translate(32,30)" stroke="#f9736a" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="0" cy="-8" r="8"/><path d="M-14 18 C -14 4, 14 4, 14 18"/></g></svg>
+        <div>
+          <div style="font-size: 30px; font-weight: 900; color: #14213e;">신뢰가 내원으로</div>
+          <div style="margin-top: 6px; font-size: 25px; font-weight: 500; color: #5b6579;">글이 병원 자산으로 쌓여 상담으로 연결됩니다.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="flex: 1 1 auto;"></div>
+
+    <div style="margin-top: 30px; display: flex; align-items: center; gap: 12px; border-top: 1px solid rgba(22,33,59,0.12); padding-top: 24px;">
+      <span style="display: inline-flex; width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, #3a5ddb, #14b8a6); align-items: center; justify-content: center; font-weight: 900; font-size: 16px; color: #fff;">꿈</span>
+      <span style="font-size: 22px; font-weight: 700; color: #1c2e4a;">dream-ag.co.kr</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>
