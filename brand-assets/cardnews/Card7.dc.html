@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+  <style>
+    body { margin: 0; }
+    .kn-root, .kn-root * { box-sizing: border-box; }
+    .kn-root { font-family: "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #8aa2f5; } a:hover { color: #aebdf7; }
+  </style>
+</helmet>
+
+<div class="kn-root" style="position: relative; width: 1200px; height: 800px; background: linear-gradient(155deg, #0d1024 0%, #1b1740 55%, #0f1330 100%); overflow: hidden; color: #ffffff;">
+  <div style="position: absolute; top: -160px; right: -120px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(124,151,242,0.28) 0%, rgba(124,151,242,0) 68%); pointer-events: none;"></div>
+  <div style="position: absolute; bottom: -200px; left: -160px; width: 580px; height: 580px; background: radial-gradient(circle, rgba(52,208,192,0.18) 0%, rgba(52,208,192,0) 66%); pointer-events: none;"></div>
+  <svg viewBox="0 0 1200 800" width="1200" height="800" style="position: absolute; inset: 0; opacity: 0.5; pointer-events: none;" aria-hidden="true">
+    <defs><pattern id="knGrid7" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M60 0H0V60" fill="none" stroke="rgba(255,255,255,0.035)" stroke-width="1"/></pattern></defs>
+    <rect width="1200" height="800" fill="url(#knGrid7)"/>
+  </svg>
+
+  <div style="position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; padding: 58px 68px 44px;">
+
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <span style="display: inline-block; width: 30px; height: 3px; border-radius: 2px; background: #34d0c0;"></span>
+      <span style="font-size: 20px; font-weight: 700; letter-spacing: 0.02em; color: #a8c4ff;">실제 사례 · 강남권 성형외과</span>
+    </div>
+
+    <h2 style="margin: 22px 0 0; font-weight: 900; font-size: 50px; line-height: 1.28; letter-spacing: -0.02em; color: #ffffff;">
+      개설 두 달, 네이버 검색 노출 추이
+    </h2>
+
+    <div style="flex: 1 1 auto; display: flex; align-items: center; gap: 46px; margin-top: 26px;">
+
+      <!-- 좌: 수치 -->
+      <div style="flex: 0 0 300px; display: flex; flex-direction: column; gap: 18px;">
+        <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14); border-radius: 16px; padding: 20px 24px;">
+          <div style="font-size: 20px; font-weight: 500; color: #a8c4ff;">검색 노출</div>
+          <div style="margin-top: 4px; font-size: 44px; font-weight: 900; color: #ffffff; line-height: 1.1;">2,200<span style="font-size: 26px; font-weight: 700;">회+</span></div>
+        </div>
+        <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14); border-radius: 16px; padding: 20px 24px;">
+          <div style="font-size: 20px; font-weight: 500; color: #a8c4ff;">클릭</div>
+          <div style="margin-top: 4px; font-size: 44px; font-weight: 900; color: #ffffff; line-height: 1.1;">110<span style="font-size: 26px; font-weight: 700;">회+</span></div>
+        </div>
+        <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(52,208,192,0.4); border-radius: 16px; padding: 20px 24px;">
+          <div style="font-size: 20px; font-weight: 500; color: #7fe6d8;">색인 페이지</div>
+          <div style="margin-top: 4px; font-size: 44px; font-weight: 900; color: #34d0c0; line-height: 1.1;">90 → 510</div>
+        </div>
+      </div>
+
+      <!-- 우: 추세 그래프 -->
+      <div style="flex: 1 1 auto;">
+        <svg viewBox="0 0 640 340" width="100%" style="display: block;" aria-label="개설 두 달간 검색 노출이 우상향한 추이">
+          <defs>
+            <linearGradient id="c7fill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#34d0c0" stop-opacity="0.42"/>
+              <stop offset="1" stop-color="#34d0c0" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+
+          <!-- 축 눈금 -->
+          <g stroke="rgba(255,255,255,0.10)" stroke-width="1.5">
+            <path d="M60 60 H 610"/><path d="M60 130 H 610"/><path d="M60 200 H 610"/><path d="M60 270 H 610"/>
+          </g>
+          <path d="M60 40 V 270 H 610" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="2"/>
+
+          <!-- 면적 + 선 -->
+          <path d="M60 262 C 150 250, 210 214, 290 196 S 450 128, 600 62 L 600 270 L 60 270 Z" fill="url(#c7fill)"/>
+          <path d="M60 262 C 150 250, 210 214, 290 196 S 450 128, 600 62" fill="none" stroke="#34d0c0" stroke-width="6" stroke-linecap="round"/>
+
+          <!-- 데이터 포인트 -->
+          <circle cx="60" cy="262" r="8" fill="#0d1024" stroke="#34d0c0" stroke-width="4"/>
+          <circle cx="290" cy="196" r="8" fill="#0d1024" stroke="#34d0c0" stroke-width="4"/>
+          <circle cx="600" cy="62" r="10" fill="#f2b53f"/>
+
+          <g font-family="'Noto Sans KR','Malgun Gothic',sans-serif" fill="#8b93aa" font-size="21" font-weight="500">
+            <text x="60" y="302" text-anchor="middle">개설</text>
+            <text x="290" y="302" text-anchor="middle">1개월</text>
+            <text x="600" y="302" text-anchor="middle">2개월</text>
+          </g>
+          <text x="600" y="36" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="23" font-weight="700" fill="#f2b53f" text-anchor="end">우상향</text>
+        </svg>
+      </div>
+
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 12px; border-top: 1px solid rgba(255,255,255,0.10); padding-top: 20px;">
+      <span style="display: inline-flex; width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, #3a5ddb, #7c3aed); align-items: center; justify-content: center; font-weight: 900; font-size: 16px; color: #fff;">꿈</span>
+      <span style="font-size: 21px; font-weight: 700; color: #eef1f8;">dream-ag.co.kr</span>
+      <span style="margin-left: auto; font-size: 19px; font-weight: 500; color: #8b93aa;">네이버 서치어드바이저 기준 · 순위는 보장하지 않습니다</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>
