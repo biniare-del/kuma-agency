@@ -233,8 +233,10 @@ h3 { font-size: 1.05rem; font-weight: 700; letter-spacing: 0.04em; }
 .about-image-wrap {
   overflow: hidden;
   min-height: 500px;
+  position: relative;
 }
 .about-image-wrap img {
+  position: absolute; inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
   display: block;
@@ -269,6 +271,7 @@ h3 { font-size: 1.05rem; font-weight: 700; letter-spacing: 0.04em; }
   position: relative;
 }
 .procedure-img img {
+  position: absolute; inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
   display: block;
@@ -362,8 +365,9 @@ h3 { font-size: 1.05rem; font-weight: 700; letter-spacing: 0.04em; }
   grid-template-columns: 1fr 1fr;
   min-height: 640px;
 }
-.doctor-img-wrap { overflow: hidden; min-height: 500px; }
+.doctor-img-wrap { overflow: hidden; min-height: 500px; position: relative; }
 .doctor-img-wrap img {
+  position: absolute; inset: 0;
   width: 100%; height: 100%;
   object-fit: cover; object-position: top;
   display: block;
