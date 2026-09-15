@@ -223,22 +223,21 @@ h3 { font-size: 1.05rem; font-weight: 700; letter-spacing: 0.04em; }
 }
 
 /* ── ABOUT ── */
-.about { padding: 140px 0; }
+.about { padding: 0; }
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0;
-  align-items: stretch;
+  min-height: 600px;
 }
 .about-image-wrap {
-  position: relative;
-  min-height: 560px;
   overflow: hidden;
+  min-height: 500px;
 }
 .about-image-wrap img {
-  position: absolute; inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
+  display: block;
   transition: transform 0.8s ease;
 }
 .about-image-wrap:hover img { transform: scale(1.04); }
@@ -254,7 +253,7 @@ h3 { font-size: 1.05rem; font-weight: 700; letter-spacing: 0.04em; }
 .procedures { background: var(--ink); padding: 120px 0; }
 .procedures .eyebrow { color: var(--gold); }
 .procedures-head { text-align: center; margin-bottom: 80px; }
-.procedures-head h2 { color: #fff; }
+.procedures-head h2, .procedures-title { color: #fff; }
 .procedures-head p { color: rgba(255,255,255,0.5); max-width: 480px; margin: 0 auto; font-size: 0.9rem; }
 .procedure-list { display: flex; flex-direction: column; gap: 0; }
 .procedure-row {
@@ -262,16 +261,17 @@ h3 { font-size: 1.05rem; font-weight: 700; letter-spacing: 0.04em; }
   grid-template-columns: 1fr 1fr;
   min-height: 420px;
 }
-.procedure-row:nth-child(even) { direction: rtl; }
-.procedure-row:nth-child(even) > * { direction: ltr; }
+.procedure-row:nth-child(even) .procedure-img { order: 2; }
+.procedure-row:nth-child(even) .procedure-body { order: 1; }
 .procedure-img {
   overflow: hidden;
+  min-height: 420px;
   position: relative;
 }
 .procedure-img img {
-  position: absolute; inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
+  display: block;
   transition: transform 0.7s ease;
 }
 .procedure-row:hover .procedure-img img { transform: scale(1.05); }
@@ -362,11 +362,11 @@ h3 { font-size: 1.05rem; font-weight: 700; letter-spacing: 0.04em; }
   grid-template-columns: 1fr 1fr;
   min-height: 640px;
 }
-.doctor-img-wrap { position: relative; overflow: hidden; }
+.doctor-img-wrap { overflow: hidden; min-height: 500px; }
 .doctor-img-wrap img {
-  position: absolute; inset: 0;
   width: 100%; height: 100%;
   object-fit: cover; object-position: top;
+  display: block;
 }
 .doctor-text-wrap {
   padding: 100px 80px;
@@ -552,8 +552,10 @@ details[open] .faq-toggle { background: var(--gold2); color: #fff; }
   .doctor-img-wrap { min-height: 360px; }
   .doctor-text-wrap { padding: 60px 36px; }
   .about-text-wrap { padding: 56px 36px; }
-  .procedure-row { grid-template-columns: 1fr; direction: ltr !important; min-height: auto; }
-  .procedure-img { min-height: 300px; position: relative; }
+  .procedure-row { grid-template-columns: 1fr; min-height: auto; }
+  .procedure-row:nth-child(even) .procedure-img { order: 0; }
+  .procedure-row:nth-child(even) .procedure-body { order: 0; }
+  .procedure-img { min-height: 300px; }
   .procedure-body { padding: 44px 32px; }
   .contact-grid { grid-template-columns: 1fr; gap: 52px; }
   .trust-grid { grid-template-columns: repeat(2, 1fr); }
