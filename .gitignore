@@ -1,2 +1,20 @@
 __pycache__/
 *.pyc
+
+# 내부 문서·영업 스크립트: 로컬 전용 (공개 저장소/사이트에 올리지 않음)
+/CLAUDE.md
+/CONTEXT.md
+/PLAYBOOK.md
+/BENCHMARK.md
+/COLD_EMAIL_TEMPLATES.md
+/ROCOCO_REFERENCE.md
+/IMAGE_PROMPTS.md
+/archive/
+/docs/
+/.claude/
+/cleanup.py
+/extract_contacts.py
+/extract_no_homepage.py
+/make_hyperlinks.py
+/naver_clinic_search.py
+/score_targets.py

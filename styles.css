@@ -77,6 +77,11 @@ a:hover { text-decoration: underline; }
 .service-card:hover .service-go { color: var(--color-accent); }
 /* Two cards embedded in the hero */
 .hero-cards { margin-top: 38px; }
+.service-card.static { cursor: default; }
+.service-card.static:hover { border-color: var(--color-border); box-shadow: none; transform: none; }
+.service-card.static h3 { font-size: 1.22rem; line-height: 1.45; }
+.service-card.static p { margin-bottom: 0; }
+.hero-close { margin-top: 30px; font-weight: 700; }
 .hero-sublinks { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 26px; }
 .hero-sublinks a { color: rgba(255,255,255,0.9); font-weight: 700; font-size: 0.92rem; }
 .hero-sublinks a:hover { color: #fff; }
