@@ -259,3 +259,9 @@ body { word-break: keep-all; overflow-wrap: break-word; }
   .sm-break { display: block; }
 }
 .sm-break { display: none; }
+
+/* 카카오톡 채널 플로팅 버튼 */
+.kakao-float{position:fixed;right:20px;bottom:20px;z-index:90;display:flex;align-items:center;gap:8px;height:52px;padding:0 20px 0 16px;border-radius:999px;background:#fee500;color:#191600;font-size:15px;font-weight:600;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.28);transition:transform .25s}
+.kakao-float:hover{transform:translateY(-3px)}
+.kakao-float svg{width:24px;height:24px;flex:none}
+@media (max-width:640px){.kakao-float{right:14px;bottom:14px;height:48px;padding:0 16px 0 12px;font-size:14px}}
